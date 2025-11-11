@@ -16,9 +16,9 @@ const GuinnessRecord = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-script text-5xl md:text-7xl text-white"
+            className="text-5xl md:text-7xl text-white  title-primary"
           >
-            {t('guinness.title')}
+          {t('guinness.title')}
           </motion.h1>
         </div>
       </section>

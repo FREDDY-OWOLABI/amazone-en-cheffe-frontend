@@ -103,11 +103,37 @@ All colors MUST be HSL.
   body {
      @apply bg-background text-foreground font-guton; 
   }
+   h1 {
+        /* Applique la police Choco Taste, la couleur Terre d'Afrique, et une taille de texte */
+        @apply font-choco-taste text-4xl text-terre-afrique md:text-5xl;
+    }
+
+    /* Style pour les Sous-Titres (H2) */
+    h2 {
+        /* Applique la police Crispy Bake, la couleur Miel Gourmand, et une taille de texte */
+        @apply font-crispy-bake text-3xl text-miel-gourmand md:text-4xl;
+    }
+    
 }
    .about-pressbooke-download-bg {
             background-image: url('assets/images/about-pressbooke-download-bg.PNG'); 
             background-size: 100% 100%;
             background-position: center;
         }
+
+@layer components {
+    /* Style pour les Titres Principaux (Choco Taste) */
+    .title-primary {
+        /* Applique la police Choco Taste, la couleur Terre d'Afrique, et une taille de texte */
+        @apply font-choco-taste text-4xl text-terre-afrique md:text-5xl;
+    }
+
+    /* Style pour les Sous-Titres (Crispy Bake) */
+    .title-secondary {
+        /* Applique la police Crispy Bake, la couleur Miel Gourmand, et une taille de texte */
+        @apply font-crispy-bake text-3xl text-miel-gourmand md:text-4xl;
+    }
+}
+
 
 

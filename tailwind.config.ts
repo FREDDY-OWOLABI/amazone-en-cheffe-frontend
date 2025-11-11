@@ -72,7 +72,7 @@ export default {
         'choco-taste': ['ChocoTaste', 'cursive'], // Principale (Titres)
         'crispy-bake': ['CrispyBake', 'cursive'], // Secondaire
 
-        heading: ["Dancing Script", "cursive"],
+       heading: ["Dancing Script", "cursive"],
         secondary: ["Poppins", "sans-serif"],
         body: ["Inter", "sans-serif"],
         script: ["Pacifico", "cursive"],
