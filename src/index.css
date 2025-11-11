@@ -1,0 +1,113 @@
+/* src/index.css */
+/* Déclarations des polices personnalisées */
+@font-face {
+    font-family: 'Guton';
+    src: url('/assets/fonts/Guton-VF.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChocoTaste';
+    src: url('/assets/fonts/ChocoTaste.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CrispyBake';
+    src: url('/assets/fonts/CrispyBake-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* 
+    Keith SONON Brand Colors - L'Amazone en Cheffe
+    --background: 0 0% 100%;
+    --foreground: 12 59% 25%; /* brand-earth-dark */
+     
+     /* COULEUR DE FOND PRINCIPALE : Fond Clair */
+    --background: 48 83% 73%; /* #F2DF80 */
+    /* COULEUR DE TEXTE PRINCIPALE : Terre d'Afrique */
+    --foreground: 12 59% 25%; /* #682718 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 12 59% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 12 59% 25%;
+
+    /* Primary = Marron Terre (Earth Dark) 
+    --primary: 12 59% 25%; 
+    --primary-foreground: 0 0% 100%;*/
+      /* COULEUR PRIMAIRE (Boutons, Accents) : Terre d'Afrique */
+    --primary: 12 59% 25%; /* #682718 */
+    --primary-foreground: 0 0% 100%; /* Texte blanc sur le primaire */
+
+    /* Secondary = Doré (Gold) 
+    --secondary: 43 59% 52%; 
+    --secondary-foreground: 12 59% 25%; */
+     /* COULEUR SECONDAIRE : Miel Gourmand ou Or Dégradé */
+    --secondary: 38 59% 60%; /* #CFA15D (Or Dégradé) */
+    --secondary-foreground: 12 59% 25%; /* Texte Terre d'Afrique sur le secondaire */
+
+
+    /* Muted = Jaune clair (Yellow Light) */
+    --muted: 48 83% 73%; /* #F2DF80 */
+    --muted-foreground: 12 59% 25%;
+    
+    /* Ajout des polices pour le corps du texte par défaut */
+    font-family: 'Guton', sans-serif;
+
+    /* Accent = Gold Light */
+    --accent: 46 87% 59%; /* #F2CF41 */
+    --accent-foreground: 12 59% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 12 20% 90%;
+    --input: 12 20% 90%;
+    --ring: 12 59% 25%;
+
+    --radius: 0.75rem;
+
+    /* Brand-specific colors */
+    --brand-earth-dark: 12 59% 25%; /* #682718 */
+    --brand-earth: 12 49% 33%; /* #7D3B2B */
+    --brand-gold: 43 59% 52%; /* #D4A136 */
+    --brand-gold-light: 46 87% 59%; /* #F2CF41 */
+    --brand-gold-dark: 38 59% 49%; /* #C08433 */
+    --brand-honey: 38 36% 55%; /* #B8935F */
+    --brand-yellow: 46 87% 59%; /* #F2CF41 */
+    --brand-yellow-light: 48 83% 73%; /* #F2DF80 */
+    --brand-white: 0 0% 100%;
+    --brand-cream: 48 100% 96%; /* #FFF9E6 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+     @apply bg-background text-foreground font-guton; 
+  }
+}
+   .about-pressbooke-download-bg {
+            background-image: url('assets/images/about-pressbooke-download-bg.PNG'); 
+            background-size: 100% 100%;
+            background-position: center;
+        }
+
+
