@@ -1,12 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { Layout } from '@/components/layout/Layout';
-import { Download } from 'lucide-react';
+import { Download, Play } from 'lucide-react';
+
 import { ButtonOutline } from '@/components/ui/ButtonOutline';
 import { motion } from 'framer-motion';
 
 const About = () => {
   const { t } = useTranslation();
-
+  const images = [1, 2, 3, 4];
+  const videos = [1, 2, 3, 4];
   return (
     <Layout>
       {/* Hero */}
@@ -88,14 +90,14 @@ const About = () => {
           <div className="bg-brand-earth-dark rounded-2xl p-2 pt-0 flex items-center gap-6 max-w-md">
             <div className="relative h-40  translate-y-1/4  about-pressbooke-download-bg px-6 py-2 mt-0  rounded-lg z-20 shadow-lg">
               <div className="w-20 h-20 mt-6 bg-brand-gold rounded-full flex items-center justify-center flex-shrink-0 opacity-0">
-                
+
               </div></div>
 
             <div className="text-white -top-6 ">
               <h3 className="font-heading text-2xl mr-6 mb-4 text-[#F2DF80]">{t('about.pressbook')}</h3>
               <div className="container mx-auto px-4 text-center">
                 <ButtonOutline className="text-sm border-0  font-bold">
-                 <Download className="w-5 h-5 text-brand-earth-dark opacity-100 inline" /> {t('about.download')}
+                  <Download className="w-5 h-5 text-brand-earth-dark opacity-100 inline" /> {t('about.download')}
                 </ButtonOutline>
               </div>
 
@@ -106,44 +108,86 @@ const About = () => {
 
       {/* Media Gallery Section */}
       <section className="bg-brand-yellow-light py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading text-4xl md:text-5xl text-brand-gold text-center mb-12">
-            Galerie média
-          </h2>
 
-          {/* Photos Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-5xl mx-auto">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-2xl overflow-hidden bg-gray-200 cursor-pointer hover:scale-105 transition"
-              >
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Photo {i}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="max-w-6xl mx-auto">
 
-          {/* Videos Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-2xl overflow-hidden bg-gray-300 relative cursor-pointer group"
-              >
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Vidéo {i}</span>
-                </div>
-                {/* Play button overlay */}
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/50 transition">
-                  <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-                    <div className="w-0 h-0 border-l-[20px] border-l-brand-gold border-y-[12px] border-y-transparent ml-1" />
-                  </div>
-                </div>
-              </div>
-            ))}
+
+
+
+
+
+ <div className="relative container mx-auto px-4 pt-16">
+  {/* Titre qui dépasse à moitié */}
+  <h2 className="absolute text-outline-section-titre -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[77px] text-brand-gold text-center">
+    Galerie média
+  </h2>
+
+  {/* Photos Grid */}
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8  md:mt-16 mt-2">
+    {[1, 2, 3, 4].map((i) => (
+      <div
+        key={i}
+        className="aspect-video p-0 rounded-2xl overflow-hidden bg-gray-300 cursor-pointer hover:scale-105 transition-transform duration-300"
+      >
+        <img
+          src="/assets/images/galerie-media-aspect-img.png"
+          alt={`Image ${i}`}
+          className="w-full h-full object-cover block relative left-[-1px]"
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* Photos Progress Bar */}
+  <div className="mb-12 px-[20%]">
+    <div className="h-1 w-full bg-white/80 rounded relative overflow-hidden">
+      <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"></div>
+    </div>
+  </div>
+
+  {/* Videos Grid */}
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {[1, 2, 3, 4].map((i) => (
+      <div key={i} className="flex flex-col cursor-pointer group">
+        {/* Video card */}
+        <div className="aspect-video rounded-2xl overflow-hidden bg-gray-300 relative hover:scale-105 transition-transform duration-300">
+          <img
+            src="/assets/images/galerie-media-aspect-img.png"
+            alt={`Vidéo ${i}`}
+            className="w-full h-full object-cover"
+          />
+
+          {/* Play button overlay */}
+          <div className="absolute inset-0 bg-transparent/30 flex items-center justify-center group-hover:bg-transparent/10 transition">
+            <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center">
+              <img
+                src="/assets/images/Play.png"
+                alt="Play"
+                className="w-full h-full"
+              />
+            </div>
           </div>
+        </div>
+
+        {/* Title below video */}
+        <p className="mt-2 text-sm font-semibold text-brand-earth-dark-800 text-left px-2">
+          Titre de la vidéo
+        </p>
+      </div>
+    ))}
+  </div>
+
+  {/* Videos Progress Bar */}
+  <div className="mt-12 px-[20%]">
+    <div className="h-1 w-full bg-white/80 rounded relative overflow-hidden">
+      <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
         </div>
       </section>
     </Layout>

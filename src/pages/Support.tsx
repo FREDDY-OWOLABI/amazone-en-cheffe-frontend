@@ -21,12 +21,28 @@ const Support = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="title-primarytext-5xl md:text-7xl text-white"
+            className="title-primary text-5xl md:text-7xl text-white"
           >
             {t('support.title')}
           </motion.h1>
         </div>
       </section>
+
+       {/* Why Section */}
+        <div className="my-12 container mx-auto px-4">
+          <h1 className="text-3xl font-bold font-heading mb-6 w-full text-center">
+            Pourquoi ?
+          </h1>
+          <h2 className=" guton mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </h2>
+          <p className="leading-relaxed mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+          <p className=" leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </div>
 
       <section className="bg-white py-12">
         <div className="container mx-auto px-4">
@@ -82,28 +98,33 @@ const Support = () => {
         </div>
       </section>
 
-      <section className="bg-brand-yellow-light py-12">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <h2 className="title-primary text-4xl text-brand-gold text-center mb-8">
-            {t('support.contact_title')}
-          </h2>
-          
-          <div className="flex justify-center gap-4 mb-8">
-            <Facebook className="w-6 h-6" />
-            <Youtube className="w-6 h-6" />
-            <Instagram className="w-6 h-6" />
-          </div>
-          
-          <form className="space-y-4">
-            <Input placeholder="Nom et prénom" className="bg-white" />
-            <Input type="email" placeholder="Email" className="bg-white" />
-            <Textarea placeholder="Votre message" rows={6} className="bg-white" />
-            <ButtonPrimary type="submit" className="w-full">
-              {t('support.send_message')}
-            </ButtonPrimary>
-          </form>
-        </div>
-      </section>
+      <section className="bg-brand-yellow-light py-12 relative">
+  <div className="container mx-auto px-4 max-w-2xl relative pt-16">
+    {/* Titre qui dépasse à moitié */}
+    <h2 className=" w-full absolute -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-titre">
+      {t('support.contact_title')}
+    </h2>
+
+    <div className="flex justify-center">
+    <div className="inline-flex justify-center gap-4 mb-8 mt-24 bg-brand-gold-dark text-white px-6 py-3 rounded-full">
+  <Facebook className="w-6 h-6" />
+  <Youtube className="w-6 h-6" />
+  <Instagram className="w-6 h-6" />
+</div>
+</div>
+
+
+    <form className="space-y-4">
+      <Input placeholder="Nom et prénom" className="bg-white" />
+      <Input type="email" placeholder="Email" className="bg-white" />
+      <Textarea placeholder="Votre message" rows={6} className="bg-white" />
+      <ButtonPrimary type="submit" className="w-full md:w-auto">
+        {t('support.send_message')}
+      </ButtonPrimary>
+    </form>
+  </div>
+</section>
+
     </Layout>
   );
 };

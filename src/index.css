@@ -124,16 +124,7 @@ All colors MUST be HSL.
 
   }
 
-  h1 {
-    /* Applique la police Choco Taste, la couleur Terre d'Afrique, et une taille de texte */
-    @apply font-choco-taste text-4xl text-terre-afrique md:text-5xl;
-  }
-
-  /* Style pour les Sous-Titres (H2) */
-  h2 {
-    /* Applique la police Crispy Bake, la couleur Miel Gourmand, et une taille de texte */
-    @apply font-crispy-bake text-3xl text-miel-gourmand md:text-4xl;
-  }
+ 
 
 }
 
@@ -192,5 +183,15 @@ All colors MUST be HSL.
   background-size: 100% 100%;
   background-position: center;
 }
+
+
+.text-outline-section-titre {
+  -webkit-text-stroke: 1px  hsl(var(--brand-yellow-light));
+  color: hsl(var(--brand-gold-dark));
+  font-weight: 900;
+  letter-spacing: 2px;
+} 
+
+
 
 

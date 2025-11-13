@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useQuery } from '@tanstack/react-query';
 import { Layout } from '@/components/layout/Layout';
-import { newsApi } from '@/lib/api';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -11,28 +9,41 @@ const News = () => {
   const { t } = useTranslation();
   const [category, setCategory] = useState<string | undefined>(undefined);
 
-  const { data: news = [], isLoading } = useQuery({
-    queryKey: ['news', category],
-    queryFn: async () => {
-      const response = await newsApi.getAll({ category });
-      return response.data;
-    },
-  });
+  // Données locales simulées
+  const allNews = [
+    { id: 1, category: "SORTIE", title: "Titre de l'article 1", excerpt: "Extrait de l'article 1", slug: "article-1" },
+    { id: 2, category: "INTERVIEW", title: "Titre de l'article 2", excerpt: "Extrait de l'article 2", slug: "article-2" },
+    { id: 3, category: "PRESSE", title: "Titre de l'article 3", excerpt: "Extrait de l'article 3", slug: "article-3" },
+    { id: 4, category: "SORTIE", title: "Titre de l'article 4", excerpt: "Extrait de l'article 4", slug: "article-4" },
+    { id: 5, category: "INTERVIEW", title: "Titre de l'article 5", excerpt: "Extrait de l'article 5", slug: "article-5" },
+  ];
 
+  // Filtrer les articles selon la catégorie sélectionnée
+  const news = category ? allNews.filter((a) => a.category.toLowerCase() === category?.toLowerCase()) : allNews;
+
+  const isLoading = false; // pas de chargement réel
+
+  // Catégories pour le filtre
   const categories = [
     { value: undefined, label: 'Tous' },
-    { value: 'recipe', label: 'Recettes' },
-    { value: 'interview', label: 'Interviews' },
-    { value: 'press', label: 'Presse' },
-    { value: 'event', label: 'Événements' },
+    { value: 'SORTIE', label: 'SORTIE' },
+    { value: 'INTERVIEW', label: 'INTERVIEW' },
+    { value: 'PRESSE', label: 'PRESSE' },
   ];
+
+  // Mapping des couleurs pour Badge
+  const badgeColors: Record<string, string> = {
+    SORTIE: 'bg-amber-900',
+    INTERVIEW: 'bg-amber-700',
+    PRESSE: 'bg-amber-600',
+  };
 
   return (
     <Layout footerBgColor="bg-brand-yellow-light">
       {/* Hero */}
       <section className="bg-brand-earth-dark news-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="title-primary text-5xl md:text-7xl text-white"
@@ -50,11 +61,10 @@ const News = () => {
               <button
                 key={cat.value || 'all'}
                 onClick={() => setCategory(cat.value)}
-                className={`px-4 py-2 rounded-full whitespace-nowrap transition ${
-                  category === cat.value
+                className={`px-4 py-2 rounded-full whitespace-nowrap transition ${category === cat.value
                     ? 'bg-brand-gold text-brand-earth-dark font-bold'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {cat.label}
               </button>
@@ -76,43 +86,52 @@ const News = () => {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {news.map((article: any) => (
-                <motion.article
-                  key={article.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition"
-                >
-                  <div className="relative">
-                    <Badge 
-                      variant={article.category === 'recipe' ? 'default' : 'secondary'}
-                      className="absolute top-4 left-4 z-10"
-                    >
-                      {article.category}
-                    </Badge>
-                    
-                    <div className="aspect-video bg-gradient-to-br from-brand-gold-light to-brand-honey flex items-center justify-center">
-                      <span className="text-white text-sm">Image article</span>
+              {news.map((article) => (
+
+                <div className="transition-transform duration-300 hover:scale-105">
+                  <motion.article
+                    key={article.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition"
+                  >
+                    <div className="relative ">
+                      <Badge
+                        className={`absolute top-4 left-4 z-10 ${badgeColors[article.category] || 'bg-gray-800'}`}
+                      >
+                        {article.category}
+                      </Badge>
+
+
+                      <div className="aspect-video flex items-center justify-center overflow-hidden rounded-lg">
+                        <img
+                          src="/assets/images/galerie-media-aspect-img.png"
+                          alt={`Image article ${article.id}`}
+                          className="w-full h-full object-cover block relative left-[-1px]"
+                        />
+                      </div>
+
                     </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <h3 className="font-bold text-lg mb-2 text-brand-earth-dark line-clamp-2">
-                      {article.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
-                      {article.excerpt}
-                    </p>
-                    
-                    <Link 
-                      to={`/news/${article.slug}`}
-                      className="text-brand-gold hover:text-brand-gold-dark font-medium inline-flex items-center gap-1"
-                    >
-                      {t('news.read_more')} →
-                    </Link>
-                  </div>
-                </motion.article>
+
+                    <div className="p-6">
+                      <h3 className="font-bold text-lg mb-2 text-brand-earth-dark line-clamp-2">
+                        {article.title}
+                      </h3>
+
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                        {article.excerpt}
+                      </p>
+
+                      <Link
+                        to={`/news/${article.slug}`}
+                        className="text-brand-gold hover:text-brand-gold-dark font-medium inline-flex items-center gap-1"
+                      >
+                        {t('news.read_more')} →
+                      </Link>
+                    </div>
+                  </motion.article>
+                </div>
+
               ))}
             </div>
           )}

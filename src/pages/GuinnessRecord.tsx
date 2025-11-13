@@ -71,7 +71,7 @@ const GuinnessRecord = () => {
       {/* Marathon de Décembre Section */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="font-script text-4xl md:text-5xl text-brand-gold text-center mb-8">
+          <h2 className="font-heading text-4xl md:text-5xl text-brand-gold text-center mb-8">
             {t('guinness.marathon_title')}
           </h2>
           
@@ -108,45 +108,49 @@ const GuinnessRecord = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="bg-brand-yellow-light py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading text-4xl md:text-5xl text-brand-gold text-center mb-4">
-            {t('guinness.timeline_title')}
-          </h2>
-          <p className="text-center text-brand-earth-dark mb-12 max-w-2xl mx-auto">
-            Retrouvez ci-joint le détail étape par étape pour nous suivre dans l'aventure
-          </p>
-          
-          {/* Timeline Visualization */}
-          <div className="relative max-w-4xl mx-auto">
-            {/* Horizontal line */}
-            <div className="absolute top-1/2 left-0 right-0 h-1 bg-brand-earth-dark -translate-y-1/2 hidden md:block" />
-            
-            <div className="relative flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
-              {/* Start Point */}
-              <div className="relative z-10 text-center">
-                <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4" />
-                <p className="text-sm font-medium text-brand-earth-dark">Début du Marathon</p>
-                <p className="text-xs text-brand-earth-dark/70">Décembre 2025</p>
-              </div>
-              
-              {/* Middle Points */}
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="relative z-10">
-                  <div className="bg-brand-earth-dark w-6 h-6 rounded-full mx-auto" />
-                </div>
-              ))}
-              
-              {/* End Point */}
-              <div className="relative z-10 text-center">
-                <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4" />
-                <p className="text-sm font-medium text-brand-earth-dark">Fin du Marathon</p>
-                <p className="text-xs text-brand-earth-dark/70">15 jours plus tard</p>
-              </div>
-            </div>
-          </div>
+      
+<section className="bg-brand-yellow-light py-16 relative">
+  <div className="container mx-auto px-4 relative pt-16">
+    {/* Titre qui dépasse à moitié */}
+    <h2 className="absolute -top-[54px] left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[77px] text-center text-outline-section-titre">
+      {t('guinness.timeline_title')}
+    </h2>
+
+    <p className="text-center text-brand-earth-dark mb-12 max-w-2xl mx-auto mt-24">
+      Retrouvez ci-joint le détail étape par étape pour nous suivre dans l'aventure
+    </p>
+
+    {/* Timeline Visualization */}
+    <div className="relative max-w-4xl mx-auto">
+      {/* Horizontal line */}
+      <div className="absolute top-1/2 left-0 right-0 h-1 bg-brand-earth-dark -translate-y-1/2 hidden md:block" />
+
+      <div className="relative flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
+        {/* Start Point */}
+        <div className="relative z-10 text-center">
+          <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4" />
+          <p className="text-sm font-medium text-brand-earth-dark">Début du Marathon</p>
+          <p className="text-xs text-brand-earth-dark/70">Décembre 2025</p>
         </div>
-      </section>
+
+        {/* Middle Points */}
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="relative z-10">
+            <div className="bg-brand-earth-dark w-6 h-6 rounded-full mx-auto" />
+          </div>
+        ))}
+
+        {/* End Point */}
+        <div className="relative z-10 text-center">
+          <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4" />
+          <p className="text-sm font-medium text-brand-earth-dark">Fin du Marathon</p>
+          <p className="text-xs text-brand-earth-dark/70">15 jours plus tard</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
     </Layout>
   );
 };
