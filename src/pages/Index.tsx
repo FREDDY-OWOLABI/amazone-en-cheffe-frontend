@@ -95,18 +95,8 @@ const Index = () => {
         </div>
       </motion.section>
 
-      {/* Logo Section */}
+      
       <section className="bg-brand-yellow-light pb-12">
-        <div className="container mx-auto px-4 text-center">
-          <div className="inline-block">
-            <h2 className="font-heading text-6xl md:text-8xl text-brand-gold">
-              L'Amazone
-            </h2>
-            <h3 className="font-heading text-4xl md:text-6xl text-brand-honey -mt-4">
-              en Cheffe
-            </h3>
-          </div>
-        </div>
       </section>
     </Layout>
   );

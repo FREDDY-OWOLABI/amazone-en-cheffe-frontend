@@ -39,6 +39,9 @@ const Team = () => {
     { id: 1, name: 'Alice Dupont', role: 'Chef de projet' },
     { id: 2, name: 'Jean Martin', role: 'Développeur' },
     { id: 3, name: 'Sophie Bernard', role: 'Designer' },
+    { id: 4, name: 'Alice Dupont', role: 'Chef de projet' },
+    { id: 5, name: 'Jean Martin', role: 'Développeur' },
+    { id: 6, name: 'Sophie Bernard', role: 'Designer' },
   ];
 
   const sponsors = [

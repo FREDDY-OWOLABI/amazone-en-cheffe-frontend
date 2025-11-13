@@ -1,20 +1,25 @@
 //src/components/layout/Header.tsx
 
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, Heart, Facebook, Youtube } from 'lucide-react';
 import { ProgressBarCountdown } from './ProgressBarCountdown';
+import { ProgressBarDonationCollected } from './ProgressBarDonationCollected';
+
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
 import { useIsMobile } from '../../hooks/use-mobile';
 
+
 export const Header = () => {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const location = useLocation();
   const isMobile = useIsMobile();
 
-   let headerBgClass = "bg-brand-earth-dark";
+  let headerBgClass = "bg-brand-earth-dark";
 
   if (location.pathname === "/") {
     headerBgClass = "home-hero-section-bg";
@@ -28,23 +33,34 @@ export const Header = () => {
   else if (location.pathname === "/team") {
     headerBgClass = "team-hero-section-bg";
   }
-   else if (location.pathname === "/support") {
+  else if (location.pathname === "/support") {
     headerBgClass = "support-hero-section-bg";
   }
 
   return (
     <>
-        <header
-      className={`sticky top-0 ${headerBgClass} text-white z-40 shadow-lg`}
-    >
+      <header
+        className={`sticky top-0 ${headerBgClass} text-white z-40 shadow-lg`}
+      >
         {/* Desktop Header */}
         <div className="hidden md:block">
           <div className="container mx-auto px-4 ">
             <div className="flex items-center justify-between py-4 ">
               {/* Left: Progress Bar */}
-              <div className="w-40">
-                <ProgressBarCountdown />
+              <div className="flex gap-6">
+                <div className="inline-block">
+                  <ProgressBarCountdown />
+                </div>
+
+                {location.pathname === "/support" && (
+                  <div className="inline-block">
+                    <ProgressBarDonationCollected />
+                  </div>
+                )}
               </div>
+
+
+
 
               {/* Center: Logo */}
               <Link to="/" className="flex-shrink-0 font-heading">
@@ -63,10 +79,13 @@ export const Header = () => {
               {/* Right: Social + Language */}
               <div className="flex items-center gap-4 ">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-                  <Facebook className="w-5 h-5" />
+                  <img src="/assets/images/Facebook.svg" className="w-5 h-5" />
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-                  <Youtube className="w-5 h-5" />
+                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
+                  <img src="/assets/images/Instagram.svg" className="w-5 h-5" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
+                  <img src="/assets/images/TikTok.svg" className="w-5 h-5" />
                 </a>
                 <LanguageSwitcher />
               </div>
@@ -132,7 +151,7 @@ export const Header = () => {
                     <NavLink
                       to="/support"
                       className={({ isActive }) =>
-                        `flex items-center gap-2 bg-brand-earth-dark text-white  rounded-full py-2 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold' : 'hover:text-brand-earth transition'}`
+                        `flex items-center gap-2 bg-brand-earth-dark text-white  rounded-full py-2 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold bg-yellow-200 text-brand-earth-dark  text-terre-afrique ' : 'hover:text-brand-earth transition'}`
                       }
                     >
                       {t('nav.support')}

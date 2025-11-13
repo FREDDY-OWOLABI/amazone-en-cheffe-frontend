@@ -16,6 +16,14 @@ const News = () => {
     { id: 3, category: "PRESSE", title: "Titre de l'article 3", excerpt: "Extrait de l'article 3", slug: "article-3" },
     { id: 4, category: "SORTIE", title: "Titre de l'article 4", excerpt: "Extrait de l'article 4", slug: "article-4" },
     { id: 5, category: "INTERVIEW", title: "Titre de l'article 5", excerpt: "Extrait de l'article 5", slug: "article-5" },
+    { id: 6, category: "PRESSE", title: "Titre de l'article 6", excerpt: "Extrait de l'article 6", slug: "article-6" },
+    { id: 7, category: "INTERVIEW", title: "Titre de l'article 7", excerpt: "Extrait de l'article 7", slug: "article-7" },
+    { id: 5, category: "SORTIE", title: "Titre de l'article 8", excerpt: "Extrait de l'article 8", slug: "article-8" },
+    { id: 9, category: "INTERVIEW", title: "Titre de l'article 9", excerpt: "Extrait de l'article 9", slug: "article-9" },
+
+
+
+
   ];
 
   // Filtrer les articles selon la catégorie sélectionnée
@@ -62,8 +70,8 @@ const News = () => {
                 key={cat.value || 'all'}
                 onClick={() => setCategory(cat.value)}
                 className={`px-4 py-2 rounded-full whitespace-nowrap transition ${category === cat.value
-                    ? 'bg-brand-gold text-brand-earth-dark font-bold'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-brand-gold text-brand-earth-dark font-bold'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
                 {cat.label}

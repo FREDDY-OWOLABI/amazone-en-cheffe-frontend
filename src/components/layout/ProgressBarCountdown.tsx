@@ -1,36 +1,41 @@
 // src/components/layout/ProgressBarCountdown.tsx
-import { useCountdown } from '@/hooks/useCountdown';
-import { useTranslation } from 'react-i18next';
+import { useMarathonProgress } from "@/hooks/useMarathonProgress";
+import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 interface ProgressBarCountdownProps {
-  targetDate?: string;
   className?: string;
 }
 
-export const ProgressBarCountdown = ({ 
-  targetDate = "2025-12-01",
-  className = "" 
-}: ProgressBarCountdownProps) => {
-  const { days, progress } = useCountdown(targetDate);
+export const ProgressBarCountdown = ({ className = "" }: ProgressBarCountdownProps) => {
   const { t } = useTranslation();
+  const location = useLocation();
 
-  // La partie remplie = jours écoulés
-  const elapsed = progress; 
-  const remaining = 100 - progress; // partie vide (jours restants)
+  const isSupport = location.pathname === "/support";
+
+  // Début et fin du marathon
+  const start = "2025-12-01T00:00:00";
+  const end = "2025-12-16T00:00:00"; // 15 jours après
+
+  const { daysLeft, progress } = useMarathonProgress(start, end);
 
   return (
     <div className={`space-y-2 ${className}`}>
-      {/* Barre de progression */}
-      <div className="relative w-full h-2 bg-white/20 rounded-full overflow-hidden">
-        <div 
-          className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-gold to-brand-honey transition-all duration-500"
-          style={{ width: `${elapsed}%` }}
+      {/* Barre */}
+      <div className="relative w-40 h-2 bg-white/80 rounded-full overflow-hidden mt-1">
+        <div
+          className={`absolute inset-y-0 left-0 transition-all duration-500 ${
+            isSupport ? "bg-brand-earth-dark" : "bg-brand-gold"
+          }`}
+          style={{ width: `${progress}%` }}
         />
       </div>
 
       {/* Texte */}
-      <p className="text-white font-semibold text-left text-[9.6px]">
-        {days} jours restants avant la fin
+      <p className="text-white font-semibold text-left text-[9.6px] py-1">
+        {daysLeft > 0
+          ? `${daysLeft} jours restants avant la fin`
+          : `Marathon terminé`}
       </p>
     </div>
   );

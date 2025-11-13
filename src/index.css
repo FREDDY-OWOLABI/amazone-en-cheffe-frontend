@@ -189,7 +189,7 @@ All colors MUST be HSL.
   -webkit-text-stroke: 1px  hsl(var(--brand-yellow-light));
   color: hsl(var(--brand-gold-dark));
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 } 
 
 

@@ -55,7 +55,7 @@ const resources = {
         contact_title: "Me contacter",
         send_message: "Envoyer mon message",
         needs_title: "Mes besoins en nature",
-        total_collected: "CFA collectés",
+        total_collected: "collectés",
         goal: "Objectif",
         donors: "donateurs",
       },
