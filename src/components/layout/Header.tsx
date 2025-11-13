@@ -13,20 +13,41 @@ export const Header = () => {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+
+   let headerBgClass = "bg-brand-earth-dark";
+
+  if (location.pathname === "/") {
+    headerBgClass = "home-hero-section-bg";
+  } else if (location.pathname === "/guinness-record") {
+    headerBgClass = "guinness-hero-section";
+  } else if (location.pathname === "/about") {
+    headerBgClass = "about-hero-section-bg";
+  } else if (location.pathname === "/news") {
+    headerBgClass = "news-hero-section-bg";
+  }
+  else if (location.pathname === "/team") {
+    headerBgClass = "team-hero-section-bg";
+  }
+   else if (location.pathname === "/support") {
+    headerBgClass = "support-hero-section-bg";
+  }
+
   return (
     <>
-      <header className="sticky top-0 bg-brand-earth-dark text-white z-40 shadow-lg">
+        <header
+      className={`sticky top-0 ${headerBgClass} text-white z-40 shadow-lg`}
+    >
         {/* Desktop Header */}
         <div className="hidden md:block">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between py-4">
+          <div className="container mx-auto px-4 ">
+            <div className="flex items-center justify-between py-4 ">
               {/* Left: Progress Bar */}
               <div className="w-40">
                 <ProgressBarCountdown />
               </div>
 
               {/* Center: Logo */}
-              <Link to="/" className="flex-shrink-0">
+              <Link to="/" className="flex-shrink-0 font-heading">
                 <img
                   src={
                     isMobile
@@ -40,7 +61,7 @@ export const Header = () => {
 
 
               {/* Right: Social + Language */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 ">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
                   <Facebook className="w-5 h-5" />
                 </a>
@@ -54,14 +75,14 @@ export const Header = () => {
 
           {/* Navigation Bar */}
           <nav className=" py-3">
-            <div className="container mx-auto px-4 bg-brand-gold rounded-full">
-              <div className="px-4 py-1">
-                <ul className="flex justify-center items-center gap-8 text-brand-earth-dark font-medium">
+            <div className="container mx-auto px-4  bg-or-degrade rounded-full">
+              <div className="px-4 py-2">
+                <ul className="flex justify-center items-center gap-8 text-white ">
                   <li>
                     <NavLink
                       to="/"
                       className={({ isActive }) =>
-                        isActive ? 'font-bold border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
+                        isActive ? 'font-bold  text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
                       }
                     >
                       {t('nav.home')}
@@ -71,7 +92,7 @@ export const Header = () => {
                     <NavLink
                       to="/guinness-record"
                       className={({ isActive }) =>
-                        isActive ? 'font-bold border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
+                        isActive ? 'font-bold text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
                       }
                     >
                       {t('nav.guinness')}
@@ -81,7 +102,7 @@ export const Header = () => {
                     <NavLink
                       to="/about"
                       className={({ isActive }) =>
-                        isActive ? 'font-bold border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
+                        isActive ? 'font-bold text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
                       }
                     >
                       {t('nav.about')}
@@ -91,7 +112,7 @@ export const Header = () => {
                     <NavLink
                       to="/news"
                       className={({ isActive }) =>
-                        isActive ? 'font-bold border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
+                        isActive ? 'font-bold text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
                       }
                     >
                       {t('nav.news')}
@@ -101,7 +122,7 @@ export const Header = () => {
                     <NavLink
                       to="/team"
                       className={({ isActive }) =>
-                        isActive ? 'font-bold border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
+                        isActive ? 'font-bold text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
                       }
                     >
                       {t('nav.team')}
@@ -111,11 +132,17 @@ export const Header = () => {
                     <NavLink
                       to="/support"
                       className={({ isActive }) =>
-                        `flex items-center gap-2 bg-or-degrade text-terre-afrique font-bold rounded-full py-2 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'}`
+                        `flex items-center gap-2 bg-brand-earth-dark text-white  rounded-full py-2 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold' : 'hover:text-brand-earth transition'}`
                       }
                     >
                       {t('nav.support')}
-                      <Heart className="w-4 h-4 fill-current" />
+                      <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                        <img
+                          src="/assets/images/streamline-plump_give-gift-solid.svg"
+                          alt="Icône de don"
+                          className="w-4 h-4"
+                        />
+                      </div>
                     </NavLink>
                   </li>
                 </ul>
@@ -127,7 +154,7 @@ export const Header = () => {
         </div>
 
         {/* Mobile Header */}
-        <div className="md:hidden">
+        <div className="md:hidden ">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <button

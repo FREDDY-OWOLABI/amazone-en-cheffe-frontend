@@ -16,7 +16,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   if (!isOpen) return null;
   
   return (
-    <div className="fixed inset-0 bg-brand-earth-dark text-white z-50 flex flex-col">
+    <div className="fixed inset-0 bg-brand-earth-dark text-white z-50 flex flex-col ">
       {/* Header */}
       <div className="flex justify-between items-center p-6 border-b border-white/10">
          <img
@@ -40,7 +40,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       </div>
       
       {/* Navigation */}
-      <nav className="flex-1 flex flex-col items-center justify-center gap-6 text-xl px-6">
+      <nav className="flex-1 flex flex-col items-center justify-center gap-6 text-xl px-6 font-bold">
         <Link 
           to="/" 
           onClick={onClose}
@@ -81,10 +81,17 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         <Link 
           to="/support" 
           onClick={onClose}
-          className="bg-brand-gold text-brand-earth-dark px-8 py-3 rounded-full flex items-center gap-2 font-bold hover:bg-brand-gold-light transition mt-4"
+          className="bg-brand-gold  text-white px-8 py-3 rounded-full flex items-center gap-2 font-bold hover:bg-brand-gold-dark transition mt-4"
         >
           {t('nav.support')}
-          <Heart className="w-5 h-5 fill-current" />
+          
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <img
+                          src="/assets/images/streamline-plump_give-gift-solid.svg"
+                          alt="Icône de don"
+                          className="w-6 h-6"
+                        />
+                      </div>
         </Link>
       </nav>
       
@@ -96,13 +103,13 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       {/* Social Icons */}
       <div className="flex justify-center gap-6 pb-8">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-          <Facebook className="w-6 h-6" />
+          <Facebook className="w-6 h-6 " />
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-          <Instagram className="w-6 h-6" />
+          <Instagram className="w-6 h-6 " />
         </a>
         <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-          <Youtube className="w-6 h-6" />
+          <Youtube className="w-6 h-6 " />
         </a>
       </div>
     </div>

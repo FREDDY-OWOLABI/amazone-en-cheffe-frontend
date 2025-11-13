@@ -1,22 +1,24 @@
 /* src/index.css */
 /* Déclarations des polices personnalisées */
 @font-face {
-    font-family: 'Guton';
-    src: url('/assets/fonts/Guton-VF.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Guton';
+  src: url('/assets/fonts/Guton-VF.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
+
 @font-face {
-    font-family: 'ChocoTaste';
-    src: url('/assets/fonts/ChocoTaste.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'ChocoTaste';
+  src: url('/assets/fonts/ChocoTaste.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
+
 @font-face {
-    font-family: 'CrispyBake';
-    src: url('/assets/fonts/CrispyBake-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'CrispyBake';
+  src: url('/assets/fonts/CrispyBakeRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
@@ -34,11 +36,13 @@ All colors MUST be HSL.
     Keith SONON Brand Colors - L'Amazone en Cheffe
     --background: 0 0% 100%;
     --foreground: 12 59% 25%; /* brand-earth-dark */
-     
-     /* COULEUR DE FOND PRINCIPALE : Fond Clair */
-    --background: 48 83% 73%; /* #F2DF80 */
+
+    /* COULEUR DE FOND PRINCIPALE : Fond Clair */
+    --background: 48 83% 73%;
+    /* #F2DF80 */
     /* COULEUR DE TEXTE PRINCIPALE : Terre d'Afrique */
-    --foreground: 12 59% 25%; /* #682718 */
+    --foreground: 12 59% 25%;
+    /* #682718 */
 
     --card: 0 0% 100%;
     --card-foreground: 12 59% 25%;
@@ -49,27 +53,33 @@ All colors MUST be HSL.
     /* Primary = Marron Terre (Earth Dark) 
     --primary: 12 59% 25%; 
     --primary-foreground: 0 0% 100%;*/
-      /* COULEUR PRIMAIRE (Boutons, Accents) : Terre d'Afrique */
-    --primary: 12 59% 25%; /* #682718 */
-    --primary-foreground: 0 0% 100%; /* Texte blanc sur le primaire */
+    /* COULEUR PRIMAIRE (Boutons, Accents) : Terre d'Afrique */
+    --primary: 12 59% 25%;
+    /* #682718 */
+    --primary-foreground: 0 0% 100%;
+    /* Texte blanc sur le primaire */
 
     /* Secondary = Doré (Gold) 
     --secondary: 43 59% 52%; 
     --secondary-foreground: 12 59% 25%; */
-     /* COULEUR SECONDAIRE : Miel Gourmand ou Or Dégradé */
-    --secondary: 38 59% 60%; /* #CFA15D (Or Dégradé) */
-    --secondary-foreground: 12 59% 25%; /* Texte Terre d'Afrique sur le secondaire */
+    /* COULEUR SECONDAIRE : Miel Gourmand ou Or Dégradé */
+    --secondary: 38 59% 60%;
+    /* #CFA15D (Or Dégradé) */
+    --secondary-foreground: 12 59% 25%;
+    /* Texte Terre d'Afrique sur le secondaire */
 
 
     /* Muted = Jaune clair (Yellow Light) */
-    --muted: 48 83% 73%; /* #F2DF80 */
+    --muted: 48 83% 73%;
+    /* #F2DF80 */
     --muted-foreground: 12 59% 25%;
-    
+
     /* Ajout des polices pour le corps du texte par défaut */
     font-family: 'Guton', sans-serif;
 
     /* Accent = Gold Light */
-    --accent: 46 87% 59%; /* #F2CF41 */
+    --accent: 46 87% 59%;
+    /* #F2CF41 */
     --accent-foreground: 12 59% 25%;
 
     --destructive: 0 84.2% 60.2%;
@@ -82,16 +92,25 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Brand-specific colors */
-    --brand-earth-dark: 12 59% 25%; /* #682718 */
-    --brand-earth: 12 49% 33%; /* #7D3B2B */
-    --brand-gold: 43 59% 52%; /* #D4A136 */
-    --brand-gold-light: 46 87% 59%; /* #F2CF41 */
-    --brand-gold-dark: 38 59% 49%; /* #C08433 */
-    --brand-honey: 38 36% 55%; /* #B8935F */
-    --brand-yellow: 46 87% 59%; /* #F2CF41 */
-    --brand-yellow-light: 48 83% 73%; /* #F2DF80 */
+    --brand-earth-dark: 12 59% 25%;
+    /* #682718 */
+    --brand-earth: 12 49% 33%;
+    /* #7D3B2B */
+    --brand-gold: 43 59% 52%;
+    /* #D4A136 */
+    --brand-gold-light: 46 87% 59%;
+    /* #F2CF41 */
+    --brand-gold-dark: 38 59% 49%;
+    /* #C08433 */
+    --brand-honey: 38 36% 55%;
+    /* #B8935F */
+    --brand-yellow: 46 87% 59%;
+    /* #F2CF41 */
+    --brand-yellow-light: 48 83% 73%;
+    /* #F2DF80 */
     --brand-white: 0 0% 100%;
-    --brand-cream: 48 100% 96%; /* #FFF9E6 */
+    --brand-cream: 48 100% 96%;
+    /* #FFF9E6 */
   }
 }
 
@@ -101,39 +120,77 @@ All colors MUST be HSL.
   }
 
   body {
-     @apply bg-background text-foreground font-guton; 
-  }
-   h1 {
-        /* Applique la police Choco Taste, la couleur Terre d'Afrique, et une taille de texte */
-        @apply font-choco-taste text-4xl text-terre-afrique md:text-5xl;
-    }
+    @apply bg-background text-foreground font-guton;
 
-    /* Style pour les Sous-Titres (H2) */
-    h2 {
-        /* Applique la police Crispy Bake, la couleur Miel Gourmand, et une taille de texte */
-        @apply font-crispy-bake text-3xl text-miel-gourmand md:text-4xl;
-    }
-    
+  }
+
+  h1 {
+    /* Applique la police Choco Taste, la couleur Terre d'Afrique, et une taille de texte */
+    @apply font-choco-taste text-4xl text-terre-afrique md:text-5xl;
+  }
+
+  /* Style pour les Sous-Titres (H2) */
+  h2 {
+    /* Applique la police Crispy Bake, la couleur Miel Gourmand, et une taille de texte */
+    @apply font-crispy-bake text-3xl text-miel-gourmand md:text-4xl;
+  }
+
 }
-   .about-pressbooke-download-bg {
-            background-image: url('assets/images/about-pressbooke-download-bg.PNG'); 
-            background-size: 100% 100%;
-            background-position: center;
-        }
+
 
 @layer components {
-    /* Style pour les Titres Principaux (Choco Taste) */
-    .title-primary {
-        /* Applique la police Choco Taste, la couleur Terre d'Afrique, et une taille de texte */
-        @apply font-choco-taste text-4xl text-terre-afrique md:text-5xl;
-    }
 
-    /* Style pour les Sous-Titres (Crispy Bake) */
-    .title-secondary {
-        /* Applique la police Crispy Bake, la couleur Miel Gourmand, et une taille de texte */
-        @apply font-crispy-bake text-3xl text-miel-gourmand md:text-4xl;
-    }
+  /* Style pour les Titres Principaux (Choco Taste) */
+  .title-primary {
+    /* Applique la police Choco Taste, la couleur Terre d'Afrique, et une taille de texte */
+    @apply font-choco-taste text-4xl text-terre-afrique md:text-5xl;
+  }
+
+  /* Style pour les Sous-Titres (Crispy Bake) */
+  .title-secondary {
+    /* Applique la police Crispy Bake, la couleur Miel Gourmand, et une taille de texte */
+    @apply font-crispy-bake text-3xl text-miel-gourmand md:text-4xl;
+  }
 }
 
+.about-pressbooke-download-bg {
+  background-image: url('assets/images/about-pressbooke-download-bg.PNG');
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.home-hero-section-bg {
+  background-image: url('assets/images/home-hero-section-bg.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.guinness-hero-section {
+  background-image: url('assets/images/guinness-hero-section.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.about-hero-section-bg {
+  background-image: url('assets/images/about-hero-section-bg.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+.news-hero-section-bg {
+  background-image: url('assets/images/news-hero-section-bg.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.team-hero-section-bg{
+  background-image: url('assets/images/team-hero-section-bg.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+.support-hero-section-bg{
+  background-image: url('assets/images/support-hero-section-bg.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
 
 

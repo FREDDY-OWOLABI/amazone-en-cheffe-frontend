@@ -4,6 +4,7 @@ import { Layout } from '@/components/layout/Layout';
 import { ButtonPrimary } from '@/components/ui/ButtonPrimary';
 import { ButtonSecondary } from '@/components/ui/ButtonSecondary';
 import { ButtonOutline } from '@/components/ui/ButtonOutline';
+import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 
 const Index = () => {
@@ -11,26 +12,26 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <Layout>
+    <Layout >
       {/* Hero Section */}
-      <section className="bg-brand-earth-dark pb-0">
+      <section className="bg-brand-earth-dark home-hero-section-bg pb-0 md:relative md:top-0 md:mt-0">
         <div className="container mx-auto px-4 relative">
 
           {/* Hero Image with decorative background */}
           <div className="relative mx-auto w-full max-w-md pt-8">
             {/* Decorative circular background */}
-            <div className="absolute inset-0 top-12 mx-auto w-64 h-96 rounded-t-full rounded-b-full overflow-hidden ">
-                <img src="assets/images/JU9A1700.PNG" alt="Portrait de Keith Sonon" className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-full" />
+            <div className="absolute inset-0 top-12 mx-auto w-64 h-96  overflow-hidden ">
+              <img src="assets/images/cheffe-keith-home-profil.png" alt="Portrait de Keith Sonon" className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-full z-20 opacity-100" />
 
             </div>
 
             {/* Placeholder for Keith's photo */}
-            <div className="relative z-20 w-full aspect-[3/4] bg-gradient-to-b from-brand-gold-light/20 to-transparent rounded-t-full flex items-end justify-center">
+            <div className="relative z-10 w-full  aspect-[3/2] md:aspect-[3/4] bg-transparent md:bg-gradient-to-b md:from-brand-gold-light/15 md:to-transparent rounded-t-full flex items-end justify-center">
               <div className="text-center pb-12">
-                <h1 className="font-heading text-5xl md:text-7xl text-brand-yellow mb-2 relative ">
+                <h1 className="hidden md:block font-heading text-5xl md:text-7xl text-brand-yellow mb-2 relative ">
                   Keith SONON
                 </h1>
-                <p className="text-xl text-white">
+                <p className="hidden md:block text-xl text-white">
                   {t('hero.tagline')}
                 </p>
               </div>
@@ -48,23 +49,48 @@ const Index = () => {
       >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="text-brand-earth-dark text-lg leading-relaxed mb-8">
+            <p className="text-brand-earth-dark text-lg leading-relaxed mb-8  mt-20 md:mt-0">
               {t('mission.text')}
             </p>
 
+
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ButtonPrimary onClick={() => navigate('/about')}>
-                {t('cta.support')}
-              </ButtonPrimary>
-              <ButtonSecondary onClick={() => navigate('/support')}>
-                {t('cta.donate')}
-              </ButtonSecondary>
+          
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
+              {/* Groupe Support + Donate */}
+              <div className="flex flex-row gap-4 justify-center w-full sm:w-auto">
+                <ButtonPrimary
+                  onClick={() => navigate('/about')}
+                  className="font-bold flex-1 sm:flex-none"
+                >
+                  {t('cta.support')}
+                </ButtonPrimary>
+
+                <ButtonPrimary
+                  onClick={() => navigate('/support')}
+                  className="font-bold flex-1 sm:flex-none"
+                >
+                  {t('cta.donate')}
+                </ButtonPrimary>
+              </div>
+
+              {/* Participate */}
+              <ButtonOutline
+                onClick={() => navigate('/support')}
+                className="font-bold w-full sm:w-auto"
+              >
+                {t('cta.participate')}
+              </ButtonOutline>
             </div>
 
-            <ButtonOutline className="mt-4 w-full sm:w-auto" onClick={() => navigate('/support')}>
-              {t('cta.participate')}
-            </ButtonOutline>
+
+
+
+
+
+
+
+
           </div>
         </div>
       </motion.section>

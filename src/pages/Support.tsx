@@ -16,12 +16,12 @@ const Support = () => {
 
   return (
     <Layout footerBgColor="bg-brand-yellow-light">
-      <section className="bg-brand-earth-dark py-16">
+      <section className="bg-brand-earth-dark support-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-script text-5xl md:text-7xl text-white"
+            className="title-primarytext-5xl md:text-7xl text-white"
           >
             {t('support.title')}
           </motion.h1>
@@ -32,7 +32,7 @@ const Support = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div>
-              <h2 className="font-script text-3xl text-brand-gold text-center mb-6">
+              <h2 className="title-primary text-3xl text-brand-gold text-center mb-6">
                 {t('support.donate_title')}
               </h2>
               
@@ -56,7 +56,7 @@ const Support = () => {
             </div>
             
             <div>
-              <h2 className="font-script text-3xl text-brand-gold text-center mb-6">
+              <h2 className="title-primary text-3xl text-brand-gold text-center mb-6">
                 {t('support.contributors_title')}
               </h2>
               
@@ -84,7 +84,7 @@ const Support = () => {
 
       <section className="bg-brand-yellow-light py-12">
         <div className="container mx-auto px-4 max-w-2xl">
-          <h2 className="font-script text-4xl text-brand-gold text-center mb-8">
+          <h2 className="title-primary text-4xl text-brand-gold text-center mb-8">
             {t('support.contact_title')}
           </h2>
           

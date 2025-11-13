@@ -35,12 +35,12 @@ const Team = () => {
   return (
     <Layout footerBgColor="bg-brand-yellow-light">
       {/* Hero */}
-      <section className="bg-brand-earth-dark py-16">
+      <section className="bg-brand-earth-dark  team-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-script text-5xl md:text-7xl text-white"
+            className="title-primary text-5xl md:text-7xl text-white"
           >
             {t('team.title')}
           </motion.h1>
@@ -50,7 +50,7 @@ const Team = () => {
       {/* Team Section */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-4">
-          <h2 className="font-script text-4xl md:text-5xl text-brand-gold text-center mb-12">
+          <h2 className="font-heading text-4xl md:text-5xl text-brand-gold text-center mb-12">
             {t('team.project_team')}
           </h2>
           
@@ -95,7 +95,7 @@ const Team = () => {
       {/* Partners Section */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-4">
-          <h2 className="font-script text-4xl md:text-5xl text-brand-gold text-center mb-12">
+          <h2 className="font-heading text-4xl md:text-5xl text-brand-gold text-center mb-12">
             {t('team.partners')}
           </h2>
           
@@ -117,7 +117,7 @@ const Team = () => {
       {/* Supporters Section */}
       <section className="bg-brand-yellow-light py-12">
         <div className="container mx-auto px-4">
-          <h2 className="font-script text-4xl md:text-5xl text-brand-gold text-center mb-12">
+          <h2 className="font-heading text-4xl md:text-5xl text-brand-gold text-center mb-12">
             {t('team.supporters')}
           </h2>
           

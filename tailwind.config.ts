@@ -1,3 +1,4 @@
+//src/tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 export default {
@@ -72,10 +73,10 @@ export default {
         'choco-taste': ['ChocoTaste', 'cursive'], // Principale (Titres)
         'crispy-bake': ['CrispyBake', 'cursive'], // Secondaire
 
-       heading: ["Dancing Script", "cursive"],
-        secondary: ["Poppins", "sans-serif"],
-        body: ["Inter", "sans-serif"],
-        script: ["Pacifico", "cursive"],
+       heading: ["ChocoTaste", "cursive"],
+        secondary: ["CrispyBake", "sans-serif"],
+        body: ["Guton", "sans-serif"],
+        script: ["Guton", "cursive"],
       },
       borderRadius: {
         lg: "var(--radius)",

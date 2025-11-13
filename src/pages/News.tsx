@@ -30,12 +30,12 @@ const News = () => {
   return (
     <Layout footerBgColor="bg-brand-yellow-light">
       {/* Hero */}
-      <section className="bg-brand-earth-dark py-16">
+      <section className="bg-brand-earth-dark news-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-script text-5xl md:text-7xl text-white"
+            className="title-primary text-5xl md:text-7xl text-white"
           >
             {t('news.title')}
           </motion.h1>

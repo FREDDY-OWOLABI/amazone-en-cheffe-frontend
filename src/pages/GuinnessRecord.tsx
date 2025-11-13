@@ -11,7 +11,7 @@ const GuinnessRecord = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-brand-earth-dark py-16">
+      <section className="bg-brand-earth-dark guinness-hero-section py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -46,9 +46,16 @@ const GuinnessRecord = () => {
               <p className="text-brand-earth-dark font-medium">
                 Soutenez-moi dans ce défi historique et participez à l'aventure !
               </p>
-              <button className="bg-brand-earth-dark text-white px-6 py-3 rounded-full flex items-center gap-2 whitespace-nowrap hover:bg-brand-earth transition">
+              <button className="font-secondary font-medium bg-brand-earth-dark text-white px-6 py-3 rounded-full flex items-center gap-2 whitespace-nowrap hover:bg-brand-earth transition">
                 Soutenez-moi
-                <Heart className="w-5 h-5 fill-current" />
+                
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <img
+                          src="/assets/images/streamline-plump_give-gift-solid.svg"
+                          alt="Icône de don"
+                          className="w-6 h-6"
+                        />
+                      </div>
               </button>
             </div>
             
@@ -103,7 +110,7 @@ const GuinnessRecord = () => {
       {/* Timeline Section */}
       <section className="bg-brand-yellow-light py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-script text-4xl md:text-5xl text-brand-gold text-center mb-4">
+          <h2 className="font-heading text-4xl md:text-5xl text-brand-gold text-center mb-4">
             {t('guinness.timeline_title')}
           </h2>
           <p className="text-center text-brand-earth-dark mb-12 max-w-2xl mx-auto">

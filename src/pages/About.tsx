@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Layout } from '@/components/layout/Layout';
 import { Download } from 'lucide-react';
-import { ButtonSecondary } from '@/components/ui/ButtonSecondary';
+import { ButtonOutline } from '@/components/ui/ButtonOutline';
 import { motion } from 'framer-motion';
 
 const About = () => {
@@ -10,12 +10,12 @@ const About = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-brand-earth-dark py-16">
+      <section className="bg-brand-earth-dark about-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-script text-5xl md:text-7xl text-white"
+            className=" text-5xl md:text-7xl text-white title-primary"
           >
             {t('nav.about')}
           </motion.h1>
@@ -29,16 +29,16 @@ const About = () => {
           <div className="relative w-64 mx-auto mb-12">
             {/* Decorative golden frame */}
             <div className="relative">
-              <div className="aspect-[3/4] bg-gradient-to-br from-brand-gold-light via-brand-gold to-brand-honey rounded-lg p-1">
-                <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center  overflow-hidden">
+              <div className="aspect-[3/4]  rounded-lg p-1">
+                <div className="w-full h-full bg-gray-200 rounded-[34px] flex items-center justify-center  overflow-hidden">
                   <img src="assets/images/JU9A1787.PNG" alt="Portrait de Keith Sonon" className="relative bottom-0 left-1/2 -translate-x-1/2 h-auto w-full" />
 
                 </div>
               </div>
 
               {/* "Qui suis-je ?" Badge */}
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-brand-gold px-6 py-2 rounded-full z-20 shadow-lg">
-                <p className="font-script text-brand-earth-dark text-xl">
+              <div className="absolute -bottom-8 left-1/2 w-full -translate-x-1/2  px-2 py-2  z-20 ">
+                <p className="font-heading text-brand-gold  text-[40px]  w-full text-center">
                   {t('about.whoami')}
                 </p>
               </div>
@@ -92,11 +92,11 @@ const About = () => {
               </div></div>
 
             <div className="text-white -top-6 ">
-              <h3 className="font-script text-2xl mr-6 mb-4 ">{t('about.pressbook')}</h3>
+              <h3 className="font-heading text-2xl mr-6 mb-4 text-[#F2DF80]">{t('about.pressbook')}</h3>
               <div className="container mx-auto px-4 text-center">
-                <ButtonSecondary className="text-sm">
+                <ButtonOutline className="text-sm border-0  font-bold">
                  <Download className="w-5 h-5 text-brand-earth-dark opacity-100 inline" /> {t('about.download')}
-                </ButtonSecondary>
+                </ButtonOutline>
               </div>
 
             </div>
@@ -107,7 +107,7 @@ const About = () => {
       {/* Media Gallery Section */}
       <section className="bg-brand-yellow-light py-12">
         <div className="container mx-auto px-4">
-          <h2 className="font-script text-4xl md:text-5xl text-brand-gold text-center mb-12">
+          <h2 className="font-heading text-4xl md:text-5xl text-brand-gold text-center mb-12">
             Galerie média
           </h2>
 
