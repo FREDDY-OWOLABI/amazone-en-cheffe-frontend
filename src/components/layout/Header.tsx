@@ -151,7 +151,7 @@ export const Header = () => {
                     <NavLink
                       to="/support"
                       className={({ isActive }) =>
-                        `flex items-center gap-2 bg-brand-earth-dark text-white  rounded-full py-2 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold bg-yellow-200 text-brand-earth-dark  text-terre-afrique ' : 'hover:text-brand-earth transition'}`
+                        `flex items-center gap-2 bg-brand-earth-dark text-white  rounded-full py-2 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold bg-yellow-200 !text-brand-earth-dark  text-terre-afrique ' : 'hover:text-brand-earth transition'}`
                       }
                     >
                       {t('nav.support')}

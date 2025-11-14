@@ -144,6 +144,28 @@ All colors MUST be HSL.
   }
 }
 
+ 
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1; /* couleur de fond */
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: hsl(var(--brand-earth-dark)); /* couleur du curseur */
+      border-radius: 4px; /* arrondi */
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background-color: hsl(var(--brand-earth-dark)) ; /* couleur au survol */
+    }
+
+    /* Firefox */
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: hsl(var(--brand-earth-dark)) #f1f1f1;
+    }
+
+
+
+
+
 .about-pressbooke-download-bg {
   background-image: url('assets/images/about-pressbooke-download-bg.PNG');
   background-size: 100% 100%;

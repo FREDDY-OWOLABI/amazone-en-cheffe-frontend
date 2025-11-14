@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'Amazone en Cheffe - Keith Sonon | Défi Guinness Record</title>
+    <meta name="description" content="Site officiel de la Cheffe Keith Sonon. Suivez son parcours, soutenez son défi pour le Record Guinness du plus long marathon culinaire et découvrez la gastronomie béninoise." />
+    <meta name="author" content="Keith Sonon - L'Amazone en Cheffe ;Web Developper: freddy DOHOU +2290154140906 For PROCOM BJ" />
+
+    
+
+    <meta property="og:title" content="L'Amazone en Cheffe - Keith Sonon | Défi Guinness Record" />
+    <meta property="og:description" content="Soutenez la Cheffe Keith Sonon dans son défi pour le Record Guinness du plus long marathon culinaire. Ensemble, valorisons la gastronomie béninoise." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/images/image-de-partage_001.png" />
+ 
+    <meta property="og:url" content="https://keithsonon.bj" />
+
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@[VOTRE_COMPTE_TWITTER]" /> 
+    <meta name="twitter:image" content="/assets/images/image-de-partage_001.png" />
+  
+  
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx?t=1763088567058"></script>
+  </body>
+</html>

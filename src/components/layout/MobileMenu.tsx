@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { X, Heart, Facebook, Youtube, Instagram } from 'lucide-react';
 import { ProgressBarCountdown } from './ProgressBarCountdown';
 import { useIsMobile } from '../../hooks/use-mobile';
+import { ProgressBarDonationCollected } from './ProgressBarDonationCollected';
+
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -12,6 +14,7 @@ interface MobileMenuProps {
 export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const { t } = useTranslation();
   const isMobile = useIsMobile();
+  const location = useLocation();
 
   if (!isOpen) return null;
   
@@ -97,7 +100,13 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       
       {/* Countdown Bar */}
       <div className="px-6 pb-8">
-        <ProgressBarCountdown />
+         <div className="flex gap-6">
+                        <div className="inline-block">
+                          <ProgressBarCountdown />
+                        </div>
+        
+                       
+                      </div>
       </div>
       
       {/* Social Icons */}

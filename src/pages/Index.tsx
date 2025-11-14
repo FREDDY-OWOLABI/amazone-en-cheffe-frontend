@@ -49,13 +49,22 @@ const Index = () => {
       >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="text-brand-earth-dark text-lg leading-relaxed mb-8  mt-20 md:mt-0">
-              {t('mission.text')}
+            <p className="text-justify text-lg md:text-xl text-brand-earth-dark  leading-relaxed mb-8  mt-20 md:mt-0">
+              Béninois et béninoises, préparons-nous à vivre un moment historique où passion et détermination
+              fusionnent. Cheffe Keith SONON, l’Amazone en Cheffe, se lance dans un défi spécial : battre le record du
+              monde Guinness du plus long marathon culinaire.
+            </p>
+            <p className="text-justify text-brand-earth-dark text-lg md:text-xl leading-relaxed mb-8  mt-20 md:mt-0">
+              Du 1er au 15 décembre, elle sera aux fourneaux en enchaînant des plats savoureux qui mêleront
+              innovation et culture sous le regard des béninois et du monde. Sur ce site, suivez son aventure, vibrez
+              avec elle et soyez témoins d’une page historique de la gastronomie béninoise qui s’écrit.
             </p>
 
 
+
+
             {/* CTA Buttons */}
-          
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
               {/* Groupe Support + Donate */}
               <div className="flex flex-row gap-4 justify-center w-full sm:w-auto">
@@ -95,7 +104,7 @@ const Index = () => {
         </div>
       </motion.section>
 
-      
+
       <section className="bg-brand-yellow-light pb-12">
       </section>
     </Layout>

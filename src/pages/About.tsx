@@ -1,14 +1,37 @@
 import { useTranslation } from 'react-i18next';
 import { Layout } from '@/components/layout/Layout';
 import { Download, Play } from 'lucide-react';
-
+import { useState } from "react";
 import { ButtonOutline } from '@/components/ui/ButtonOutline';
 import { motion } from 'framer-motion';
 
 const About = () => {
   const { t } = useTranslation();
+  const [isDownloading, setIsDownloading] = useState(false);
   const images = [1, 2, 3, 4];
   const videos = [1, 2, 3, 4];
+  const handleDownload = async () => {
+  try {
+    setIsDownloading(true);
+
+    const link = document.createElement("a");
+    link.href = "/pressbook.pdf"; 
+    link.download = "pressbook-keith-sonon.pdf";
+    document.body.appendChild(link);
+
+    // Petit délai (optionnel mais améliore le ressenti)
+    setTimeout(() => {
+      link.click();
+      document.body.removeChild(link);
+      setIsDownloading(false);
+    }, 600);
+
+  } catch (error) {
+    console.error("Erreur téléchargement :", error);
+    setIsDownloading(false);
+  }
+};
+
   return (
     <Layout>
       {/* Hero */}
@@ -48,38 +71,26 @@ const About = () => {
           </div>
 
           {/* Biography Text */}
-          <div className="grid md:grid-cols-2 gap-8 text-gray-700 leading-relaxed mt-16">
+          <div className=" text-gray-700 leading-relaxed mt-16 text-lg md:text-xl">
             <div className="space-y-4">
-              <p>
-                <strong>Keith Vanessa Yabo SONON</strong>, {t('about.age')}, est une {t('about.origin')},
-                {t('about.intro')}.
+              <p className='text-justify text-brand-earth-dark'>
+                Je suis<strong> Keith SONON </strong> et j’ai 22 ans. Je suis une cheffe d’origine béninoise portée par une passion
+                particulière pour la cuisine et une ambition sans limites.
               </p>
-              <p>
-                Sa couleur préférée, le blanc, symbolise à ses yeux la pureté, le commencement
-                et la page blanche sur laquelle elle écrit chaque jour son histoire culinaire.
+              <p className='text-justify text-brand-earth-dark'>
+                Aujourd’hui, elle va à l’assaut du Record mondial Guinness du marathon culinaire le plus long et tout
+                porte à croire que je suis née pour le battre.
               </p>
-              <p>
-                Née avec l'amour des saveurs, Keith a très tôt passé son temps en cuisine
-                « derrière les tatas » plutôt que sur ses cahiers.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <p>
-                En 2022, elle réalise que sa place n'est nulle part ailleurs que derrière
-                les fourneaux. Elle passe alors un marché avec sa mère : tenter sérieusement
-                sa chance dans la cuisine avant de reprendre éventuellement ses études.
-              </p>
-              <p>
-                Keith intègre alors une école d'art culinaire où elle décroche un CAP et un
-                BP en deux ans. Rapidement repérée pour son talent, elle se voit confier les
-                clés de cuisines professionnelles.
-              </p>
-              <p>
+                <p className='text-justify text-brand-earth-dark'>
                 Sa cuisine se définit en trois mots : <strong className="text-brand-gold">Fusionnelle</strong>,
                 <strong className="text-brand-gold"> Savoureuse</strong> et
                 <strong className="text-brand-gold"> Généreuse</strong>.
               </p>
+              <p className='text-justify text-brand-earth-dark'>
+                Si vous voulez en savoir plus sur moi, découvrez-moi à travers mon pressbook en téléchargement cidessous.
+              </p>
             </div>
+            
           </div>
         </div>
       </section>
@@ -96,9 +107,27 @@ const About = () => {
             <div className="text-white -top-6 ">
               <h3 className="font-heading text-2xl mr-6 mb-4 text-[#F2DF80]">{t('about.pressbook')}</h3>
               <div className="container mx-auto px-4 text-center">
-                <ButtonOutline className="text-sm border-0  font-bold">
-                  <Download className="w-5 h-5 text-brand-earth-dark opacity-100 inline" /> {t('about.download')}
-                </ButtonOutline>
+                
+                <ButtonOutline
+  onClick={handleDownload}
+  disabled={isDownloading}
+  className={`text-sm border-0 font-bold cursor-pointer flex items-center justify-center gap-2 ${
+    isDownloading ? "opacity-60 cursor-not-allowed" : ""
+  }`}
+>
+  {isDownloading ? (
+    <>
+      <span className="w-4 h-4 border-2 border-brand-earth-dark border-t-transparent rounded-full animate-spin"></span>
+      {t('about.loading') ?? "Téléchargement..."}
+    </>
+  ) : (
+    <>
+      <Download className="w-5 h-5 text-brand-earth-dark opacity-100 inline" />
+      {t('about.download')}
+    </>
+  )}
+</ButtonOutline>
+
               </div>
 
             </div>
@@ -116,74 +145,74 @@ const About = () => {
 
 
 
- <div className="relative container mx-auto px-4 pt-16">
-  {/* Titre qui dépasse à moitié */}
-  <h2 className="absolute text-outline-section-titre -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[77px] text-brand-gold text-center">
-    Galerie média
-  </h2>
+          <div className="relative container mx-auto px-4 pt-16">
+            {/* Titre qui dépasse à moitié */}
+            <h2 className="absolute text-outline-section-titre -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[77px] text-brand-gold text-center">
+              Galerie média
+            </h2>
 
-  {/* Photos Grid */}
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8  md:mt-16 mt-2">
-    {[1, 2, 3, 4].map((i) => (
-      <div
-        key={i}
-        className="aspect-video p-0 rounded-2xl overflow-hidden bg-gray-300 cursor-pointer hover:scale-105 transition-transform duration-300"
-      >
-        <img
-          src="/assets/images/galerie-media-aspect-img.png"
-          alt={`Image ${i}`}
-          className="w-full h-full object-cover block relative left-[-1px]"
-        />
-      </div>
-    ))}
-  </div>
+            {/* Photos Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8  md:mt-16 mt-2">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="aspect-video p-0 rounded-2xl overflow-hidden bg-gray-300 cursor-pointer hover:scale-105 transition-transform duration-300"
+                >
+                  <img
+                    src="/assets/images/galerie-media-aspect-img.png"
+                    alt={`Image ${i}`}
+                    className="w-full h-full object-cover block relative left-[-1px]"
+                  />
+                </div>
+              ))}
+            </div>
 
-  {/* Photos Progress Bar */}
-  <div className="mb-12 px-[20%]">
-    <div className="h-1 w-full bg-white/80 rounded relative overflow-hidden">
-      <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"></div>
-    </div>
-  </div>
+            {/* Photos Progress Bar */}
+            <div className="mb-12 px-[20%]">
+              <div className="h-1 w-full bg-white/80 rounded relative overflow-hidden">
+                <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"></div>
+              </div>
+            </div>
 
-  {/* Videos Grid */}
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-    {[1, 2, 3, 4].map((i) => (
-      <div key={i} className="flex flex-col cursor-pointer group">
-        {/* Video card */}
-        <div className="aspect-video rounded-2xl overflow-hidden bg-gray-300 relative hover:scale-105 transition-transform duration-300">
-          <img
-            src="/assets/images/galerie-media-aspect-img.png"
-            alt={`Vidéo ${i}`}
-            className="w-full h-full object-cover"
-          />
+            {/* Videos Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="flex flex-col cursor-pointer group">
+                  {/* Video card */}
+                  <div className="aspect-video rounded-2xl overflow-hidden bg-gray-300 relative hover:scale-105 transition-transform duration-300">
+                    <img
+                      src="/assets/images/galerie-media-aspect-img.png"
+                      alt={`Vidéo ${i}`}
+                      className="w-full h-full object-cover"
+                    />
 
-          {/* Play button overlay */}
-          <div className="absolute inset-0 bg-transparent/30 flex items-center justify-center group-hover:bg-transparent/10 transition">
-            <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center">
-              <img
-                src="/assets/images/Play.png"
-                alt="Play"
-                className="w-full h-full"
-              />
+                    {/* Play button overlay */}
+                    <div className="absolute inset-0 bg-transparent/30 flex items-center justify-center group-hover:bg-transparent/10 transition">
+                      <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center">
+                        <img
+                          src="/assets/images/Play.png"
+                          alt="Play"
+                          className="w-full h-full"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Title below video */}
+                  <p className="mt-2 text-sm font-semibold text-brand-earth-dark-800 text-left px-2">
+                    Titre de la vidéo
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Videos Progress Bar */}
+            <div className="mt-12 px-[20%]">
+              <div className="h-1 w-full bg-white/80 rounded relative overflow-hidden">
+                <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"></div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Title below video */}
-        <p className="mt-2 text-sm font-semibold text-brand-earth-dark-800 text-left px-2">
-          Titre de la vidéo
-        </p>
-      </div>
-    ))}
-  </div>
-
-  {/* Videos Progress Bar */}
-  <div className="mt-12 px-[20%]">
-    <div className="h-1 w-full bg-white/80 rounded relative overflow-hidden">
-      <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"></div>
-    </div>
-  </div>
-</div>
 
 
 
