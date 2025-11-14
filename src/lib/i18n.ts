@@ -6,9 +6,9 @@ const resources = {
     translation: {
       nav: {
         home: "Accueil",
-        guinness: "Mon Guinness Record",
+        guinness: "Guinness Record",
         about: "L'Amazone en Cheffe",
-        news: "Mon actualité",
+        news: "Actualités",
         team: "Mon équipe",
         support: "Soutenez-moi",
       },

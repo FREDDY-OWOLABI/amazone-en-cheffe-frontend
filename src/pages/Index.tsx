@@ -17,76 +17,77 @@ const Index = () => {
       <section className="bg-brand-earth-dark home-hero-section-bg pb-0 md:relative md:top-0 md:mt-0">
         <div className="container mx-auto px-4 ">
 
-          
+
           <div className=" mx-auto w-full pt-8">
-           <div className="container mx-auto  grid grid-cols-2 gap-8">
+            <div className="container mx-auto gap-8 grid grid-cols-1 md:grid-cols-2 ">
 
-          {/* PHOTO GAUCHE */}
-          <div className="flex justify-center md:justify-end">
-            <img
-              src="/assets/images/cheffe-keith-home-profil.png"
-              alt="Cheffe Keith Sonon"
-              className=" w-auto h-[32rem] "
-            />
-          </div>
-
-
-          {/* TEXTE DROITE */}
-          <div className="text-center md:text-left flex items-center justify-center md:justify-start">
-            <div className="container">
-              <h1 className="font-heading text-5xl md:text-7xl text-white leading-tight mb-4">
-                Découvrez l'Amazone en Cheffe.<br />
-
-              </h1>
-
-              <p className="text-white text-lg leading-relaxed mb-6">
-                Cliquez et faites partie de l'histoire de celle qui va battre le guinness record du plus long marathon culinaire.
-              </p>
-
-              <div className="flex justify-center md:justify-start items-center gap-6 mb-6">
-                {/* Réseaux sociaux */}
-                <div className="flex items-center gap-5">
-                  <img src="/assets/images/Facebook.svg" className="w-7 h-7" />
-                  <img src="/assets/images/Instagram.svg" className="w-7 h-7" />
-                  <img src="/assets/images/TikTok.svg" className="w-7 h-7" />
-                </div>
-
-                {/* CTA */}
-                <ButtonPrimary
-                  className="bg-brand-gold hover:bg-brand-gold/80 text-brand-earth-dark font-bold px-6 py-3 rounded-full shadow-md"
-                  onClick={() => navigate("/support")}
-                >
-                  <div className="flex items-center gap-3">
-                    <span>Soutenez-moi</span>
-
-                    <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                      <img
-                        src="/assets/images/streamline-plump_give-gift-solid.svg"
-                        alt="Icône de don"
-                        className="w-4 h-4"
-                      />
-                    </div>
-                  </div>
-                </ButtonPrimary>
-
+              {/* PHOTO GAUCHE */}
+              <div className="flex justify-center md:justify-end">
+                <img
+                  src="/assets/images/cheffe-keith-home-profil.png"
+                  alt="Cheffe Keith Sonon"
+                  className=" w-auto h-[32rem] "
+                />
               </div>
 
 
+              {/* TEXTE DROITE */}
+              <div className="text-center md:text-left flex items-center justify-center md:justify-start">
+                <div className="container">
+                  <h1 className="font-heading text-5xl md:text-7xl text-white leading-tight mb-4">
+                    Découvrez l'Amazone en Cheffe.<br />
+
+                  </h1>
+
+                  <p className="text-white text-lg leading-relaxed mb-6">
+                    Cliquez et faites partie de l'histoire de celle qui va battre le guinness record du plus long marathon culinaire.
+                  </p>
+
+                  <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-6 mb-6">
+
+                    {/* Réseaux sociaux */}
+                    <div className="flex items-center gap-5 mb-4 md:mb-0">
+                      <img src="/assets/images/Facebook.svg" className="w-7 h-7" />
+                      <img src="/assets/images/Instagram.svg" className="w-7 h-7" />
+                      <img src="/assets/images/TikTok.svg" className="w-7 h-7" />
+                    </div>
+
+                    {/* CTA */}
+                    <ButtonPrimary
+                      className="bg-brand-gold hover:bg-brand-gold/80 text-brand-earth-dark font-bold px-6 py-3 rounded-full shadow-md"
+                      onClick={() => navigate("/support")}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span>Soutenez-moi</span>
+                        <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                          <img
+                            src="/assets/images/streamline-plump_give-gift-solid.svg"
+                            alt="Icône de don"
+                            className="w-4 h-4"
+                          />
+                        </div>
+                      </div>
+                    </ButtonPrimary>
+
+                  </div>
+
+
+
+
+                </div>
+              </div>
 
             </div>
-          </div>
 
-        </div>
 
-           
-           
+
           </div>
         </div>
-      <div className=" py-10">
-        
-      </div>
+        <div className=" py-10">
+
+        </div>
       </section>
-      
+
 
       {/* Mission Section */}
       <motion.section

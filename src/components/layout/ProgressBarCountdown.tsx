@@ -32,7 +32,7 @@ export const ProgressBarCountdown = ({ className = "" }: ProgressBarCountdownPro
       </div>
 
       {/* Texte */}
-      <p className="text-white font-semibold text-left text-[9.6px] py-1">
+      <p className="text-white font-semibold text-left text-[12px] py-1">
         {daysLeft > 0
           ? `${daysLeft} jours restants avant la fin`
           : `Marathon terminé`}

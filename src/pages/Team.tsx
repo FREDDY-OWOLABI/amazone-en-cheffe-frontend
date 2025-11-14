@@ -167,7 +167,7 @@ const Team = () => {
       <section className="bg-brand-yellow-light py-12 relative">
         <div className="container mx-auto px-4 relative pt-16">
           {/* Titre qui dépasse à moitié */}
-          <h2 className="absolute -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[77px] text-center text-outline-section-titre">
+          <h2 className="absolute -top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[-68px] text-center text-outline-section-titre">
             {t('team.supporters')}
           </h2>
 
