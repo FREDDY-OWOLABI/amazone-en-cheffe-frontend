@@ -201,11 +201,11 @@ const Support = () => {
 
 
               <div className="bg-gray-100 rounded-3xl p-6 relative pt-16 mt-10">
-                
+
                 <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 
                    font-heading text-[54px] md:text-[72px] text-center text-outline-section-contributor pl-10">
-      {t('support.contributors_title')}
-    </h2>
+                  {t('support.contributors_title')}
+                </h2>
 
 
                 <div className="text-center mb-6">
