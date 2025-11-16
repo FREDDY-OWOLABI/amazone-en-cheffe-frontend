@@ -9,59 +9,62 @@ import { ButtonPrimary } from '@/components/ui/ButtonPrimary';
 import { ButtonSecondary } from '@/components/ui/ButtonSecondary';
 import { Facebook, Youtube, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ProgressBarDonationCollected } from '../components/layout/ProgressBarDonationCollected';
+import React from 'react';
+import ProgressBarDonationCollected from '@/components/layout/ProgressBarDonationCollected';
+import { DONATION_TARGET, contributors } from '@/constants/donation';
+import { useEffect } from "react";
+
+
 
 const Support = () => {
   const { t } = useTranslation();
-
+  useEffect(() => {
+    // Vérifie si on arrive avec #donate
+    if (window.location.hash === "#donate") {
+      const section = document.getElementById("donate");
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300); // laisse le temps au contenu de se charger
+      }
+    }
+  }, []);
   //  requêtes commentées
   /*
   const { data: donationData } = useDonationTotal();
   const { data: contributors = [] } = useContributorsList();
   */
 
-  //  Données locales simulées
-  const donationData = { total: '218 000 F CFA' };
 
-  const contributors = [
-    { id: 1, name: "Anonyme", amount: "9,000", days: "2 jours" },
-    { id: 2, name: "John Doe", amount: "20,000", days: "1 jour" },
-    { id: 3, name: "Jane Doe", amount: "180,000", days: "3 jours" },
-    { id: 4, name: "Anonyme", amount: "9,000", days: "2 jours" },
-    { id: 5, name: "John Doe", amount: "20,000", days: "1 jour" },
-    { id: 6, name: "Jane Doe", amount: "180,000", days: "3 jours" },
-    { id: 7, name: "Anonyme", amount: "9,000", days: "2 jours" },
-    { id: 8, name: "John Doe", amount: "20,000", days: "1 jour" },
-    { id: 9, name: "Jane Doe", amount: "180,000", days: "3 jours" },
-    { id: 10, name: "Anonyme", amount: "9,000", days: "2 jours" },
-    { id: 11, name: "John Doe", amount: "20,000", days: "1 jour" },
-    { id: 12, name: "Jane Doe", amount: "180,000", days: "3 jours" },
-    { id: 13, name: "Anonyme", amount: "9,000", days: "2 jours" },
-    { id: 14, name: "John Doe", amount: "20,000", days: "1 jour" },
-    { id: 15, name: "Jane Doe", amount: "180,000", days: "3 jours" },
-  ];
 
- 
+
+
+
+  const totalCollected = contributors.reduce((sum, c) => sum + Number(c.amount || 0), 0);
+  const donorsCount = contributors.length;
+  const formatNumber = (v: number) => new Intl.NumberFormat('fr-FR').format(Math.round(v));
+
+
   const needs = [
-  { icon: "/assets/images/Flame.svg", label: "Location du Palais des Congrès (site et aménagements)", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Construction des box de cuisine & équipements spécialisés", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Location stands, tables, chaises, barrières, toilettes portables", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Electricité, eau, nettoyage du site", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Produits alimentaires & boissons", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Transport & distribution de plus de 20 000 repas", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Hôtesses d’accueil & personnel de soutien", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Divers liés à la restauration", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Branding du site (bannières, kakémonos, signalétique)", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Publicité digitale & influenceurs", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Captation vidéo, photos, streaming", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Impressions (badges, tee-shirts, dossiers)", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "DJ, sonorisation & lumières", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Prestation d’artistes & animations annexes", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Forfait médical, physique & moral (suivi de la cheffe et de l’équipe)", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Sécurité (police, pompiers, vigiles)", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Assurance & accompagnement santé additionnel", obsolete: "non" },
-  { icon: "/assets/images/Flame.svg", label: "Frais Guinness (certification, homologation)", obsolete: "non" },
-];
+    { icon: "/assets/images/Flame.svg", label: "Location du Palais des Congrès (site et aménagements)", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Construction des box de cuisine & équipements spécialisés", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Location stands, tables, chaises, barrières, toilettes portables", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Electricité, eau, nettoyage du site", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Produits alimentaires & boissons", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Transport & distribution de plus de 20 000 repas", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Hôtesses d’accueil & personnel de soutien", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Divers liés à la restauration", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Branding du site (bannières, kakémonos, signalétique)", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Publicité digitale & influenceurs", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Captation vidéo, photos, streaming", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Impressions (badges, tee-shirts, dossiers)", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "DJ, sonorisation & lumières", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Prestation d’artistes & animations annexes", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Forfait médical, physique & moral (suivi de la cheffe et de l’équipe)", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Sécurité (police, pompiers, vigiles)", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Assurance & accompagnement santé additionnel", obsolete: "non" },
+    { icon: "/assets/images/Flame.svg", label: "Frais Guinness (certification, homologation)", obsolete: "non" },
+  ];
 
 
   return (
@@ -79,7 +82,14 @@ const Support = () => {
 
 
           <div className="flex justify-center mt-6 w-full">
-            <ProgressBarDonationCollected />
+
+
+            <ProgressBarDonationCollected
+              collected={totalCollected}
+              target={DONATION_TARGET}
+              donors={donorsCount}
+            />
+
           </div>
         </div>
 
@@ -133,17 +143,21 @@ const Support = () => {
 
 
       {/* Donation Section */}
-      <section className="bg-white py-12">
+      <section className="bg-white py-12" id="donate" >
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-rows-2 gap-8 max-w-6xl mx-auto">
 
             {/* Formulaire de don */}
-            <div>
-              <h2 className="title-primary text-3xl text-brand-gold text-center mb-6">
-                {t('support.donate_title')}
-              </h2>
 
-              <div className="bg-brand-earth-dark rounded-3xl p-8 text-white">
+            <div className="">
+
+
+              <div className="bg-brand-earth-dark rounded-3xl p-8 text-white relative pt-16">
+                {/* Titre qui dépasse mais reste dans le bloc */}
+                <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 
+                 font-heading text-[54px] md:text-[72px] text-center text-outline-section-donate">
+                  {t('support.donate_title')}
+                </h2>
                 <div className="mb-6">
 
                   <div
@@ -154,10 +168,9 @@ const Support = () => {
 
                   <h2 className="font-medium mb-4 font-heading text-4xl">
                     Les besoins de la Cheffe
-                    </h2>
+                  </h2>
 
-                  <div className="grid grid-cols-3 gap-3 mb-6">
-
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
 
                     {needs.map((need, index) => (
                       <label key={index} className="flex items-center gap-2 cursor-pointer">
@@ -172,6 +185,7 @@ const Support = () => {
                     ))}
 
                   </div>
+
                 </div>
 
 
@@ -181,37 +195,57 @@ const Support = () => {
               </div>
             </div>
 
+
             {/* Liste des contributeurs */}
             <div>
-              <h2 className="title-primary text-3xl text-bg-brand-earth-dark text-center mb-6">
-                {t('support.contributors_title')}
-              </h2>
 
-              <div className="bg-gray-100 rounded-3xl p-6">
 
+              <div className="bg-gray-100 rounded-3xl p-6 relative pt-16 mt-10">
+                
+                <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 
+                   font-heading text-[54px] md:text-[72px] text-center text-outline-section-contributor">
+      {t('support.contributors_title')}
+    </h2>
 
 
                 <div className="text-center mb-6">
                   <p className="text-3xl text-left font-bold text-brand-earth-dark">
-                    {donationData?.total} {t('support.total_collected')}
+                    {formatNumber(totalCollected)} F&nbsp;CFA {t('support.total_collected')}
                   </p>
 
 
+
+
                   <p className="text-sm flex justify-between items-center text-gray-500 font-bold mb-4 pb-4 border-b border-brand-earth/80">
-                    <span className="text-left">sur 1.000.000 F CFA </span>
-                    <span className="text-xl"> 40 donateurs</span>
+                    <span className="text-left">sur {formatNumber(DONATION_TARGET)} F&nbsp;CFA </span>
+                    <span className="text-xl"> {formatNumber(donorsCount)} donateurs</span>
                   </p>
                 </div>
 
 
                 <div className="space-y-3 max-h-96 overflow-y-auto custom-scrollbar px-8">
-                  {contributors.map((contributor) => (
-                    <div key={contributor.id} className="flex justify-between items-center py-2 border-b border-gray-200">
-                      <span className="text-sm font-medium text-gray-700">{contributor.name}</span>
-                      <span className="font-bold text-brand-gold">{contributor.amount} F CFA - &nbsp;<span className="text-sm font-medium text-gray-700">{contributor.days}</span> </span>
-                    </div>
-                  ))}
+                  {[...contributors]  // créer une copie
+                    .sort(() => Math.random() - 0.5)  // mélange aléatoire
+                    .map((contributor) => (
+                      <div key={contributor.id} className="flex justify-between items-center py-2 border-b border-gray-200">
+                        <span className="text-sm font-medium text-gray-700">{contributor.name} &nbsp;- &nbsp;
+
+
+                          <span className="text-xs italic text-gray-400">{contributor.country}</span>
+                        </span>
+                        <span className="font-bold text-brand-gold">
+                          {contributor.amount} F CFA - &nbsp;
+                          <span className="text-sm font-medium text-gray-700">{contributor.days}</span>
+                        </span>
+                      </div>
+                    ))}
                 </div>
+
+
+
+
+
+
               </div>
             </div>
 
@@ -220,8 +254,8 @@ const Support = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-brand-yellow-light py-12 relative">
-        <div className="container mx-auto px-4 max-w-2xl relative pt-16">
+      <section className="bg-brand-yellow-light pt-12   relative">
+        <div className="container mx-auto px-4 max-w-2xl relative pt-4 sm:pt-16 lg:pt-16">
           {/* Titre qui dépasse */}
           <h2 className="w-full absolute -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-titre">
             {t('support.contact_title')}
@@ -229,7 +263,7 @@ const Support = () => {
 
           {/* Réseaux sociaux */}
           <div className="flex justify-center">
-            <div className="inline-flex justify-center gap-4 mb-8 mt-24 bg-brand-gold-dark text-white px-6 py-3 rounded-full">
+            <div className="inline-flex justify-center gap-4 mb-8 mt-4 sm:mt-4 lg:mt-2 bg-brand-gold-dark text-white px-6 py-3 rounded-full">
               <img src="/assets/images/Facebook.svg" className="w-5 h-5" />
               <img src="/assets/images/Instagram.svg" className="w-5 h-5" />
               <img src="/assets/images/TikTok.svg" className="w-5 h-5" />

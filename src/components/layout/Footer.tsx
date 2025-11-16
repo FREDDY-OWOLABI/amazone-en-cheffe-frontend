@@ -34,7 +34,7 @@ export const Footer = ({ bgColor = "bg-brand-yellow-light" }: FooterProps) => {
             <img
               src="/assets/images/KEITHSONONLogoNoirPaysage.png"
               alt="L'Amazone en Cheffe - Keith Vanessa Yabo SONON"
-              className="h-24 w-auto md:h-[300px] md:w-[500px]" 
+              className="h-[200px] w-auto sm:h-[250px] lg:h-[350px]" 
             />
           </p>
         </div>

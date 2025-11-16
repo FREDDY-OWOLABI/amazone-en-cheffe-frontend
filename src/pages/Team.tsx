@@ -164,14 +164,16 @@ const Team = () => {
       </section>
 
       {/* Supporters Section */}
-      <section className="bg-brand-yellow-light py-12 relative">
-        <div className="container mx-auto px-4 relative pt-16">
+      <section className="bg-brand-yellow-light py-12 sm:py-12 lg:py-12 relative">
+        <div className="container mx-auto px-4 relative pt-4 sm:pt-16 lg:pt-16">
           {/* Titre qui dépasse à moitié */}
-          <h2 className="absolute -top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[-68px] text-center text-outline-section-titre">
+          <h2 className="absolute  -top-[44px]  md:-top-[54px] left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[27px] sm:text-[50px]  lg:text-[70px] text-center text-outline-section-titre">
+
             {t('team.supporters')}
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-24">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-4 sm:mt-24 lg:mt-24">
             {testimonials.length === 0 ? (
               <div className="col-span-3 text-center py-12">
                 <p className="text-gray-500">Témoignages à venir</p>

@@ -118,7 +118,7 @@ const GuinnessRecord = () => {
       <section className="bg-brand-yellow-light py-16 relative">
         <div className="container mx-auto px-4 relative pt-16">
           {/* Titre qui dépasse à moitié */}
-          <h2 className="absolute -top-[54px] left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[40px] md:text-[70px] text-center text-outline-section-titre">
+          <h2 className="absolute  -top-[64px]  md:-top-[54px] left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[28px] sm:text-[35px]  lg:text-[70px] text-center text-outline-section-titre">
             {t('guinness.timeline_title')}
           </h2>
 

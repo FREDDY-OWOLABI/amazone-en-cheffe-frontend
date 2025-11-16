@@ -11,26 +11,26 @@ const About = () => {
   const images = [1, 2, 3, 4];
   const videos = [1, 2, 3, 4];
   const handleDownload = async () => {
-  try {
-    setIsDownloading(true);
+    try {
+      setIsDownloading(true);
 
-    const link = document.createElement("a");
-    link.href = "/pressbook.pdf"; 
-    link.download = "pressbook-keith-sonon.pdf";
-    document.body.appendChild(link);
+      const link = document.createElement("a");
+      link.href = "/pressbook.pdf";
+      link.download = "pressbook-keith-sonon.pdf";
+      document.body.appendChild(link);
 
-    // Petit délai (optionnel mais améliore le ressenti)
-    setTimeout(() => {
-      link.click();
-      document.body.removeChild(link);
+      // Petit délai (optionnel mais améliore le ressenti)
+      setTimeout(() => {
+        link.click();
+        document.body.removeChild(link);
+        setIsDownloading(false);
+      }, 600);
+
+    } catch (error) {
+      console.error("Erreur téléchargement :", error);
       setIsDownloading(false);
-    }, 600);
-
-  } catch (error) {
-    console.error("Erreur téléchargement :", error);
-    setIsDownloading(false);
-  }
-};
+    }
+  };
 
   return (
     <Layout>
@@ -81,7 +81,7 @@ const About = () => {
                 Aujourd’hui, elle va à l’assaut du Record mondial Guinness du marathon culinaire le plus long et tout
                 porte à croire que je suis née pour le battre.
               </p>
-                <p className='text-justify text-brand-earth-dark'>
+              <p className='text-justify text-brand-earth-dark'>
                 Sa cuisine se définit en trois mots : <strong className="text-brand-gold">Fusionnelle</strong>,
                 <strong className="text-brand-gold"> Savoureuse</strong> et
                 <strong className="text-brand-gold"> Généreuse</strong>.
@@ -90,7 +90,7 @@ const About = () => {
                 Si vous voulez en savoir plus sur moi, découvrez-moi à travers mon pressbook en téléchargement cidessous.
               </p>
             </div>
-            
+
           </div>
         </div>
       </section>
@@ -107,26 +107,25 @@ const About = () => {
             <div className="text-white -top-6 ">
               <h3 className="font-heading text-2xl mr-6 mb-4 text-[#F2DF80]">{t('about.pressbook')}</h3>
               <div className="container mx-auto px-4 text-center">
-                
+
                 <ButtonOutline
-  onClick={handleDownload}
-  disabled={isDownloading}
-  className={`text-sm border-0 font-bold cursor-pointer flex items-center justify-center gap-2 ${
-    isDownloading ? "opacity-60 cursor-not-allowed" : ""
-  }`}
->
-  {isDownloading ? (
-    <>
-      <span className="w-4 h-4 border-2 border-brand-earth-dark border-t-transparent rounded-full animate-spin"></span>
-      {t('about.loading') ?? "Téléchargement..."}
-    </>
-  ) : (
-    <>
-      <Download className="w-5 h-5 text-brand-earth-dark opacity-100 inline" />
-      {t('about.download')}
-    </>
-  )}
-</ButtonOutline>
+                  onClick={handleDownload}
+                  disabled={isDownloading}
+                  className={`text-sm border-0 font-bold cursor-pointer flex items-center justify-center gap-2 ${isDownloading ? "opacity-60 cursor-not-allowed" : ""
+                    }`}
+                >
+                  {isDownloading ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-brand-earth-dark border-t-transparent rounded-full animate-spin"></span>
+                      {t('about.loading') ?? "Téléchargement..."}
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-5 h-5 text-brand-earth-dark opacity-100 inline" />
+                      {t('about.download')}
+                    </>
+                  )}
+                </ButtonOutline>
 
               </div>
 
@@ -147,12 +146,12 @@ const About = () => {
 
           <div className="relative container mx-auto px-4 pt-16">
             {/* Titre qui dépasse à moitié */}
-            <h2 className="absolute text-outline-section-titre -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[77px] text-brand-gold text-center">
+            <h2 className="absolute text-outline-section-titre -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[34px] sm:text-[54px] lg:text-[77px] text-brand-gold text-center">
               Galerie média
             </h2>
 
             {/* Photos Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8  md:mt-16 mt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-8  md:mt-16 mt-2">
               {[1, 2, 3, 4].map((i) => (
                 <div
                   key={i}
@@ -175,7 +174,7 @@ const About = () => {
             </div>
 
             {/* Videos Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="flex flex-col cursor-pointer group">
                   {/* Video card */}

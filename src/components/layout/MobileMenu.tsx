@@ -99,27 +99,27 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       </nav>
       
       {/* Countdown Bar */}
-      <div className="px-6 pb-8">
-         <div className="flex gap-6">
-                        <div className="inline-block">
-                          <ProgressBarCountdown />
-                        </div>
-        
-                       
-                      </div>
-      </div>
+
+
+ <div className="container px-6 pb-20">
+  <div className="flex justify-center items-center">
+    <ProgressBarCountdown />
+  </div>
+</div>
+
       
       {/* Social Icons */}
       <div className="flex justify-center gap-6 pb-8">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-          <Facebook className="w-6 h-6 " />
+        <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
+          <img src="/assets/images/Facebook.svg" className="w-5 h-5" />
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-          <Instagram className="w-6 h-6 " />
+        <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
+         <img src="/assets/images/Instagram.svg" className="w-5 h-5" />
         </a>
-        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-          <Youtube className="w-6 h-6 " />
+        <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
+             <img src="/assets/images/TikTok.svg" className="w-5 h-5" />
         </a>
+
       </div>
     </div>
   );

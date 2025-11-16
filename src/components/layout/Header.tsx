@@ -210,7 +210,16 @@ export const Header = () => {
                 />
               </Link>
 
-              <LanguageSwitcher />
+            
+
+
+               <div className="inline-block">
+                {/* Right:Language */}
+                <div className="flex items-center gap-4 ">
+
+                  <GoogleTranslate />
+                </div>
+</div>
             </div>
           </div>
         </div>
