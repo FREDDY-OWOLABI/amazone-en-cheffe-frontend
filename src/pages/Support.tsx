@@ -1,71 +1,62 @@
 // src/pages/Support.tsx
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Layout } from '@/components/layout/Layout';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ButtonPrimary } from '@/components/ui/ButtonPrimary';
 import { ButtonSecondary } from '@/components/ui/ButtonSecondary';
-import { Facebook, Youtube, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
-import React from 'react';
 import ProgressBarDonationCollected from '@/components/layout/ProgressBarDonationCollected';
 import { DONATION_TARGET, contributors } from '@/constants/donation';
-import { useEffect } from "react";
+import { AmountModal } from '@/components/modals/AmountModal';
+import { NeedsModal } from '@/components/modals/NeedsModal';
 
-
+const needs = [
+  { icon: "/assets/images/Flame.svg", label: "Location du Palais des Congrès (site et aménagements)", obsolete: "non", price: 50000 },
+  { icon: "/assets/images/Flame.svg", label: "Construction des box de cuisine & équipements spécialisés", obsolete: "non", price: 50000 },
+  { icon: "/assets/images/Flame.svg", label: "Location stands, tables, chaises, barrières, toilettes portables", obsolete: "non", price: 40000 },
+  { icon: "/assets/images/Flame.svg", label: "Electricité, eau, nettoyage du site", obsolete: "non", price: 30000 },
+  { icon: "/assets/images/Flame.svg", label: "Produits alimentaires & boissons", obsolete: "non", price: 160000 },
+  { icon: "/assets/images/Flame.svg", label: "Transport & distribution de plus de 20 000 repas", obsolete: "non", price: 40000 },
+  { icon: "/assets/images/Flame.svg", label: "Hôtesses d'accueil & personnel de soutien", obsolete: "non", price: 30000 },
+  { icon: "/assets/images/Flame.svg", label: "Divers liés à la restauration", obsolete: "non", price: 20000 },
+  { icon: "/assets/images/Flame.svg", label: "Branding du site (bannières, kakémonos, signalétique)", obsolete: "non", price: 30000 },
+  { icon: "/assets/images/Flame.svg", label: "Publicité digitale & influenceurs", obsolete: "non", price: 200000 },
+  { icon: "/assets/images/Flame.svg", label: "Captation vidéo, photos, streaming", obsolete: "non", price: 80000 },
+  { icon: "/assets/images/Flame.svg", label: "Impressions (badges, tee-shirts, dossiers)", obsolete: "non", price: 50000 },
+  { icon: "/assets/images/Flame.svg", label: "DJ, sonorisation & lumières", obsolete: "non", price: 25000 },
+  { icon: "/assets/images/Flame.svg", label: "Prestation d'artistes & animations annexes", obsolete: "non", price: 70000 },
+  { icon: "/assets/images/Flame.svg", label: "Forfait médical, physique & moral (suivi de la cheffe et de l'équipe)", obsolete: "non", price: 20000 },
+  { icon: "/assets/images/Flame.svg", label: "Sécurité (police, pompiers, vigiles)", obsolete: "non", price: 25000 },
+  { icon: "/assets/images/Flame.svg", label: "Assurance & accompagnement santé additionnel", obsolete: "non", price: 50000 },
+  { icon: "/assets/images/Flame.svg", label: "Frais Guinness (certification, homologation)", obsolete: "non", price: 30000 },
+];
 
 const Support = () => {
   const { t } = useTranslation();
+  
+  // États pour les modales
+  const [showAmountModal, setShowAmountModal] = useState(false);
+  const [showNeedsModal, setShowNeedsModal] = useState(false);
+
+  // Scroll vers #donate
   useEffect(() => {
-    // Vérifie si on arrive avec #donate
     if (window.location.hash === "#donate") {
       const section = document.getElementById("donate");
       if (section) {
         setTimeout(() => {
           section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 300); // laisse le temps au contenu de se charger
+        }, 300);
       }
     }
   }, []);
-  //  requêtes commentées
-  /*
-  const { data: donationData } = useDonationTotal();
-  const { data: contributors = [] } = useContributorsList();
-  */
 
-
-
-
-
-
+  // Calculs
   const totalCollected = contributors.reduce((sum, c) => sum + Number(c.amount || 0), 0);
   const donorsCount = contributors.length;
   const formatNumber = (v: number) => new Intl.NumberFormat('fr-FR').format(Math.round(v));
-
-
-  const needs = [
-    { icon: "/assets/images/Flame.svg", label: "Location du Palais des Congrès (site et aménagements)", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Construction des box de cuisine & équipements spécialisés", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Location stands, tables, chaises, barrières, toilettes portables", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Electricité, eau, nettoyage du site", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Produits alimentaires & boissons", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Transport & distribution de plus de 20 000 repas", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Hôtesses d’accueil & personnel de soutien", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Divers liés à la restauration", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Branding du site (bannières, kakémonos, signalétique)", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Publicité digitale & influenceurs", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Captation vidéo, photos, streaming", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Impressions (badges, tee-shirts, dossiers)", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "DJ, sonorisation & lumières", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Prestation d’artistes & animations annexes", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Forfait médical, physique & moral (suivi de la cheffe et de l’équipe)", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Sécurité (police, pompiers, vigiles)", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Assurance & accompagnement santé additionnel", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Frais Guinness (certification, homologation)", obsolete: "non" },
-  ];
-
 
   return (
     <Layout footerBgColor="bg-brand-yellow-light">
@@ -80,23 +71,17 @@ const Support = () => {
             {t('support.title')}
           </motion.h1>
 
-
           <div className="flex justify-center mt-6 w-full">
-
-
             <ProgressBarDonationCollected
               collected={totalCollected}
               target={DONATION_TARGET}
               donors={donorsCount}
             />
-
           </div>
         </div>
-
       </section>
 
       {/* Why Section */}
-
       <section className="bg-white py-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-5xl md:text-6xl font-bold font-heading text-or-degrade mb-8 text-center">
@@ -105,65 +90,61 @@ const Support = () => {
 
           <p className="guton mb-6 text-lg md:text-xl leading-relaxed text-justify text-brand-earth-dark">
             Vous savez, derrière chaque plat que je crée, il y a bien plus que des ingrédients. Il y a les mains et le
-            savoir-faire de toutes les personnes qui m’ont appris à cuisiner ainsi que leurs expériences et toute une
+            savoir-faire de toutes les personnes qui m'ont appris à cuisiner ainsi que leurs expériences et toute une
             vie passée à croire que la cuisine est le plus beau des langages. Aujourd'hui, je me prépare à vivre le défi
             le plus intense de ma vie : un marathon culinaire de plusieurs jours et nuits pour tenter de battre un
             record du monde.
           </p>
 
-          <p className="guton mb-6 text-lg md:text-xl leading-relaxed  text-justify text-brand-earth-dark">
+          <p className="guton mb-6 text-lg md:text-xl leading-relaxed text-justify text-brand-earth-dark">
             Mais je vais être honnête avec vous : j'ai peur. J'ai peur de la fatigue, du doute, de la solitude dans ces
             longues heures avant l'aube. Pourtant, une force plus grande que la peur me pousse en avant : la
             conviction que c'est en repoussant nos limites que l'on inspire les autres à croire en leurs propres rêves.
             Ce marathon, c'est mon combat pour montrer que la passion peut transcender la douleur, et que l'on
             peut puiser une force insoupçonnée au fond de soi quand on le fait pour quelque chose de plus grand.
-            C’est pourquoi je tends la main aujourd’hui, non pas en tant que l’Amazone en cheffe sûre d’elle, mais en
+            C'est pourquoi je tends la main aujourd'hui, non pas en tant que l'Amazone en cheffe sûre d'elle, mais en
             tant que femme vulnérable et déterminée. Votre soutien, sous quelque forme que ce soit, serait la plus
             belle des épices dans cette aventure :
           </p>
 
-          <ul className="list-disc list-inside mb-6  text-lg md:text-xl space-y-2 text-brand-earth-dark">
-            <li>Vos mots d’encouragements sur mes différents réseaux sociaux</li>
-            <li>Vos dons tant au niveau des produits de qualité qu’au niveau de la logistique de cet événement.</li>
+          <ul className="list-disc list-inside mb-6 text-lg md:text-xl space-y-2 text-brand-earth-dark">
+            <li>Vos mots d'encouragements sur mes différents réseaux sociaux</li>
+            <li>Vos dons tant au niveau des produits de qualité qu'au niveau de la logistique de cet événement.</li>
             <li>Le partage de mon histoire autour de vous</li>
             <li>Votre présence, ne serait-ce que par la pensée, me rappellera que je ne suis pas seule.</li>
           </ul>
 
-          <p className="guton mb-6 text-lg md:text-xl leading-relaxed  text-justify text-brand-earth-dark">
+          <p className="guton mb-6 text-lg md:text-xl leading-relaxed text-justify text-brand-earth-dark">
             Je ne cherche pas la gloire, mais à écrire une histoire dont nous pourrons être fiers ensemble. Une
-            histoire qui dit que quand une communauté se rassemble pour porter l’un des siens, même l’impossible
+            histoire qui dit que quand une communauté se rassemble pour porter l'un des siens, même l'impossible
             devient réalisable.
           </p>
 
-          <p className="guton text-lg md:text-xl leading-relaxed  font-semibold text-justify text-brand-earth-dark">
+          <p className="guton text-lg md:text-xl leading-relaxed font-semibold text-justify text-brand-earth-dark">
             Merci du fond du cœur de croire en moi, et de rendre cette folle tentative si profondément humaine.
           </p>
         </div>
       </section>
 
-
       {/* Donation Section */}
-      <section className="bg-white py-12" id="donate" >
+      <section className="bg-white py-12" id="donate">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-rows-2 gap-8 max-w-6xl mx-auto">
-
             {/* Formulaire de don */}
-
-            <div className="">
-
-
+            <div>
               <div className="bg-brand-earth-dark rounded-3xl p-8 text-white relative pt-16">
-                {/* Titre qui dépasse mais reste dans le bloc */}
-                <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 
-                 font-heading text-[54px] md:text-[72px] text-center text-outline-section-donate">
+                <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-donate">
                   {t('support.donate_title')}
                 </h2>
+                
                 <div className="mb-6">
-
-                  <div
-                    className="w-full  bg-white text-center text-brand-earth-dark px-4 py-6  my-3 rounded-lg placeholder-gray-500"
-                  >
-                    Emplacement de l'agrégateur de paiement
+                  <div className="w-full bg-white text-center text-brand-earth-dark px-4 py-6 my-3 rounded-lg">
+                    <button
+                      onClick={() => setShowAmountModal(true)}
+                      className="bg-brand-gold text-white px-6 py-3 rounded-full font-bold shadow-lg hover:opacity-90 w-full"
+                    >
+                      Contribution libre
+                    </button>
                   </div>
 
                   <h2 className="font-medium mb-4 font-heading text-4xl">
@@ -171,11 +152,9 @@ const Support = () => {
                   </h2>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
-
                     {needs.map((need, index) => (
                       <label key={index} className="flex items-center gap-2 cursor-pointer">
-                        <img className="w-5 h-5" src={need.icon} />
-
+                        <img className="w-5 h-5" src={need.icon} alt="" />
                         {need.obsolete === "oui" ? (
                           <s className="text-sm text-gray-400">{need.label}</s>
                         ) : (
@@ -183,98 +162,73 @@ const Support = () => {
                         )}
                       </label>
                     ))}
-
                   </div>
-
                 </div>
 
-
-                <ButtonSecondary className="w-full md:w-auto font-bold">
+                <ButtonSecondary
+                  className="w-full md:w-auto font-bold"
+                  onClick={() => setShowNeedsModal(true)}
+                >
                   Contribuer maintenant
                 </ButtonSecondary>
               </div>
             </div>
 
-
             {/* Liste des contributeurs */}
             <div>
-
-
               <div className="bg-gray-100 rounded-3xl p-6 relative pt-16 mt-10">
-
-                <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 
-                   font-heading text-[54px] md:text-[72px] text-center text-outline-section-contributor pl-10">
+                <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-contributor pl-10">
                   {t('support.contributors_title')}
                 </h2>
-
 
                 <div className="text-center mb-6">
                   <p className="text-3xl text-left font-bold text-brand-earth-dark">
                     {formatNumber(totalCollected)} F&nbsp;CFA {t('support.total_collected')}
                   </p>
 
-
-
-
                   <p className="text-sm flex justify-between items-center text-gray-500 font-bold mb-4 pb-4 border-b border-brand-earth/80">
-                    <span className="text-left">sur {formatNumber(DONATION_TARGET)} F&nbsp;CFA </span>
-                    <span className="text-xl"> {formatNumber(donorsCount)} donateurs</span>
+                    <span className="text-left">sur {formatNumber(DONATION_TARGET)} F&nbsp;CFA</span>
+                    <span className="text-xl">{formatNumber(donorsCount)} donateurs</span>
                   </p>
                 </div>
 
-
                 <div className="space-y-3 max-h-96 overflow-y-auto custom-scrollbar px-8">
-                  {[...contributors]  // créer une copie
-                    .sort(() => Math.random() - 0.5)  // mélange aléatoire
+                  {[...contributors]
+                    .sort(() => Math.random() - 0.5)
                     .map((contributor) => (
                       <div key={contributor.id} className="flex justify-between items-center py-2 border-b border-gray-200">
-                        <span className="text-sm font-medium text-gray-700">{contributor.name} &nbsp;- &nbsp;
-
-
-                          <span className="text-xs italic text-gray-400">{contributor.country}</span>
+                        <span className="text-sm font-medium text-gray-700">
+                          {contributor.name} - <span className="text-xs italic text-gray-400">{contributor.country}</span>
                         </span>
                         <span className="font-bold text-brand-gold">
-                          {contributor.amount} F CFA - &nbsp;
-                          <span className="text-sm font-medium text-gray-700">{contributor.days}</span>
+                          {contributor.amount} F CFA - <span className="text-sm font-medium text-gray-700">{contributor.days}</span>
                         </span>
                       </div>
                     ))}
                 </div>
-
-
-
-
-
-
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="bg-brand-yellow-light pt-12   relative">
+      <section className="bg-brand-yellow-light pt-12 relative">
         <div className="container mx-auto px-4 max-w-2xl relative pt-4 sm:pt-16 lg:pt-16">
-          {/* Titre qui dépasse */}
           <h2 className="w-full absolute -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-titre">
             {t('support.contact_title')}
           </h2>
 
-          {/* Réseaux sociaux */}
           <div className="flex justify-center">
             <div className="inline-flex justify-center gap-4 mb-8 mt-4 sm:mt-4 lg:mt-2 bg-brand-gold-dark text-white px-6 py-3 rounded-full">
-              <img src="/assets/images/Facebook.svg" className="w-5 h-5" />
-              <img src="/assets/images/Instagram.svg" className="w-5 h-5" />
-              <img src="/assets/images/TikTok.svg" className="w-5 h-5" />
-              <img src="/assets/images/WhatsApp.svg" className="w-5 h-5" />
-              <img src="/assets/images/Phone.svg" className="w-5 h-5" />
-
-
+              <img src="/assets/images/Facebook.svg" className="w-5 h-5" alt="Facebook" />
+              <img src="/assets/images/Instagram.svg" className="w-5 h-5" alt="Instagram" />
+              <img src="/assets/images/TikTok.svg" className="w-5 h-5" alt="TikTok" />
+              <img src="/assets/images/WhatsApp.svg" className="w-5 h-5" alt="WhatsApp" />
+              <img src="/assets/images/Phone.svg" className="w-5 h-5" alt="Phone" />
             </div>
           </div>
 
-          {/* Formulaire de contact */}
           <form className="space-y-4">
             <Input placeholder="Nom et prénom" className="bg-white" />
             <Input type="email" placeholder="Email" className="bg-white" />
@@ -285,6 +239,18 @@ const Support = () => {
           </form>
         </div>
       </section>
+
+      {/* Modales */}
+      <AmountModal 
+        isOpen={showAmountModal} 
+        onClose={() => setShowAmountModal(false)} 
+      />
+
+      <NeedsModal 
+        isOpen={showNeedsModal} 
+        onClose={() => setShowNeedsModal(false)}
+        needs={needs}
+      />
     </Layout>
   );
 };
