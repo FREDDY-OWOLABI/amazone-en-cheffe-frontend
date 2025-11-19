@@ -45,7 +45,7 @@ const GuinnessRecord = () => {
 
             {/* CTA Box */}
             <div className="bg-gradient-to-r from-brand-gold to-brand-honey p-6 rounded-lg my-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <p className="text-brand-earth-dark font-medium text-justify ">
+              <p className="text-white font-medium text-justify ">
                 Rejoignez-moi dans cette quête exceptionnelle : ensemble, écrivons une page mémorable du patrimoine
                 culinaire !
               </p>
@@ -130,8 +130,12 @@ const GuinnessRecord = () => {
 
 
 
+
+
+
+
 {/* Timeline Visualization */}
-<div className="relative max-w-4xl mx-auto">
+<div className="relative max-w-4xl mx-auto ">
   {/* Horizontal line */}
   <div className="absolute top-1/2 left-0 right-0 h-1 bg-brand-earth-dark -translate-y-1/2 hidden md:block" />
 
@@ -141,30 +145,38 @@ const GuinnessRecord = () => {
       <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4 cursor-pointer" />
       {/* Tooltip */}
       <div className="absolute w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 text-brand-earth-dark bg-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-      </div>
-      <p className="text-sm font-medium text-brand-earth-dark">Début du Marathon</p>
+        Début du Marathon (0%)
+        </div>
+      <p className="text-sm font-medium text-brand-earth-dark">Début du Marathon (0%)</p>
       <p className="text-xs text-brand-earth-dark/70">Décembre 2025</p>
     </div>
 
     {/* Middle Points */}
-    {[1, 2, 3, 4].map((i) => (
-      <div key={i} className="relative z-10 group text-center">
-        <div className="bg-brand-earth-dark w-6 h-6 rounded-full mx-auto cursor-pointer" />
-        <div className="absolute  w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 text-brand-earth-dark bg-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-          Point {i} - Description du jour {i}
+
+    {/* Middle Points */}
+    {Array.from({ length: 4 }).map((_, i) => {
+      const percent = Math.round(((i + 1) * 100) / 5); // 5 = nombre total de points - 1 pour inclure début/fin
+      return (
+        <div key={i} className="relative z-10 group text-center">
+          <div className="bg-brand-earth-dark w-6 h-6 rounded-full mx-auto cursor-pointer" />
+          <div className="absolute w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 text-brand-earth-dark bg-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            Point {i + 1} - {percent}%
+          </div>
+          <p className="text-sm font-medium text-brand-earth-dark">Point {i + 1} ({percent}%)</p>
         </div>
-      </div>
-    ))}
+      );
+    })}
+
+
+  
 
     {/* End Point */}
     <div className="relative z-10 text-center group">
       <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4 cursor-pointer" />
       <div className="absolute  w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 bg-brand-earth-dark text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ">
-        Fin du Marathon - 15 jours plus tard
+        Fin du Marathon (100%)
       </div>
       <p className="text-sm font-medium text-brand-earth-dark">Fin du Marathon</p>
-      <p className="text-xs text-brand-earth-dark/70">15 jours plus tard</p>
     </div>
   </div>
 </div>

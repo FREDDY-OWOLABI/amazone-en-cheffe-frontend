@@ -41,16 +41,22 @@ const Index = () => {
                   </h1>
 
                   <p className="text-white text-lg leading-relaxed mb-6">
-                    Cliquez et faites partie de l'histoire de celle qui va battre le guinness record du plus long marathon culinaire.
+
+                    Je suis Keith SONON et je vais battre le record Guinness du plus long marathon
+                    culinaire. Je vous invite à cliquer et à faire partie de mon histoire.
+
+
                   </p>
 
-                  <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-6 mb-6">
+                  <div className="flex flex-col justify-center  items-start gap-6 mb-6">
 
                     {/* Réseaux sociaux */}
                     <div className="flex items-center gap-5 mb-4 md:mb-0">
                       <img src="/assets/images/Facebook.svg" className="w-7 h-7" />
                       <img src="/assets/images/Instagram.svg" className="w-7 h-7" />
                       <img src="/assets/images/TikTok.svg" className="w-7 h-7" />
+                      <img src="/assets/images/WhatsApp.svg" className="w-7 h-7" alt="WhatsApp" />
+                      <img src="/assets/images/Phone.svg" className="w-7 h-7" alt="Phone" />
                     </div>
 
                     {/* CTA */}
@@ -113,25 +119,32 @@ const Index = () => {
 
           </div>
         </div>
-        <div className=" w-full bg-brand-yellow-light mb-[10px]">
-          <div className=" mx-auto px-4 max-w-md pt-[100px] hidden">
+        <div className=" w-full bg-brand-yellow-light mb-[10px] border-0">
+          <div className=" mx-auto px-4 max-w-md pt-[100px] ">
 
-            <h1 className="font-heading text-5xl text-brand-earth-dark  leading-tight mb-4">
+            <h1 className="font-heading text-5xl text-brand-earth-dark  leading-tight mb-2 pt-6">
               Découvrez l'Amazone en Cheffe.<br />
 
             </h1>
 
-            <p className="text-white text-lg leading-relaxed mb-6">
-              Cliquez et faites partie de l'histoire de celle qui va battre le guinness record du plus long marathon culinaire.
+            <p className="text-brand-earth-dark text-lg leading-relaxed mb-6 ">
+
+              Je suis Keith SONON et je vais battre le record Guinness du plus long marathon
+              culinaire. Je vous invite à cliquer et à faire partie de mon histoire.
             </p>
 
-            <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-6 mb-6">
+            <div className="flex flex-col justify-center  items-center gap-2 mb-0">
 
               {/* Réseaux sociaux */}
-              <div className="flex items-center gap-5 mb-4 md:mb-0">
-                <img src="/assets/images/Facebook.svg" className="w-7 h-7" />
-                <img src="/assets/images/Instagram.svg" className="w-7 h-7" />
-                <img src="/assets/images/TikTok.svg" className="w-7 h-7" />
+
+              <div className="flex justify-center">
+                <div className="inline-flex justify-center gap-4 mb-8 mt-0 sm:mt-4 lg:mt-2 bg-brand-gold-dark text-white px-6 py-3 rounded-full">
+                  <img src="/assets/images/Facebook.svg" className="w-7 h-7" alt="Facebook" />
+                  <img src="/assets/images/Instagram.svg" className="w-7 h-7" alt="Instagram" />
+                  <img src="/assets/images/TikTok.svg" className="w-7 h-7" alt="TikTok" />
+                  <img src="/assets/images/WhatsApp.svg" className="w-7 h-7" alt="WhatsApp" />
+                  <img src="/assets/images/Phone.svg" className="w-7 h-7" alt="Phone" />
+                </div>
               </div>
 
               {/* CTA */}
@@ -166,11 +179,11 @@ const Index = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-brand-yellow-light py-12"
+        className="bg-brand-yellow-light py-4 sm:py-12 lg:py-12"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="text-justify text-lg md:text-xl text-brand-earth-dark  leading-relaxed mb-2  mt-20 md:mt-0">
+            <p className="text-justify text-lg md:text-xl text-brand-earth-dark  leading-relaxed mb-2  mt-4 md:mt-0">
               Béninois et béninoises, préparons-nous à vivre un moment historique où passion et détermination
               fusionnent. Cheffe Keith SONON, l’Amazone en Cheffe, se lance dans un défi spécial : battre le record du
               monde Guinness du plus long marathon culinaire.
@@ -189,14 +202,16 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
               {/* Groupe Support + Donate */}
               <div className="flex flex-row gap-4 justify-center w-full sm:w-auto">
-                <ButtonPrimary
+
+
+                {/* <ButtonPrimary
                   onClick={() => navigate('/support')}
                   className="font-bold flex-1 sm:flex-none"
                 >
                   {t('cta.support')}
-                </ButtonPrimary>
+                </ButtonPrimary>  */}
 
-                <a href="/support#donate"  className="font-bold flex-1 sm:flex-none">
+                <a href="/support#donate" className="font-bold flex-2 sm:flex-none">
                   <ButtonPrimary
                     className="w-full"
                   >
@@ -209,13 +224,13 @@ const Index = () => {
 
               </div>
 
-              {/* Participate */}
+              {/* Participate 
               <ButtonOutline
                 onClick={() => navigate('/support')}
                 className="font-bold w-full sm:w-auto"
               >
                 {t('cta.participate')}
-              </ButtonOutline>
+              </ButtonOutline>*/}
             </div>
 
 

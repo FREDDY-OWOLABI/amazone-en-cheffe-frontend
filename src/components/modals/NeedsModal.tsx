@@ -48,14 +48,43 @@ export const NeedsModal: React.FC<NeedsModalProps> = ({ isOpen, onClose, needs }
     }
   };
 
+  const [name, setName] = useState("");
+  const [country, setCountry] = useState("");
+
+
+  const isFormValid = needsIsValid && name.trim() !== "" && country.trim() !== "";
+
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white w-full max-w-xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto">
+
         <h2 className="text-2xl font-bold text-brand-earth-dark mb-6">
           Choisir les besoins
         </h2>
+
+
+        {/* Nom et pays */}
+        <div className="mb-4 space-y-3">
+          <input
+            type="text"
+            placeholder="Nom et prénom ou Anonyme"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full border rounded-lg px-4 py-3"
+          />
+          <input
+            type="text"
+            placeholder="Pays"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            className="w-full border rounded-lg px-4 py-3"
+          />
+        </div>
+
+        {/* Sélection des besoins */}
 
         <div className="space-y-3 mb-6">
           {needs.map((n) => (
@@ -81,11 +110,11 @@ export const NeedsModal: React.FC<NeedsModalProps> = ({ isOpen, onClose, needs }
           Montant total : {totalNeedsAmount.toLocaleString('fr-FR')} F CFA
         </div>
 
-        {!needsIsValid && (
+
+        {/* Message si formulaire incomplet */}
+        {!isFormValid && (
           <p className="text-red-500 font-semibold mb-3">
-            {selectedNeeds.length === 0 
-              ? "Veuillez sélectionner au moins un besoin."
-              : "Le montant minimum est de 100 F CFA."}
+            Veuillez remplir votre nom, votre pays et sélectionner au moins un besoin.
           </p>
         )}
 
@@ -100,16 +129,47 @@ export const NeedsModal: React.FC<NeedsModalProps> = ({ isOpen, onClose, needs }
                   description: `Contribution pour ${selectedNeeds.length} besoin(s) - ${totalNeedsAmount} FCFA`,
                 },
                 currency: { iso: "XOF" },
+                customer: {
+                  firstname: name.trim() === "" ? "Anonyme" : name.split(" ")[0],
+                  lastname: name.trim() === "" ? "" : name.split(" ").slice(1).join(" "),
+                  email: "",
+                },
                 button: {
                   text: `Payer ${totalNeedsAmount.toLocaleString('fr-FR')} F CFA`,
                   class: "bg-brand-earth-dark text-white px-4 py-3 rounded-lg font-bold w-full",
                 },
                 onComplete(resp) {
-                  toast.success("Paiement réussi !", {
-                    description: `Votre contribution de ${totalNeedsAmount.toLocaleString('fr-FR')} F CFA pour ${selectedNeeds.length} besoin(s) a été enregistrée. Merci pour votre générosité ! 🎉`,
-                    duration: 5000,
-                  });
-                  onClose();
+                  console.log("Réponse FedaPay complète:", resp);
+
+                  if (resp.transaction && resp.transaction.status === 'approved') {
+                    toast.success("Paiement réussi !", {
+                      description: `Votre contribution de ${totalNeedsAmount.toLocaleString('fr-FR')} F CFA pour ${selectedNeeds.length} besoin(s) a été enregistrée. Merci pour votre générosité ! 🎉`,
+                      duration: 5000,
+                    });
+                    onClose();
+                  } else if (resp.reason === 'canceled' || resp.reason === 'declined') {
+                    toast.error("Paiement annulé", {
+                      description: "Vous avez annulé le paiement. Aucun montant n'a été débité.",
+                      duration: 4000,
+                    });
+                  } else if (resp.transaction && resp.transaction.status === 'pending') {
+
+                    /*toast.info("Paiement en cours", {
+                      description: "Votre paiement est en cours de traitement. Vous recevrez une confirmation par SMS.",
+                      duration: 5000,
+                    });
+                    */
+
+                    onClose();
+                  } else {
+                    console.warn("Statut de transaction inconnu:", resp);
+                    /*
+                                        toast.warning("Statut incertain", {
+                                          description: "Veuillez vérifier votre SMS ou contactez-nous si le problème persiste.",
+                                          duration: 5000,
+                                        });
+                                        */
+                  }
                 },
               }}
             />

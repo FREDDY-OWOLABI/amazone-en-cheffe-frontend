@@ -164,43 +164,44 @@ All colors MUST be HSL.
 
 
 .about-pressbooke-download-bg {
-  background-image: url('assets/images/about-pressbooke-download-bg.PNG') !important;
+  background-image: url('/assets/images/about-pressbooke-download-bg.PNG') !important;
   background-size: 100% 100% !important;
   background-position: center !important;
+
 }
 
 .home-hero-section-bg {
-  background-image: url('assets/images/home-hero-section-bg.png') !important;
+  background-image: url('/assets/images/home-hero-section-bg.png') !important;
   background-size: 100% 100% !important;
   background-position: center !important;
 }
 
 .guinness-hero-section {
-  background-image: url('assets/images/guinness-hero-section.png') !important;
+  background-image: url('/assets/images/guinness-hero-section.png') !important;
   background-size: 100% 100% !important;
   background-position: center !important;
 }
 
 .about-hero-section-bg {
-  background-image: url('assets/images/about-hero-section-bg.png') !important;
+  background-image: url('/assets/images/about-hero-section-bg.png') !important;
   background-size: 100% 100% !important;
   background-position: center !important;
 }
 
 .news-hero-section-bg {
-  background-image: url('assets/images/news-hero-section-bg.png') !important;
+  background-image: url('/assets/images/news-hero-section-bg.png') !important;
   background-size: 100% 100% !important;
   background-position: center !important;
 }
 
 .team-hero-section-bg {
-  background-image: url('assets/images/team-hero-section-bg.png') !important;
+  background-image: url('/assets/images/team-hero-section-bg.png') !important;
   background-size: 100% 100% !important;
   background-position: center !important;
 }
 
 .support-hero-section-bg {
-  background-image: url('assets/images/support-hero-section-bg.png') !important;
+  background-image: url('/assets/images/support-hero-section-bg.png') !important;
   background-size: 100% 100% !important;
   background-position: center !important;
 }

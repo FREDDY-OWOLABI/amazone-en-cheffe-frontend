@@ -39,7 +39,7 @@ export const GoogleTranslate = () => {
 
             {/* Boutons avec drapeaux */}
 
-            <div className="flex flex-col items-center gap-1">
+            <div className="flex flex-row items-center gap-2">
 
                 <button onClick={() => doGTranslate("fr|fr")}>
                     <img src="/assets/images/france-flag.png" className="w-6" alt="Français" />

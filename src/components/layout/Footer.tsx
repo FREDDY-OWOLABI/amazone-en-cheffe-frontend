@@ -128,7 +128,8 @@ export const Footer = ({ bgColor = "bg-brand-yellow-light" }: FooterProps) => {
       {/* Copyright */}
       <div className="py-4 border-t border-brand-earth/10">
         <div className="container mx-auto px-4 text-center text-sm text-brand-earth-dark/70">
-          {t('footer.copyright')}
+          {t('footer.copyright')} - Powered by Studio Enabloo
+         
         </div>
       </div>
     </footer>
