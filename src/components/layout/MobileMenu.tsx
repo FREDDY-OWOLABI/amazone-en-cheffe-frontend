@@ -82,7 +82,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         
         {/* Support Button with Heart */}
         <Link 
-          to="/support" 
+          to="/contribution" 
           onClick={onClose}
           className="bg-brand-gold  text-white px-8 py-3 rounded-full flex items-center gap-2 font-bold hover:bg-brand-gold-dark transition mt-4"
         >

@@ -18,7 +18,7 @@ export const ProgressBarDonationCollected: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   const location = useLocation();
-  const isSupportPage = location.pathname === '/support';
+  const isSupportPage = location.pathname === '/contribution';
 
   // Sécurité : éviter division par zéro
   const percentage = target > 0 ? Math.round((collected / target) * 100) : 0;

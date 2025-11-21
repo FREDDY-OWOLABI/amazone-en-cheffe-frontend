@@ -74,21 +74,25 @@ const About = () => {
           <div className=" text-gray-700 leading-relaxed mt-16 text-lg md:text-xl">
             <div className="space-y-4">
               <p className='text-justify text-brand-earth-dark'>
-                Je suis<strong> Keith SONON </strong> et j’ai 22 ans. Je suis une cheffe d’origine béninoise portée par une passion
-                particulière pour la cuisine et une ambition sans limites.
+                Je m’appelle<strong> Keith SONON </strong> et je suis une cheffe d’origine béninoise.
+                Portée par une passion profonde pour la cuisine et une grande ambition, 
+                j’ai décidé de repousser mes propres frontières.
               </p>
               <p className='text-justify text-brand-earth-dark'>
-                Aujourd’hui, elle va à l’assaut du Record mondial Guinness du marathon culinaire le plus long et tout
-                porte à croire que je suis née pour le battre.
+                Aujourd’hui, je me lance dans un défi historique : battre le Record mondial Guinness du plus long marathon culinaire.
+                Tout en moi me dit que j'ai toutes les chances d'y arriver.
+
+                
               </p>
               <p className='text-justify text-brand-earth-dark'>
-                Sa cuisine se définit en trois mots : <strong className="text-brand-gold">Fusionnelle</strong>,
+                Ma cuisine s’incarne en trois mots : <strong className="text-brand-gold">Fusionnelle</strong>,
                 <strong className="text-brand-gold"> Savoureuse</strong> et
                 <strong className="text-brand-gold"> Généreuse</strong>.
+                
+                Chaque plat que je crée raconte une histoire, mêlant traditions et modernité.
               </p>
               <p className='text-justify text-brand-earth-dark'>
-                Si vous voulez en savoir plus sur moi, découvrez-moi à travers mon pressbook en téléchargement cidessous.
-              </p>
+                Si vous souhaitez mieux me connaître, je vous invite à me découvrir à travers ma bio et mon pressbook, disponible en téléchargement ci-dessous.</p>
             </div>
 
           </div>

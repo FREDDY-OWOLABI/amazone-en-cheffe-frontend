@@ -44,9 +44,18 @@ const Team = () => {
     { id: 6, name: 'Sophie Bernard', role: 'Designer' },
   ];
 
-  const sponsors = [
-    { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 },
-    { id: 5 }, { id: 6 }, { id: 7 }, { id: 8 },
+  
+   const sponsors = [
+    "/assets/images/sponsors/logo-Plan-de-travail-1.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-2.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-3.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-4.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-5.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-6.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-7.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-8.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-9.png",
+    "/assets/images/sponsors/logo-Plan-de-travail-10.png",
   ];
 
   const testimonials = [
@@ -144,21 +153,22 @@ const Team = () => {
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {sponsors.map((sponsor: any) => (
+            {sponsors.map((logo, index) => (
               <div
-                key={sponsor.id}
+                key={index+ 1}
                 className="flex items-center justify-center p-4"
               >
                 <div className="w-full h-12 bg-transparent rounded flex items-center justify-center">
                   <img
-                    src="/assets/images/Google_2015_logo.svg_3png.png"
-                    alt="Google"
+                    src={logo}
+                    alt={`Sponsor ${index + 1}`}
                     className="w-full h-full"
                   />
                 </div>
 
               </div>
             ))}
+           
           </div>
         </div>
       </section>

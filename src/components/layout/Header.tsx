@@ -34,7 +34,7 @@ export const Header = () => {
   else if (location.pathname === "/team") {
     headerBgClass = "team-hero-section-bg";
   }
-  else if (location.pathname === "/support") {
+  else if (location.pathname === "/contribution") {
     headerBgClass = "support-hero-section-bg";
   }
 
@@ -50,11 +50,11 @@ export const Header = () => {
 
 
               {/* LEFT: Logo */}
-              <section  className="flex-shrink-0">
+              <section className="flex-shrink-0">
                 <Link to="/" className="flex-shrink-0 font-heading">
                   <img
                     src={
-                      location.pathname === "/support"
+                      location.pathname === "/contribution"
                         ? "/assets/images/KEITHSONONLogoblancPaysage.png"
                         : "/assets/images/KEITHSONONLogoofficielblancPaysage.png"
                     }
@@ -68,14 +68,15 @@ export const Header = () => {
 
                 {/* Navigation Bar */}
                 <nav className="py-3">
-                  <div className="w-full flex justify-center">
-                    <div className="inline-flex bg-or-degrade rounded-full px-6 py-2">
-                      <ul className="flex justify-center items-center gap-2 text-white text-sm">
+                  <div className="mx-auto w-full w-[48rem] flex justify-center bg-or-degrade rounded-full">
+
+                    <div className="inline-flex  px-6 py-2 ">
+                      <ul className="flex justify-center items-center gap-6 text-white text-[12px]">
                         <li>
                           <NavLink
                             to="/"
                             className={({ isActive }) =>
-                              isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : ' hover:text-brand-earth transition'
+                              isActive ? 'font-bold   bg-brand-earth-dark text-white  rounded-full py-2 px-4' : ' hover:text-brand-earth transition'
                             }
                           >
                             {t('nav.home')}
@@ -85,7 +86,7 @@ export const Header = () => {
                           <NavLink
                             to="/guinness-record"
                             className={({ isActive }) =>
-                              isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
+                              isActive ? 'font-bold  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
                             }
                           >
                             {t('nav.guinness')}
@@ -95,7 +96,7 @@ export const Header = () => {
                           <NavLink
                             to="/about"
                             className={({ isActive }) =>
-                              isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
+                              isActive ? 'font-bold   bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
                             }
                           >
                             {t('nav.about')}
@@ -105,7 +106,7 @@ export const Header = () => {
                           <NavLink
                             to="/news"
                             className={({ isActive }) =>
-                              isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
+                              isActive ? 'font-bold  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
                             }
                           >
                             {t('nav.news')}
@@ -115,7 +116,7 @@ export const Header = () => {
                           <NavLink
                             to="/team"
                             className={({ isActive }) =>
-                              isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : ' hover:text-brand-earth transition'
+                              isActive ? 'font-bold   bg-brand-earth-dark text-white  rounded-full py-2 px-4' : ' hover:text-brand-earth transition'
                             }
                           >
                             {t('nav.team')}
@@ -123,9 +124,9 @@ export const Header = () => {
                         </li>
                         <li>
                           <NavLink
-                            to="/support"
+                            to="/contribution"
                             className={({ isActive }) =>
-                              `flex items-center text-sm gap-2 border border-brand-earth-dark text-white  rounded-full py-1 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold bg-yellow-200 !text-brand-earth-dark  text-terre-afrique ' : 'hover:text-brand-earth transition'}`
+                              `flex items-center  gap-2 border border-brand-earth-dark text-white  rounded-full py-1 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold bg-yellow-200 !text-brand-earth-dark  text-terre-afrique ' : 'hover:text-brand-earth transition'}`
                             }
                           >
                             {t('nav.support')}
@@ -145,38 +146,38 @@ export const Header = () => {
 
               </section>
 
-              <section  className="flex items-center gap-2 flex-shrink-0">
+              <section className="flex items-center gap-2 flex-shrink-0">
 
-<div className="flex gap-6 ml-6">
-  <div className="inline-block">
-                {/* RIGHT: Progress Bar */}
-                <div className="flex gap-6 ml-6 ">
+                <div className="flex gap-6 ml-6">
                   <div className="inline-block">
-                    <ProgressBarCountdown />
-                  </div>
+                    {/* RIGHT: Progress Bar */}
+                    <div className="flex gap-6 ml-6 ">
+                      <div className="inline-block">
+                        <ProgressBarCountdown />
+                      </div>
 
-                  {location.pathname === "/support" && (
-                    <div className="inline-block">
+                      {location.pathname === "/contribution" && (
+                        <div className="inline-block">
 
-                      {/* <div className="inline-block">
+                          {/* <div className="inline-block">
                      <ProgressBarDonationCollected />
                   </div> 
                   */}
 
 
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-</div>
- <div className="inline-block">
-                {/* Right: Social + Language */}
-                <div className="flex items-center gap-4 ">
+                  </div>
+                  <div className="inline-block">
+                    {/* Right: Social + Language */}
+                    <div className="flex items-center gap-4 ">
 
-                  <GoogleTranslate />
-                </div>
-</div>
+                      <GoogleTranslate />
+                    </div>
+                  </div>
 
-</div>
+                </div>
               </section>
 
 
@@ -210,16 +211,16 @@ export const Header = () => {
                 />
               </Link>
 
-            
 
 
-               <div className="inline-block">
+
+              <div className="inline-block">
                 {/* Right:Language */}
                 <div className="flex items-center gap-4 ">
 
                   <GoogleTranslate />
                 </div>
-</div>
+              </div>
             </div>
           </div>
         </div>

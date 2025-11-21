@@ -11,7 +11,7 @@ export const ProgressBarCountdown = ({ className = "" }: ProgressBarCountdownPro
   const { t } = useTranslation();
   const location = useLocation();
 
-  const isSupport = location.pathname === "/support";
+  const isSupport = location.pathname === "/contribution";
 
   // Début et fin du marathon
   const start = "2025-12-01T00:00:00";

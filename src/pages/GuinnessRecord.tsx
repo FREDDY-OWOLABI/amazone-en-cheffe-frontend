@@ -45,7 +45,7 @@ const GuinnessRecord = () => {
 
             {/* CTA Box */}
             <div className="bg-gradient-to-r from-brand-gold to-brand-honey p-6 rounded-lg my-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <p className="text-white font-medium text-justify ">
+              <p className="text-white font-medium text-left">
                 Rejoignez-moi dans cette quête exceptionnelle : ensemble, écrivons une page mémorable du patrimoine
                 culinaire !
               </p>
