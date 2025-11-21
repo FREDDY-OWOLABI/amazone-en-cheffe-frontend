@@ -15,7 +15,7 @@ export const ProgressBarCountdown = ({ className = "" }: ProgressBarCountdownPro
 
   // Début et fin du marathon
   const start = "2025-12-01T00:00:00";
-  const end = "2025-12-16T00:00:00"; // 15 jours après
+  const end = "2025-12-01T00:00:00"; // 15 jours après
 
   const { daysLeft, progress } = useMarathonProgress(start, end);
 

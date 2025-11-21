@@ -86,9 +86,28 @@ export const Footer = ({ bgColor = "bg-brand-yellow-light" }: FooterProps) => {
       {/* Copyright */}
       <div className="py-4 border-t border-brand-earth/10">
         <div className="container mx-auto px-4 text-center text-sm text-brand-earth-dark/70">
-          {t('footer.copyright')} - Powered by Studio Enabloo
+          <a
+            href="https://agenceprocom.pro/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" hover:text-brand-earth-dark"
+          >
+            Powered by Agence PROCOM
+          </a>
+          {" "} - {" "}
+          <a
+            href="https://www.enabloo.com/us/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" hover:text-brand-earth-dark"
+          >
+            Designed by Studio Enabloo
+          </a>
         </div>
       </div>
+
+
+
     </footer>
   );
 };

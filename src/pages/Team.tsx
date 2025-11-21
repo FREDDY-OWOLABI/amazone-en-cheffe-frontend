@@ -39,9 +39,6 @@ const Team = () => {
     { id: 1, name: 'Alice Dupont', role: 'Chef de projet' },
     { id: 2, name: 'Jean Martin', role: 'Développeur' },
     { id: 3, name: 'Sophie Bernard', role: 'Designer' },
-    { id: 4, name: 'Alice Dupont', role: 'Chef de projet' },
-    { id: 5, name: 'Jean Martin', role: 'Développeur' },
-    { id: 6, name: 'Sophie Bernard', role: 'Designer' },
   ];
 
   
@@ -59,22 +56,10 @@ const Team = () => {
   ];
 
   const testimonials = [
-    { id: 1, name: 'Lucie', message: 'Super équipe !', location: 'Paris' },
-    { id: 2, name: 'Marc', message: 'Travail de qualité.', location: 'Lyon' },
-    { id: 3, name: 'Anna', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', location: 'Marseille' },
-    { id: 4, name: 'Lucie', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', location: 'Paris' },
-    { id: 5, name: 'Marc', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', location: 'Lyon' },
-    { id: 6, name: 'Anna', message: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, ', location: 'Marseille' },
-    { id: 7, name: 'Lucie', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', location: 'Paris' },
-    { id: 8, name: 'Marc', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', location: 'Lyon' },
-    { id: 9, name: 'Anna', message: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet', location: 'Marseille' },
-    { id: 1, name: 'Lucie', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', location: 'Paris' },
-    { id: 10, name: 'Marc', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', location: 'Lyon' },
-    { id: 11, name: 'Anna', message: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit', location: 'Marseille' },
-    { id: 12, name: 'Lucie', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', location: 'Paris' },
-    { id: 13, name: 'Marc', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', location: 'Lyon' },
-    { id: 14, name: 'Anna', message: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Marseille' },
-
+    { id: 1, name: 'Lucie', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua!', location: 'Paris' },
+    { id: 2, name: 'Marc', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', location: 'Bénin' },
+    { id: 3, name: 'Anna', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', location: 'Sénégal' },
+   
   ];
 
   return (
@@ -162,7 +147,7 @@ const Team = () => {
                   <img
                     src={logo}
                     alt={`Sponsor ${index + 1}`}
-                    className="w-full h-full"
+                    className="w-full h-auto"
                   />
                 </div>
 

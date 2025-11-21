@@ -25,7 +25,7 @@ const Index = () => {
               {/* PHOTO GAUCHE */}
               <div className="flex justify-start w-[38%] border-0 border-white">
                 <img
-                  src="/assets/images/cheffe-keith-home-profil.png"
+                  src="/assets/images/cheffe-keith-home-profilnew.png"
                   alt="Cheffe Keith Sonon"
                   className=" w-auto h-[21rem] rounded-t-full rounded-b-full"
                 />
@@ -97,7 +97,7 @@ const Index = () => {
               </div>
 
             </div>
- 
+
 
 
           </div>
@@ -116,14 +116,14 @@ const Index = () => {
             {/* Decorative circular background */}
             <div className="absolute inset-0 top-12 mx-auto w-[300px] h-96 overflow-hidden">
               <img
-                src="assets/images/cheffe-keith-home-profil.png"
+                src="assets/images/cheffe-keith-home-profilnew.png"
                 alt="Portrait de Keith Sonon"
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-full z-20 opacity-100 rounded-t-full rounded-b-full"
               />
             </div>
 
             <div className="relative z-10 w-full aspect-[3/2] bg-transparent rounded-t-full flex items-end justify-center">
-              <div className="text-center pb-12">
+              <div className="text-center pb-12 ">
 
 
               </div>
@@ -132,7 +132,7 @@ const Index = () => {
           </div>
         </div>
         <div className=" w-full bg-brand-yellow-light mb-[10px] border-0">
-          <div className=" mx-auto px-4 max-w-md pt-[100px] ">
+          <div className=" mx-auto px-4 max-w-md pt-[150px] mt-[500px] sm:mt-[0px] lg:mt-[0px] ">
 
             <h1 className="font-heading text-5xl text-brand-earth-dark  leading-tight mb-2 pt-6">
               Découvrez l'Amazone en Cheffe.<br />
@@ -248,6 +248,71 @@ const Index = () => {
           </div>
         </div>
       </motion.section>
+      {/* Section : Qu’est-ce que le Guinness World Records ? */}
+      <section className="bg-brand-yellow-light py-12">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+
+          {/* Logo */}
+          <div className="flex justify-center mb-6">
+            <img
+              src="/assets/images/guinness-logo.png"
+              alt="Guinness World Records"
+              className="w-[200px] h-auto border-0 border-black"
+            />
+          </div>
+
+          {/* Titre */}
+          <h2 className="text-brand-earth-dark font-heading text-3xl md:text-4xl mb-6">
+            QU’EST-CE QUE LE GUINNESS WORLD RECORDS ?
+          </h2>
+
+          {/* Texte */}
+          <div className="text-brand-earth-dark text-lg leading-relaxed text-justify space-y-4">
+
+            <p>
+              Le Guinness World Records, à l'origine le Guinness Book of Records,
+              référence ultime en matière de records, est né d'une idée de livre
+              regroupant des faits divers destinés à résoudre les disputes dans les pubs.
+            </p>
+
+            <p>
+              L'idée est née au début des années 1950, lorsque Sir Hugh Beaver
+              (1890-1967), Directeur Général de la brasserie Guinness, a participé à une
+              partie de chasse dans le comté de Wexford. Là, lui et ses hôtes se sont
+              disputés au sujet de l'oiseau gibier* le plus rapide d'Europe et n'ont
+              trouvé aucune réponse dans les ouvrages de référence.
+            </p>
+
+            <p>
+              En 1954, se souvenant de cette dispute, Sir Hugh eut l'idée d'une promotion
+              Guinness basée sur la résolution des disputes dans les pubs et invita les
+              jumeaux Norris (1925-2004) et Ross McWhirter (1925-75), chercheurs spécialisés
+              dans la collecte d'informations à Fleet Street, à compiler un livre de faits
+              et de chiffres.
+            </p>
+
+            <p>
+              Guinness Superlatives fut constituée le 30 novembre et ouvrit ses bureaux au
+              dernier étage du Ludgate House, au 107 Fleet Street. Après une intense phase
+              de recherche, l’écriture du livre commença : 13 semaines et demie de 90 heures
+              de travail par semaine, week-ends compris.
+            </p>
+
+            <p>
+              Les McWhirter étaient loin de se douter que ce livre deviendrait l’un des
+              best-sellers les plus connus au monde, ainsi qu’une marque internationale
+              parmi les plus fiables.
+            </p>
+
+            <p className="text-sm italic">
+              *Bien que le livre ne réponde jamais à la question initiale, le harle huppé
+              serait la réponse la plus probable.
+            </p>
+
+          </div>
+
+        </div>
+      </section>
 
 
       <section className="bg-brand-yellow-light pb-12">
