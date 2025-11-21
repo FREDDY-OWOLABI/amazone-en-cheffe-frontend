@@ -132,9 +132,9 @@ const Index = () => {
           </div>
         </div>
         <div className=" w-full bg-brand-yellow-light mb-[10px] border-0">
-          <div className=" mx-auto px-4 max-w-md pt-[150px] mt-[500px] sm:mt-[0px] lg:mt-[0px] ">
+          <div className=" mx-auto px-4 max-w-md pt-[100px]  ">
 
-            <h1 className="font-heading text-5xl text-brand-earth-dark  leading-tight mb-2 pt-6">
+            <h1 className="font-heading text-5xl text-brand-earth-dark  leading-tight mb-2 pt-6 mt-[80px] sm:mt-[0px] lg:mt-[0px]">
               Découvrez l'Amazone en Cheffe.<br />
 
             </h1>
