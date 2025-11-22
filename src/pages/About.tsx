@@ -6,12 +6,263 @@ import { ButtonOutline } from '@/components/ui/ButtonOutline';
 import { motion } from 'framer-motion';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
+import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
+
+// Composant Modal Lightbox
+const ImageLightbox = ({ 
+  images, 
+  currentIndex, 
+  onClose, 
+  onPrevious, 
+  onNext 
+}) => {
+  const [zoom, setZoom] = useState(1);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const imageRef = useRef(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') onPrevious();
+      if (e.key === 'ArrowRight') onNext();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [onClose, onPrevious, onNext]);
+
+  const handleZoomIn = () => {
+    setZoom(prev => Math.min(prev + 0.5, 3));
+  };
+
+  const handleZoomOut = () => {
+    const newZoom = Math.max(zoom - 0.5, 1);
+    setZoom(newZoom);
+    if (newZoom === 1) {
+      setPosition({ x: 0, y: 0 });
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    if (zoom > 1) {
+      setIsDragging(true);
+      setDragStart({
+        x: e.clientX - position.x,
+        y: e.clientY - position.y
+      });
+      e.preventDefault();
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    if (isDragging && zoom > 1) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleWheel = (e) => {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      handleZoomIn();
+    } else {
+      handleZoomOut();
+    }
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isDragging, dragStart, position]);
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = images[currentIndex];
+    link.download = `image-${currentIndex + 1}.jpg`;
+    link.click();
+  };
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current?.requestFullscreen();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  };
+
+  useEffect(() => {
+    setZoom(1);
+    setPosition({ x: 0, y: 0 });
+  }, [currentIndex]);
+
+  return (
+    <div 
+      ref={containerRef}
+      className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+      onClick={onClose}
+    >
+      {/* Toolbar */}
+      <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center bg-gradient-to-b from-black/50 to-transparent z-10">
+        <div className="text-white font-medium">
+          {currentIndex + 1} / {images.length}
+        </div>
+        
+        <div className="flex gap-2">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleZoomOut();
+            }}
+            className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+            disabled={zoom <= 1}
+          >
+            <ZoomOut className="w-5 h-5" />
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleZoomIn();
+            }}
+            className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+            disabled={zoom >= 3}
+          >
+            <ZoomIn className="w-5 h-5" />
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDownload();
+            }}
+            className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+          >
+            <Download className="w-5 h-5" />
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFullscreen();
+            }}
+            className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+          >
+            <Maximize2 className="w-5 h-5" />
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Navigation Buttons */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onPrevious();
+        }}
+        className="absolute left-4 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors z-10"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onNext();
+        }}
+        className="absolute right-4 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors z-10"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* Image */}
+      <div 
+        className="w-screen h-screen flex items-center justify-center overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+        onWheel={handleWheel}
+      >
+        <img
+          ref={imageRef}
+          src={images[currentIndex]}
+          alt={`Image ${currentIndex + 1}`}
+          className="h-screen w-auto object-contain transition-transform duration-300 select-none"
+          style={{ 
+            transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
+            maxWidth: zoom > 1 ? 'none' : '100vw',
+            cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
+          }}
+          onMouseDown={handleMouseDown}
+          draggable={false}
+        />
+      </div>
+
+      {/* Thumbnails */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
+        <div className="flex gap-2 justify-center overflow-x-auto">
+          {images.map((img, index) => (
+            <button
+              key={index}
+              onClick={(e) => {
+                e.stopPropagation();
+                onNext(index - currentIndex);
+              }}
+              className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                index === currentIndex 
+                  ? 'border-white scale-110' 
+                  : 'border-transparent opacity-60 hover:opacity-100'
+              }`}
+            >
+              <img
+                src={img}
+                alt={`Thumbnail ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 
 
-
+// Composant Carousel principal
 const Carousel = ({ images, progress, setProgress }) => {
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, containScroll: 'trimSnaps' },
     [Autoplay({ delay: 3000 })]
@@ -24,6 +275,29 @@ const Carousel = ({ images, progress, setProgress }) => {
     if (loadedCount.current === images.length) {
       setImagesLoaded(true);
     }
+  };
+
+  const openLightbox = (index) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+    emblaApi?.plugins()?.autoplay?.stop();
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    emblaApi?.plugins()?.autoplay?.play();
+  };
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? images.length - 1 : prev - 1
+    );
+  };
+
+  const goToNext = (offset = 1) => {
+    setCurrentImageIndex((prev) => 
+      (prev + offset + images.length) % images.length
+    );
   };
 
   useEffect(() => {
@@ -47,27 +321,44 @@ const Carousel = ({ images, progress, setProgress }) => {
       emblaApi.off("scroll", update);
       emblaApi.off("select", update);
     };
-  }, [emblaApi]);
+  }, [emblaApi, setProgress]);
 
   return (
-    <div ref={emblaRef} className="overflow-hidden">
-      <div className="flex gap-4 flex-nowrap px-2">
-        {images.map((img, index) => (
-          <div
-            key={index}
-            className="flex-[0_0_50%] md:flex-[0_0_33.33%] rounded-2xl overflow-hidden"
-          >
-            <div className="aspect-[3/4] w-full">
-              <img
-                src={img}
-                className="w-full h-full object-cover"
-                onLoad={handleImageLoad}
-              />
+    <>
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="flex gap-4 flex-nowrap px-2">
+          {images.map((img, index) => (
+            <div
+              key={index}
+              className="flex-[0_0_50%] md:flex-[0_0_33.33%] rounded-2xl overflow-hidden cursor-pointer group relative"
+              onClick={() => openLightbox(index)}
+            >
+              <div className="aspect-[3/4] w-full relative">
+                <img
+                  src={img}
+                  alt={`Gallery image ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  onLoad={handleImageLoad}
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                  <ZoomIn className="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+
+      {lightboxOpen && (
+        <ImageLightbox
+          images={images}
+          currentIndex={currentImageIndex}
+          onClose={closeLightbox}
+          onPrevious={goToPrevious}
+          onNext={goToNext}
+        />
+      )}
+    </>
   );
 };
 

@@ -39,7 +39,7 @@ export const Footer = ({ bgColor = "bg-brand-yellow-light" }: FooterProps) => {
       <div className="mb-[50px] flex flex-col md:flex-row md:items-center md:gap-10 md:justify-center">
 
         {/* Titre */}
-        <h2 className="text-brand-earth-dark font-semibold text-[14px]  md:text-[18px] uppercase tracking-wider font-crispy-bake mb-6 md:mb-0 whitespace-nowrap">
+        <h2 className="text-brand-earth-dark font-semibold text-[14px]  md:text-[18px] text-center w-full md:text-left md:w-auto  uppercase tracking-wider font-crispy-bake mb-6 md:mb-0 whitespace-nowrap">
           PARTENAIRES OFFICIELS
         </h2>
 
