@@ -74,7 +74,7 @@ export const Header = () => {
                   <div className="mx-auto w-full w-[48rem] flex justify-center bg-or-degrade rounded-full">
 
                     <div className="inline-flex  px-6 py-2 ">
-                      <ul className="flex justify-center items-center gap-6 text-white text-[12px]">
+                      <ul className="flex justify-center items-center gap-4 text-white text-[10px]">
                         <li>
                           <NavLink
                             to="/"

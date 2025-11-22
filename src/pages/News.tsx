@@ -14,13 +14,7 @@ const News = () => {
     { id: 1, category: "SORTIE", title: "Titre de l'article 1", excerpt: "Extrait de l'article 1", slug: "article-1" },
     { id: 2, category: "INTERVIEW", title: "Titre de l'article 2", excerpt: "Extrait de l'article 2", slug: "article-2" },
     { id: 3, category: "PRESSE", title: "Titre de l'article 3", excerpt: "Extrait de l'article 3", slug: "article-3" },
-    { id: 4, category: "SORTIE", title: "Titre de l'article 4", excerpt: "Extrait de l'article 4", slug: "article-4" },
-    { id: 5, category: "INTERVIEW", title: "Titre de l'article 5", excerpt: "Extrait de l'article 5", slug: "article-5" },
-    { id: 6, category: "PRESSE", title: "Titre de l'article 6", excerpt: "Extrait de l'article 6", slug: "article-6" },
-    { id: 7, category: "INTERVIEW", title: "Titre de l'article 7", excerpt: "Extrait de l'article 7", slug: "article-7" },
-    { id: 5, category: "SORTIE", title: "Titre de l'article 8", excerpt: "Extrait de l'article 8", slug: "article-8" },
-    { id: 9, category: "INTERVIEW", title: "Titre de l'article 9", excerpt: "Extrait de l'article 9", slug: "article-9" },
-
+   
 
 
 

@@ -1,6 +1,9 @@
 // src/components/layout/GoogleTranslate.tsx
 
 import { useEffect } from "react";
+import "country-flag-icons/react/3x2";
+import { FR, GB } from "country-flag-icons/react/3x2";
+
 
 export const GoogleTranslate = () => {
     useEffect(() => {
@@ -42,11 +45,12 @@ export const GoogleTranslate = () => {
             <div className="flex flex-row items-center gap-2">
 
                 <button onClick={() => doGTranslate("fr|fr")}>
-                    <img src="/assets/images/france-flag.png" className="w-6" alt="Français" />
+                   
+                    <FR className="w-6 h-4" />
                 </button>
 
                 <button onClick={() => doGTranslate("fr|en")}>
-                    <img src="/assets/images/anglais-flag.png" className="w-6" alt="English" />
+                    <GB className="w-6 h-4" />
                 </button>
 
             </div>
