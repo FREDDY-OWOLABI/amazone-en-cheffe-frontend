@@ -10,33 +10,15 @@ import { ButtonSecondary } from '@/components/ui/ButtonSecondary';
 import { motion } from 'framer-motion';
 import ProgressBarDonationCollected from '@/components/layout/ProgressBarDonationCollected';
 import { DONATION_TARGET, contributors } from '@/constants/donation';
+import { needs } from '@/constants/need';
 import { AmountModal } from '@/components/modals/AmountModal';
 import { NeedsModal } from '@/components/modals/NeedsModal';
 
-const needs = [
-  { icon: "/assets/images/Flame.svg", label: "Location du Palais des Congrès (site et aménagements)", obsolete: "non", price: 50000 },
-  { icon: "/assets/images/Flame.svg", label: "Construction des box de cuisine & équipements spécialisés", obsolete: "non", price: 50000 },
-  { icon: "/assets/images/Flame.svg", label: "Location stands, tables, chaises, barrières, toilettes portables", obsolete: "non", price: 40000 },
-  { icon: "/assets/images/Flame.svg", label: "Electricité, eau, nettoyage du site", obsolete: "non", price: 30000 },
-  { icon: "/assets/images/Flame.svg", label: "Produits alimentaires & boissons", obsolete: "non", price: 160000 },
-  { icon: "/assets/images/Flame.svg", label: "Transport & distribution de plus de 20 000 repas", obsolete: "non", price: 40000 },
-  { icon: "/assets/images/Flame.svg", label: "Hôtesses d'accueil & personnel de soutien", obsolete: "non", price: 30000 },
-  { icon: "/assets/images/Flame.svg", label: "Divers liés à la restauration", obsolete: "non", price: 20000 },
-  { icon: "/assets/images/Flame.svg", label: "Branding du site (bannières, kakémonos, signalétique)", obsolete: "non", price: 30000 },
-  { icon: "/assets/images/Flame.svg", label: "Publicité digitale & influenceurs", obsolete: "non", price: 200000 },
-  { icon: "/assets/images/Flame.svg", label: "Captation vidéo, photos, streaming", obsolete: "non", price: 80000 },
-  { icon: "/assets/images/Flame.svg", label: "Impressions (badges, tee-shirts, dossiers)", obsolete: "non", price: 50000 },
-  { icon: "/assets/images/Flame.svg", label: "DJ, sonorisation & lumières", obsolete: "non", price: 25000 },
-  { icon: "/assets/images/Flame.svg", label: "Prestation d'artistes & animations annexes", obsolete: "non", price: 70000 },
-  { icon: "/assets/images/Flame.svg", label: "Forfait médical, physique & moral (suivi de la cheffe et de l'équipe)", obsolete: "non", price: 20000 },
-  { icon: "/assets/images/Flame.svg", label: "Sécurité (police, pompiers, vigiles)", obsolete: "non", price: 25000 },
-  { icon: "/assets/images/Flame.svg", label: "Assurance & accompagnement santé additionnel", obsolete: "non", price: 50000 },
-  { icon: "/assets/images/Flame.svg", label: "Frais Guinness (certification, homologation)", obsolete: "non", price: 30000 },
-];
+
 
 const Support = () => {
   const { t } = useTranslation();
-  
+
   // États pour les modales
   const [showAmountModal, setShowAmountModal] = useState(false);
   const [showNeedsModal, setShowNeedsModal] = useState(false);
@@ -136,7 +118,7 @@ const Support = () => {
                 <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-donate">
                   {t('support.donate_title')}
                 </h2>
-                
+
                 <div className="mb-6">
                   <div className="w-full bg-white text-center text-brand-earth-dark px-4 py-6 my-3 rounded-lg">
                     <button
@@ -151,18 +133,37 @@ const Support = () => {
                     Les besoins de la Cheffe
                   </h2>
 
+
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
                     {needs.map((need, index) => (
-                      <label key={index} className="flex items-center gap-2 cursor-pointer">
-                        <img className="w-5 h-5" src={need.icon} alt="" />
-                        {need.obsolete === "oui" ? (
-                          <s className="text-sm text-gray-400">{need.label}</s>
-                        ) : (
-                          <span className="text-sm">{need.label}</span>
-                        )}
-                      </label>
+                      <div key={index} className="relative group">
+
+                        <label className="flex items-center gap-2 cursor-pointer">
+                          <img className="w-5 h-5" src={need.icon} alt="" />
+
+                          {need.obsolete === "oui" ? (
+                            <s className="text-sm text-gray-400">{need.label}</s>
+                          ) : (
+                            <span className="text-sm">{need.label}</span>
+                          )}
+                        </label>
+
+                        {/* Tooltip */}
+                        <div className="
+        absolute left-0 top-6 z-20
+        hidden group-hover:block
+        w-64
+        bg-white text-brand-earth-dark text-xs
+        p-3 rounded-lg shadow-lg
+        animate-fade-in
+      ">
+                          {need.description}
+                        </div>
+                      </div>
                     ))}
                   </div>
+
                 </div>
 
                 <ButtonSecondary
@@ -241,13 +242,13 @@ const Support = () => {
       </section>
 
       {/* Modales */}
-      <AmountModal 
-        isOpen={showAmountModal} 
-        onClose={() => setShowAmountModal(false)} 
+      <AmountModal
+        isOpen={showAmountModal}
+        onClose={() => setShowAmountModal(false)}
       />
 
-      <NeedsModal 
-        isOpen={showNeedsModal} 
+      <NeedsModal
+        isOpen={showNeedsModal}
         onClose={() => setShowNeedsModal(false)}
         needs={needs}
       />
