@@ -84,7 +84,7 @@ const GuinnessRecord = () => {
               pour vivre chaque instant de cette aventure exceptionnelle. Ensemble, écrivons l’histoire.
             </p>
 
-            <p className='text-justify text-brand-earth-dark text-lg md:text-xl'>         
+            <p className='text-justify text-brand-earth-dark text-lg md:text-xl'>
               Chaque plat servi durant ce marathon sera une ode à la passion et à l’amour de la cuisine. Cette épreuve,
               aussi physique qu’émotionnelle, incarne ma vision d’une cuisine engagée et sans frontières. Votre
               soutien, qu’il soit un like, un message ou une présence, sera mon plus grand carburant. Merci de faire
@@ -126,7 +126,6 @@ const GuinnessRecord = () => {
             Suivez l’avancée du marathon ici.
           </p>
 
-         
 
 
 
@@ -134,52 +133,53 @@ const GuinnessRecord = () => {
 
 
 
-{/* Timeline Visualization */}
-<div className="relative max-w-4xl mx-auto ">
-  {/* Horizontal line */}
-  <div className="absolute top-1/2 left-0 right-0 h-1 bg-brand-earth-dark -translate-y-1/2 hidden md:block" />
 
-  <div className="relative flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
-    {/* Start Point */}
-    <div className="relative z-10 text-center group">
-      <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4 cursor-pointer" />
-      {/* Tooltip */}
-      <div className="absolute w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 text-brand-earth-dark bg-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ">
-        Début du Marathon (0%)
-        </div>
-      <p className="text-sm font-medium text-brand-earth-dark">Début du Marathon (0%)</p>
-      <p className="text-xs text-brand-earth-dark/70">Décembre 2025</p>
-    </div>
+          {/* Timeline Visualization */}
+          <div className="relative max-w-4xl mx-auto ">
+            {/* Horizontal line */}
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-brand-earth-dark -translate-y-1/2 hidden md:block" />
 
-    {/* Middle Points */}
+            <div className="relative flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
+              {/* Start Point */}
+              <div className="relative z-10 text-center group">
+                <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4 cursor-pointer" />
+                {/* Tooltip */}
+                <div className="absolute w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 text-brand-earth-dark bg-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ">
+                  Début du Marathon (0%)
+                </div>
+                <p className="text-sm font-medium text-brand-earth-dark">Début du Marathon (0%)</p>
+                <p className="text-xs text-brand-earth-dark/70">Décembre 2025</p>
+              </div>
 
-    {/* Middle Points */}
-    {Array.from({ length: 4 }).map((_, i) => {
-      const percent = Math.round(((i + 1) * 100) / 5); // 5 = nombre total de points - 1 pour inclure début/fin
-      return (
-        <div key={i} className="relative z-10 group text-center">
-          <div className="bg-brand-earth-dark w-6 h-6 rounded-full mx-auto cursor-pointer" />
-          <div className="absolute w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 text-brand-earth-dark bg-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            Point {i + 1} - {percent}%
+              {/* Middle Points */}
+
+              {/* Middle Points */}
+              {Array.from({ length: 4 }).map((_, i) => {
+                const percent = Math.round(((i + 1) * 100) / 5); // 5 = nombre total de points - 1 pour inclure début/fin
+                return (
+                  <div key={i} className="relative z-10 group text-center">
+                    <div className="bg-brand-earth-dark w-6 h-6 rounded-full mx-auto cursor-pointer" />
+                    <div className="absolute w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 text-brand-earth-dark bg-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                      Point {i + 1} - {percent}%
+                    </div>
+                    <p className="text-sm font-medium text-brand-earth-dark">Point {i + 1} ({percent}%)</p>
+                  </div>
+                );
+              })}
+
+
+
+
+              {/* End Point */}
+              <div className="relative z-10 text-center group">
+                <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4 cursor-pointer" />
+                <div className="absolute  w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 bg-brand-earth-dark text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ">
+                  Fin du Marathon (100%)
+                </div>
+                <p className="text-sm font-medium text-brand-earth-dark">Fin du Marathon</p>
+              </div>
+            </div>
           </div>
-          <p className="text-sm font-medium text-brand-earth-dark">Point {i + 1} ({percent}%)</p>
-        </div>
-      );
-    })}
-
-
-  
-
-    {/* End Point */}
-    <div className="relative z-10 text-center group">
-      <div className="bg-brand-gold w-8 h-8 rounded-full border-4 border-brand-earth-dark mx-auto mb-4 cursor-pointer" />
-      <div className="absolute  w-40 h-auto bottom-full mb-2 left-1/2 -translate-x-1/2 bg-brand-earth-dark text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ">
-        Fin du Marathon (100%)
-      </div>
-      <p className="text-sm font-medium text-brand-earth-dark">Fin du Marathon</p>
-    </div>
-  </div>
-</div>
 
 
 

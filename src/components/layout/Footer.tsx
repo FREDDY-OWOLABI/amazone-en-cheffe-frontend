@@ -7,6 +7,10 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import {
+  sponsors,
+} from "@/constants/sponsors.ts";
+
 
 interface FooterProps {
   bgColor?: string;
@@ -15,18 +19,6 @@ interface FooterProps {
 export const Footer = ({ bgColor = "bg-brand-yellow-light" }: FooterProps) => {
   const { t } = useTranslation();
 
-  const sponsors = [
-    "/assets/images/sponsors/logo-Plan-de-travail-1.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-2.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-3.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-4.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-5.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-6.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-7.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-8.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-9.png",
-    "/assets/images/sponsors/logo-Plan-de-travail-10.png",
-  ];
 
   return (
     <footer className={`${bgColor}`}>

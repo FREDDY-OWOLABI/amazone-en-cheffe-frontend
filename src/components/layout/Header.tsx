@@ -33,6 +33,9 @@ export const Header = () => {
   }
   else if (location.pathname === "/team") {
     headerBgClass = "team-hero-section-bg";
+  } 
+  else if (location.pathname === "/ressources") {
+    headerBgClass = "team-hero-section-bg";
   }
   else if (location.pathname === "/contribution") {
     headerBgClass = "support-hero-section-bg";
@@ -120,6 +123,16 @@ export const Header = () => {
                             }
                           >
                             {t('nav.team')}
+                          </NavLink>
+                        </li>
+                                                <li>
+                          <NavLink
+                            to="/ressources"
+                            className={({ isActive }) =>
+                              isActive ? 'font-bold   bg-brand-earth-dark text-white  rounded-full py-2 px-4' : ' hover:text-brand-earth transition'
+                            }
+                          >
+                            Ressources
                           </NavLink>
                         </li>
                         <li>

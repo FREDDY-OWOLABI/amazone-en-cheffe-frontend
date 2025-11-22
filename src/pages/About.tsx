@@ -1,15 +1,110 @@
 import { useTranslation } from 'react-i18next';
 import { Layout } from '@/components/layout/Layout';
 import { Download, Play } from 'lucide-react';
-import { useState } from "react";
+import { useState, useEffect, useRef } from 'react';
 import { ButtonOutline } from '@/components/ui/ButtonOutline';
 import { motion } from 'framer-motion';
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
+
+
+
+
+const Carousel = ({ images, progress, setProgress }) => {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, containScroll: 'trimSnaps' },
+    [Autoplay({ delay: 3000 })]
+  );
+
+  const loadedCount = useRef(0);
+
+  const handleImageLoad = () => {
+    loadedCount.current += 1;
+    if (loadedCount.current === images.length) {
+      setImagesLoaded(true);
+    }
+  };
+
+  useEffect(() => {
+    if (!imagesLoaded) return;
+    emblaApi?.reInit();
+  }, [imagesLoaded, emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const update = () => {
+      const p = emblaApi.scrollProgress();
+      setProgress(p);
+    };
+
+    emblaApi.on("scroll", update);
+    emblaApi.on("select", update);
+    update();
+
+    return () => {
+      emblaApi.off("scroll", update);
+      emblaApi.off("select", update);
+    };
+  }, [emblaApi]);
+
+  return (
+    <div ref={emblaRef} className="overflow-hidden">
+      <div className="flex gap-4 flex-nowrap px-2">
+        {images.map((img, index) => (
+          <div
+            key={index}
+            className="flex-[0_0_50%] md:flex-[0_0_33.33%] rounded-2xl overflow-hidden"
+          >
+            <div className="aspect-[3/4] w-full">
+              <img
+                src={img}
+                className="w-full h-full object-cover"
+                onLoad={handleImageLoad}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const About = () => {
   const { t } = useTranslation();
   const [isDownloading, setIsDownloading] = useState(false);
-  const images = [1, 2, 3, 4];
+  const [progress, setProgress] = useState(0);
+
+
+  const images = [
+    "/assets/images/galerie/VISUELOFFICIELKEITH.png",
+    "/assets/images/galerie/APPEL.png",
+    "/assets/images/galerie/MEDIA.png",
+
+    "/assets/images/galerie/IMG_2457.JPG",
+    "/assets/images/galerie/Promohashtag.png",
+    "/assets/images/galerie/IMG_3970.JPG",
+    "/assets/images/galerie/SECURITE.png",
+    "/assets/images/galerie/JU9A1559.jpg",
+    "/assets/images/galerie/Eau2.png",
+    "/assets/images/galerie/JU9A1700.jpg",
+    "/assets/images/galerie/CONSTRUCTION.png",
+    "/assets/images/galerie/JU9A1861.jpg",
+    "/assets/images/galerie/BOXREPOS.png",
+    "/assets/images/galerie/JU9A1931.jpg",
+
+    "/assets/images/galerie/COMMUNIQUE.png",
+
+    "/assets/images/galerie/EAU.png",
+
+
+  ];
   const videos = [1, 2, 3, 4];
+
+
+
+
   const handleDownload = async () => {
     try {
       setIsDownloading(true);
@@ -75,20 +170,20 @@ const About = () => {
             <div className="space-y-4">
               <p className='text-justify text-brand-earth-dark'>
                 Je m’appelle<strong> Keith SONON </strong> et je suis une cheffe d’origine béninoise.
-                Portée par une passion profonde pour la cuisine et une grande ambition, 
+                Portée par une passion profonde pour la cuisine et une grande ambition,
                 j’ai décidé de repousser mes propres frontières.
               </p>
               <p className='text-justify text-brand-earth-dark'>
                 Aujourd’hui, je me lance dans un défi historique : battre le Record mondial Guinness du plus long marathon culinaire.
                 Tout en moi me dit que j'ai toutes les chances d'y arriver.
 
-                
+
               </p>
               <p className='text-justify text-brand-earth-dark'>
                 Ma cuisine s’incarne en trois mots : <strong className="text-brand-gold">Fusionnelle</strong>,
                 <strong className="text-brand-gold"> Savoureuse</strong> et
                 <strong className="text-brand-gold"> Généreuse</strong>.
-                
+
                 Chaque plat que je crée raconte une histoire, mêlant traditions et modernité.
               </p>
               <p className='text-justify text-brand-earth-dark'>
@@ -154,26 +249,19 @@ const About = () => {
               Galerie média
             </h2>
 
-            {/* Photos Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-8  md:mt-16 mt-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="aspect-video p-0 rounded-2xl overflow-hidden bg-gray-300 cursor-pointer hover:scale-105 transition-transform duration-300"
-                >
-                  <img
-                    src="/assets/images/galerie-media-aspect-img.png"
-                    alt={`Image ${i}`}
-                    className="w-full h-full object-cover block relative left-[-1px]"
-                  />
-                </div>
-              ))}
-            </div>
+
+
+            {/* Carousel */}
+
+            <Carousel images={images} progress={progress} setProgress={setProgress} />
+
+
 
             {/* Photos Progress Bar */}
-            <div className="mb-12 px-[20%]">
+            <div className="mt-12 mb-12 px-[20%]">
               <div className="h-1 w-full bg-white/80 rounded relative overflow-hidden">
-                <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"></div>
+                <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"
+                  style={{ width: `${progress * 100}%` }}></div>
               </div>
             </div>
 

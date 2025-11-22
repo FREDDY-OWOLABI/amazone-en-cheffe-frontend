@@ -79,6 +79,13 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         >
           {t('nav.team')}
         </Link>
+                <Link 
+          to="/ressources" 
+          onClick={onClose}
+          className="hover:text-brand-gold transition"
+        >
+           Ressources
+        </Link>
         
         {/* Support Button with Heart */}
         <Link 
