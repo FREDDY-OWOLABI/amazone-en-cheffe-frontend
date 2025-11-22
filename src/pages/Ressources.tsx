@@ -1,8 +1,13 @@
 import { Layout } from "@/components/layout/Layout";
-import { Download } from "lucide-react";
+import { Download, FileText, Book, Briefcase, Image } from "lucide-react";
 import { useState } from "react";
 
-const Ressources = () => {
+interface RessourcesProps {
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
+
+const Ressources = ({ hideHeader = false, hideFooter = false }: RessourcesProps) => {
   const [downloadingBio, setDownloadingBio] = useState(false);
   const [downloadingBrandBook, setDownloadingBrandBook] = useState(false);
   const [downloadingPressbook, setDownloadingPressbook] = useState(false);
@@ -28,8 +33,63 @@ const Ressources = () => {
     }
   };
 
+  const resources = [
+    {
+      id: "bio",
+      icon: FileText,
+      title: "Biographie — Cheffe Keith",
+      description: "Parcours et histoire complète",
+      path: "/assets/ressources/biographie-keith.pdf",
+      filename: "biographie-keith.pdf",
+      isLoading: downloadingBio,
+      setLoading: setDownloadingBio,
+      buttonText: "Télécharger le PDF",
+      color: "bg-amber-50",
+      iconColor: "text-amber-600"
+    },
+    {
+      id: "brandbook",
+      icon: Book,
+      title: "Brand Book — Identité visuelle",
+      description: "Charte graphique et directives",
+      path: "/assets/ressources/brandbook-keith.pdf",
+      filename: "brandbook-keith.pdf",
+      isLoading: downloadingBrandBook,
+      setLoading: setDownloadingBrandBook,
+      buttonText: "Télécharger le PDF",
+      color: "bg-orange-50",
+      iconColor: "text-orange-600"
+    },
+    {
+      id: "pressbook",
+      icon: Briefcase,
+      title: "Pressbook — Cheffe Keith",
+      description: "Dossier de presse complet",
+      path: "/assets/ressources/pressbook-keith.pdf",
+      filename: "pressbook-keith.pdf",
+      isLoading: downloadingPressbook,
+      setLoading: setDownloadingPressbook,
+      buttonText: "Télécharger le PDF",
+      color: "bg-yellow-50",
+      iconColor: "text-yellow-600"
+    },
+    {
+      id: "logos",
+      icon: Image,
+      title: "Logos — Toutes versions",
+      description: "Fichiers vectoriels et PNG",
+      path: "/logos/logoskeithsonon.zip",
+      filename: "keith-logos.zip",
+      isLoading: downloadingLogos,
+      setLoading: setDownloadingLogos,
+      buttonText: "Télécharger le pack ZIP",
+      color: "bg-lime-50",
+      iconColor: "text-lime-600"
+    }
+  ];
+
   return (
-    <Layout>
+    <Layout hideHeader={hideHeader} hideFooter={hideFooter}>
       {/* Hero */}
       <section className="bg-brand-earth-dark team-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">
@@ -48,150 +108,66 @@ const Ressources = () => {
         </div>
       </section>
 
-      {/* Download Section */}
-      <section className="py-20 container mx-auto px-4 max-w-4xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {/* Download Section avec vignettes */}
+      <section className="py-20 container mx-auto px-4 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {resources.map((resource) => {
+            const Icon = resource.icon;
+            return (
+              <div
+                key={resource.id}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+              >
+                {/* Vignette visuelle */}
+                <div className={`${resource.color} h-40 flex items-center justify-center relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"></div>
+                  <Icon 
+                    className={`w-20 h-20 ${resource.iconColor} group-hover:scale-110 transition-transform duration-300`} 
+                    strokeWidth={1.5} 
+                  />
+                </div>
 
-          {/* BIOGRAPHIE */}
-          <div className="bg-brand-earth-dark rounded-2xl p-8 text-white flex flex-col items-center shadow-lg">
-            <h3 className="text-2xl font-heading text-brand-gold mb-4 text-center">
-              Biographie — Cheffe Keith
-            </h3>
+                {/* Contenu */}
+                <div className="p-6">
+                  <h3 className="text-lg font-heading text-brand-earth-dark mb-2 text-center">
+                    {resource.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm text-center mb-4">
+                    {resource.description}
+                  </p>
 
-            <button
-              onClick={() =>
-                downloadFile(
-                  "/assets/ressources/biographie-keith.pdf",
-                  "biographie-keith.pdf",
-                  setDownloadingBio
-                )
-              }
-              disabled={downloadingBio}
-              className={`mt-4 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition ${
-                downloadingBio
-                  ? "bg-white/30 cursor-not-allowed"
-                  : "bg-brand-gold text-brand-earth-dark hover:bg-white"
-              }`}
-            >
-              {downloadingBio ? (
-                <>
-                  <span className="w-4 h-4 border-2 border-brand-earth-dark border-t-transparent rounded-full animate-spin"></span>
-                  Téléchargement...
-                </>
-              ) : (
-                <>
-                  <Download className="w-5 h-5" />
-                  Télécharger le PDF
-                </>
-              )}
-            </button>
-          </div>
-
-          {/* BRAND BOOK */}
-          <div className="bg-brand-earth-dark rounded-2xl p-8 text-white flex flex-col items-center shadow-lg">
-            <h3 className="text-2xl font-heading text-brand-gold mb-4 text-center">
-              Brand Book — Identité visuelle
-            </h3>
-
-            <button
-              onClick={() =>
-                downloadFile(
-                  "/assets/ressources/brandbook-keith.pdf",
-                  "brandbook-keith.pdf",
-                  setDownloadingBrandBook
-                )
-              }
-              disabled={downloadingBrandBook}
-              className={`mt-4 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition ${
-                downloadingBrandBook
-                  ? "bg-white/30 cursor-not-allowed"
-                  : "bg-brand-gold text-brand-earth-dark hover:bg-white"
-              }`}
-            >
-              {downloadingBrandBook ? (
-                <>
-                  <span className="w-4 h-4 border-2 border-brand-earth-dark border-t-transparent rounded-full animate-spin"></span>
-                  Téléchargement...
-                </>
-              ) : (
-                <>
-                  <Download className="w-5 h-5" />
-                  Télécharger le PDF
-                </>
-              )}
-            </button>
-          </div>
-
-          {/* PRESSBOOK */}
-          <div className="bg-brand-earth-dark rounded-2xl p-8 text-white flex flex-col items-center shadow-lg">
-            <h3 className="text-2xl font-heading text-brand-gold mb-4 text-center">
-              Pressbook — Cheffe Keith
-            </h3>
-
-            <button
-              onClick={() =>
-                downloadFile(
-                  "/assets/ressources/pressbook-keith.pdf",
-                  "pressbook-keith.pdf",
-                  setDownloadingPressbook
-                )
-              }
-              disabled={downloadingPressbook}
-              className={`mt-4 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition ${
-                downloadingPressbook
-                  ? "bg-white/30 cursor-not-allowed"
-                  : "bg-brand-gold text-brand-earth-dark hover:bg-white"
-              }`}
-            >
-              {downloadingPressbook ? (
-                <>
-                  <span className="w-4 h-4 border-2 border-brand-earth-dark border-t-transparent rounded-full animate-spin"></span>
-                  Téléchargement...
-                </>
-              ) : (
-                <>
-                  <Download className="w-5 h-5" />
-                  Télécharger le PDF
-                </>
-              )}
-            </button>
-          </div>
-
-          {/* LOGOS */}
-          <div className="bg-brand-earth-dark rounded-2xl p-8 text-white flex flex-col items-center shadow-lg">
-            <h3 className="text-2xl font-heading text-brand-gold mb-4 text-center">
-              Logos — Toutes versions
-            </h3>
-
-            <button
-              onClick={() =>
-                downloadFile(
-                  "/logos/logoskeithsonon.zip",
-                  "keith-logos.zip",
-                  setDownloadingLogos
-                )
-              }
-              disabled={downloadingLogos}
-              className={`mt-4 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition ${
-                downloadingLogos
-                  ? "bg-white/30 cursor-not-allowed"
-                  : "bg-brand-gold text-brand-earth-dark hover:bg-white"
-              }`}
-            >
-              {downloadingLogos ? (
-                <>
-                  <span className="w-4 h-4 border-2 border-brand-earth-dark border-t-transparent rounded-full animate-spin"></span>
-                  Préparation...
-                </>
-              ) : (
-                <>
-                  <Download className="w-5 h-5" />
-                  Télécharger le pack ZIP
-                </>
-              )}
-            </button>
-          </div>
-
+                  {/* Bouton de téléchargement */}
+                  <button
+                    onClick={() =>
+                      downloadFile(
+                        resource.path,
+                        resource.filename,
+                        resource.setLoading
+                      )
+                    }
+                    disabled={resource.isLoading}
+                    className={`w-full px-4 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
+                      resource.isLoading
+                        ? "bg-gray-200 cursor-not-allowed text-gray-400"
+                        : "bg-brand-gold text-brand-earth-dark hover:bg-brand-earth-dark hover:text-brand-gold hover:shadow-lg"
+                    }`}
+                  >
+                    {resource.isLoading ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></span>
+                        <span className="text-sm">Téléchargement...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Download className="w-5 h-5" />
+                        <span className="text-sm">{resource.buttonText}</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
     </Layout>

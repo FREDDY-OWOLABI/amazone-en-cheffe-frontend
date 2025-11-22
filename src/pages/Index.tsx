@@ -6,6 +6,11 @@ import { ButtonSecondary } from '@/components/ui/ButtonSecondary';
 import { ButtonOutline } from '@/components/ui/ButtonOutline';
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
+import OnePageScroll from './OnePageScroll';
+
+
+
+
 
 const Index = () => {
   const { t } = useTranslation();
@@ -314,9 +319,11 @@ const Index = () => {
         </div>
       </section>
 
-
+      {/* Infinite Scroll - Chargement progressif des sections */}
+      <OnePageScroll />
       <section className="bg-brand-yellow-light pb-12">
       </section>
+
     </Layout>
   );
 };

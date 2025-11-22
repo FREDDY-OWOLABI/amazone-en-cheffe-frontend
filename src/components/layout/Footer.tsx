@@ -40,7 +40,7 @@ export const Footer = ({ bgColor = "bg-brand-yellow-light" }: FooterProps) => {
 
         {/* Titre */}
         <h2 className="text-brand-earth-dark font-semibold text-[14px]  md:text-[18px] text-center w-full md:text-left md:w-auto  uppercase tracking-wider font-crispy-bake mb-6 md:mb-0 whitespace-nowrap">
-          PARTENAIRES OFFICIELS
+          PARTENAIRES ET SPONSORS
         </h2>
 
         {/* Carrousel */}
@@ -72,9 +72,25 @@ export const Footer = ({ bgColor = "bg-brand-yellow-light" }: FooterProps) => {
       </div>
 
 
-      {/* Ligne après le carrousel */}
-      <div className="py-8 border-b border-brand-earth/10" />
 
+
+
+      <div className="mt-8  pt-6">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-4 text-sm text-brand-earth-dark">
+          <a href="/mentions-legales" className="hover:underline">
+            Mentions Légales
+          </a>
+          <a href="/politique-de-confidentialite" className="hover:underline">
+            Politique de Confidentialité
+          </a>
+          <a href="/conditions-utilisation" className="hover:underline">
+            Conditions d’utilisation
+          </a>
+
+        </div>
+      </div>
+      {/* Ligne après */}
+      <div className="py-8 border-b border-brand-earth/10" />
       {/* Copyright */}
       <div className="py-4 border-t border-brand-earth/10">
         <div className="container mx-auto px-4 text-center text-sm text-brand-earth-dark/70">

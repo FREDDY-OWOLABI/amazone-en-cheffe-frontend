@@ -115,6 +115,8 @@ export const Header = () => {
                             {t('nav.news')}
                           </NavLink>
                         </li>
+
+                         {/*
                         <li>
                           <NavLink
                             to="/team"
@@ -122,10 +124,13 @@ export const Header = () => {
                               isActive ? 'font-bold   bg-brand-earth-dark text-white  rounded-full py-2 px-4' : ' hover:text-brand-earth transition'
                             }
                           >
+
                             {t('nav.team')}
                           </NavLink>
                         </li>
-                                                <li>
+                          */}   
+                                       
+                          <li>
                           <NavLink
                             to="/ressources"
                             className={({ isActive }) =>

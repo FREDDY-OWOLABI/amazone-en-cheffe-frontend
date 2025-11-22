@@ -7,12 +7,15 @@ import {
   sponsors,
 } from "@/constants/sponsors.ts";
 
+interface TeamProps {
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
 
 
 
 
-
-const Team = () => {
+const Team = ({ hideHeader = false , hideFooter = false}: TeamProps) => {
   const { t } = useTranslation();
 
   // Requêtes API commentées
@@ -59,7 +62,7 @@ const Team = () => {
   ];
 
   return (
-    <Layout footerBgColor="bg-brand-yellow-light">
+    <Layout hideHeader={hideHeader} hideFooter={hideFooter} footerBgColor="bg-brand-yellow-light">
       {/* Hero */}
       <section className="bg-brand-earth-dark team-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">

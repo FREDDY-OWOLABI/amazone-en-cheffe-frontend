@@ -1,5 +1,5 @@
 // src/constants/donation.ts
-export const DONATION_TARGET = 1000000; // 1 000 000 F CFA (nombre)
+export const DONATION_TARGET = 50000000; // 50 000 000 F CFA (nombre)
 
 
 export const contributors = [

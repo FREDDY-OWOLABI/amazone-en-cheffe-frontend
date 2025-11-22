@@ -5,7 +5,14 @@ import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const News = () => {
+interface NewsProps {
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
+
+
+
+const News  = ({ hideHeader = false , hideFooter = false }: NewsProps) => {
   const { t } = useTranslation();
   const [category, setCategory] = useState<string | undefined>(undefined);
 
@@ -41,7 +48,7 @@ const News = () => {
   };
 
   return (
-    <Layout footerBgColor="bg-brand-yellow-light">
+    <Layout  hideHeader={hideHeader} hideFooter={hideFooter} footerBgColor="bg-brand-yellow-light">
       {/* Hero */}
       <section className="bg-brand-earth-dark news-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">

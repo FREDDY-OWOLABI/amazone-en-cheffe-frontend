@@ -13,10 +13,15 @@ import { DONATION_TARGET, contributors } from '@/constants/donation';
 import { needs } from '@/constants/need';
 import { AmountModal } from '@/components/modals/AmountModal';
 import { NeedsModal } from '@/components/modals/NeedsModal';
+import PaymentMethods from "@/components/ui/PaymentMethods";
+
+interface SupportProps {
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
 
 
-
-const Support = () => {
+const Support = ({ hideHeader = false, hideFooter = false }: SupportProps) => {
   const { t } = useTranslation();
 
   // États pour les modales
@@ -41,7 +46,7 @@ const Support = () => {
   const formatNumber = (v: number) => new Intl.NumberFormat('fr-FR').format(Math.round(v));
 
   return (
-    <Layout footerBgColor="bg-brand-yellow-light">
+    <Layout hideHeader={hideHeader} hideFooter={hideFooter} footerBgColor="bg-brand-yellow-light">
       {/* Hero */}
       <section className="bg-brand-earth-dark support-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">
@@ -127,6 +132,14 @@ const Support = () => {
                     >
                       Contribution libre
                     </button>
+
+                    <div className="mt-4">
+                      <p className="text-sm font-medium mb-3">
+                        Moyens de paiement acceptés :
+                      </p>
+
+                      <PaymentMethods />
+                    </div>
                   </div>
 
                   <h2 className="font-medium mb-4 font-heading text-4xl">
@@ -213,7 +226,7 @@ const Support = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section 
       <section className="bg-brand-yellow-light pt-12 relative">
         <div className="container mx-auto px-4 max-w-2xl relative pt-4 sm:pt-16 lg:pt-16">
           <h2 className="w-full absolute -top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-titre">
@@ -230,7 +243,7 @@ const Support = () => {
             </div>
           </div>
 
-          <form className="space-y-4">
+          <form className="space-y-4 mb-10">
             <Input placeholder="Nom et prénom" className="bg-white" />
             <Input type="email" placeholder="Email" className="bg-white" />
             <Textarea placeholder="Votre message" rows={6} className="bg-white" />
@@ -238,9 +251,12 @@ const Support = () => {
               {t('support.send_message')}
             </ButtonPrimary>
           </form>
+
+
         </div>
       </section>
-
+    */}
+    
       {/* Modales */}
       <AmountModal
         isOpen={showAmountModal}

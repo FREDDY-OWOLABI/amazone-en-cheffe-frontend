@@ -8,6 +8,14 @@ import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 
+
+interface AboutProps {
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
+
+
+
 // Composant Modal Lightbox
 const ImageLightbox = ({ 
   images, 
@@ -362,7 +370,7 @@ const Carousel = ({ images, progress, setProgress }) => {
   );
 };
 
-const About = () => {
+const About = ({ hideHeader = false , hideFooter = false }: AboutProps) => {
   const { t } = useTranslation();
   const [isDownloading, setIsDownloading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -419,7 +427,7 @@ const About = () => {
   };
 
   return (
-    <Layout>
+    <Layout hideHeader={hideHeader} hideFooter={hideFooter}>
       {/* Hero */}
       <section className="bg-brand-earth-dark about-hero-section-bg py-16">
         <div className="container mx-auto px-4 text-center">
@@ -556,44 +564,7 @@ const About = () => {
               </div>
             </div>
 
-            {/* Videos Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="flex flex-col cursor-pointer group">
-                  {/* Video card */}
-                  <div className="aspect-video rounded-2xl overflow-hidden bg-gray-300 relative hover:scale-105 transition-transform duration-300">
-                    <img
-                      src="/assets/images/galerie-media-aspect-img.png"
-                      alt={`Vidéo ${i}`}
-                      className="w-full h-full object-cover"
-                    />
-
-                    {/* Play button overlay */}
-                    <div className="absolute inset-0 bg-transparent/30 flex items-center justify-center group-hover:bg-transparent/10 transition">
-                      <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center">
-                        <img
-                          src="/assets/images/Play.png"
-                          alt="Play"
-                          className="w-full h-full"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Title below video */}
-                  <p className="mt-2 text-sm font-semibold text-brand-earth-dark-800 text-left px-2">
-                    Titre de la vidéo
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Videos Progress Bar */}
-            <div className="mt-12 px-[20%]">
-              <div className="h-1 w-full bg-white/80 rounded relative overflow-hidden">
-                <div className="absolute top-0 left-0 h-full w-1/5 bg-brand-earth-dark rounded transition-all duration-500"></div>
-              </div>
-            </div>
+           
           </div>
 
 

@@ -72,6 +72,8 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         >
           {t('nav.news')}
         </Link>
+
+ {/*
         <Link 
           to="/team" 
           onClick={onClose}
@@ -79,6 +81,9 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         >
           {t('nav.team')}
         </Link>
+
+*/}
+
                 <Link 
           to="/ressources" 
           onClick={onClose}

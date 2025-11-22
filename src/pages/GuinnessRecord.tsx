@@ -5,11 +5,17 @@ import { Layout } from '@/components/layout/Layout';
 import { Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const GuinnessRecord = () => {
+interface GuinnessRecordProps {
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
+
+
+const GuinnessRecord = ({ hideHeader = false, hideFooter = false }: GuinnessRecordProps) => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <Layout hideHeader={hideHeader} hideFooter={hideFooter}>
       {/* Hero */}
       <section className="bg-brand-earth-dark guinness-hero-section py-16">
         <div className="container mx-auto px-4 text-center">

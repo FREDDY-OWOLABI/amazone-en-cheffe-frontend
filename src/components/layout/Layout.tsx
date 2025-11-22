@@ -5,16 +5,22 @@ import { Footer } from './Footer';
 interface LayoutProps {
   children: ReactNode;
   footerBgColor?: string;
+  hideHeader?: boolean; 
+  hideFooter?: boolean;
 }
 
-export const Layout = ({ children, footerBgColor }: LayoutProps) => {
+export const Layout = ({ children, footerBgColor, hideHeader = false , hideFooter = false }: LayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col ">
-      <Header />
+    <div className="min-h-screen flex flex-col">
+      
+      {!hideHeader && <Header />}
+      
       <main className="flex-1">
         {children}
       </main>
-      <Footer bgColor={footerBgColor} />
+      
+      
+       {!hideFooter && <Footer bgColor={footerBgColor} />}
     </div>
   );
 };
