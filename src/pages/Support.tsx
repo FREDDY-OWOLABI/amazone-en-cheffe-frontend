@@ -116,11 +116,14 @@ const Support = ({ hideHeader = false, hideFooter = false }: SupportProps) => {
       {/* Donation Section */}
       <section className="bg-white py-12" id="donate">
         <div className="container mx-auto px-4">
+
+          <br /><br />
+
           <div className="grid lg:grid-rows-2 gap-8 max-w-6xl mx-auto">
             {/* Formulaire de don */}
             <div>
               <div className="bg-brand-earth-dark rounded-3xl p-8 text-white relative pt-16">
-                <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-donate">
+                <h2 className="text-[44px] sm:text-[72px] lg:text-[72px]  w-full absolute -top-[6px] left-1/2 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 font-heading  text-center text-outline-section-donate">
                   {t('support.donate_title')}
                 </h2>
 
@@ -191,7 +194,7 @@ const Support = ({ hideHeader = false, hideFooter = false }: SupportProps) => {
             {/* Liste des contributeurs */}
             <div>
               <div className="bg-gray-100 rounded-3xl p-6 relative pt-16 mt-10">
-                <h2 className="w-full absolute -top-[6px] left-1/3 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 font-heading text-[54px] md:text-[72px] text-center text-outline-section-contributor pl-10">
+                <h2 className="text-[44px] sm:text-[72px] lg:text-[72px]   w-full absolute -top-[6px] left-1/2 sm:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 font-heading  text-center text-outline-section-contributor ">
                   {t('support.contributors_title')}
                 </h2>
 
@@ -256,7 +259,7 @@ const Support = ({ hideHeader = false, hideFooter = false }: SupportProps) => {
         </div>
       </section>
     */}
-    
+
       {/* Modales */}
       <AmountModal
         isOpen={showAmountModal}

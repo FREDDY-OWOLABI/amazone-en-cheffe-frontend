@@ -1,3 +1,4 @@
+
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
@@ -15,6 +16,7 @@ import OnePageScroll from './OnePageScroll';
 const Index = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
 
   return (
     <Layout >
@@ -181,7 +183,7 @@ const Index = () => {
               {/* CTA */}
               <ButtonPrimary
                 className="bg-brand-gold hover:bg-brand-gold/80 text-brand-earth-dark font-bold px-6 py-3 rounded-full shadow-md"
-                onClick={() => navigate("/contribution")}
+                onClick={() => navigate("/contribution#donate")}
               >
                 <div className="flex items-center gap-3">
                   <span>Soutenez-moi</span>
@@ -234,7 +236,7 @@ const Index = () => {
               {/* Donate */}
               <a href="/contribution#donate" className="font-bold sm:flex-none">
                 <ButtonPrimary
-                  className="w-[20rem]"
+                  className="w-[17rem]"
                 >
                   {t('cta.donate')}
                 </ButtonPrimary>
