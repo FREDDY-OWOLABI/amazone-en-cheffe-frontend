@@ -46,7 +46,106 @@ export const Header = () => {
         <div className="hidden md:block">
           <div className="container mx-auto px-4 ">
             <div className="flex items-center justify-between py-4 ">
-              {/* Left: Progress Bar */}
+
+
+
+
+
+              {/* LEFT: Logo */}
+             
+                <Link to="/" className="flex-shrink-0 font-heading">
+                  <img
+                    src={
+                      location.pathname === "/support"
+                        ? "/assets/images/KEITHSONONLogoNoirPaysage.png"
+                        : "/assets/images/KEITHSONONLogoofficielblancPaysage.png"
+                    }
+                    alt="L'Amazone en Cheffe - Keith SONON"
+                    className="h-24 object-contain"
+                  />
+                </Link>
+
+
+
+              
+              {/* Navigation Bar */}
+              <nav className="py-3">
+                <div className="w-full flex justify-center">
+                  <div className="inline-flex bg-or-degrade rounded-full px-6 py-2">
+                    <ul className="flex justify-center items-center gap-6 text-white text-sm">
+                      <li>
+                        <NavLink
+                          to="/"
+                          className={({ isActive }) =>
+                            isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : ' hover:text-brand-earth transition'
+                          }
+                        >
+                          {t('nav.home')}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/guinness-record"
+                          className={({ isActive }) =>
+                            isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
+                          }
+                        >
+                          {t('nav.guinness')}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/about"
+                          className={({ isActive }) =>
+                            isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
+                          }
+                        >
+                          {t('nav.about')}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/news"
+                          className={({ isActive }) =>
+                            isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : 'hover:text-brand-earth transition'
+                          }
+                        >
+                          {t('nav.news')}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/team"
+                          className={({ isActive }) =>
+                            isActive ? 'font-bold text-sm  bg-brand-earth-dark text-white  rounded-full py-2 px-4' : ' hover:text-brand-earth transition'
+                          }
+                        >
+                          {t('nav.team')}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/support"
+                          className={({ isActive }) =>
+                            `flex items-center text-sm gap-2 border border-brand-earth-dark text-white  rounded-full py-1 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold bg-yellow-200 !text-brand-earth-dark  text-terre-afrique ' : 'hover:text-brand-earth transition'}`
+                          }
+                        >
+                          {t('nav.support')}
+                          <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                            <img
+                              src="/assets/images/streamline-plump_give-gift-solid.svg"
+                              alt="Icône de don"
+                              className="w-4 h-4"
+                            />
+                          </div>
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
+              {/* RIGHT: Progress Bar */}
               <div className="flex gap-6">
                 <div className="inline-block">
                   <ProgressBarCountdown />
@@ -54,122 +153,26 @@ export const Header = () => {
 
                 {location.pathname === "/support" && (
                   <div className="inline-block">
-                    <ProgressBarDonationCollected />
+
+                    {/* <div className="inline-block">
+                     <ProgressBarDonationCollected />
+                  </div> 
+                  */}
+
+
                   </div>
                 )}
               </div>
 
-
-
-
-              {/* Center: Logo */}
-              <Link to="/" className="flex-shrink-0 font-heading">
-                <img
-                  src={
-                    isMobile
-                      ? "/assets/images/KEITHSONONLogoofficielblancPotrait.png"
-                      : "/assets/images/KEITHSONONLogoofficielblancPotrait.png"
-                  }
-                  alt="L'Amazone en Cheffe - Keith SONON"
-                  className="h-24 object-contain"
-                />
-              </Link>
-
-
               {/* Right: Social + Language */}
               <div className="flex items-center gap-4 ">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-                  <img src="/assets/images/Facebook.svg" className="w-5 h-5" />
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-                  <img src="/assets/images/Instagram.svg" className="w-5 h-5" />
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition">
-                  <img src="/assets/images/TikTok.svg" className="w-5 h-5" />
-                </a>
+
                 <LanguageSwitcher />
               </div>
             </div>
           </div>
 
-          {/* Navigation Bar */}
-          <nav className=" py-3">
-            <div className="container mx-auto px-4  bg-or-degrade rounded-full">
-              <div className="px-4 py-2">
-                <ul className="flex justify-center items-center gap-8 text-white ">
-                  <li>
-                    <NavLink
-                      to="/"
-                      className={({ isActive }) =>
-                        isActive ? 'font-bold  text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
-                      }
-                    >
-                      {t('nav.home')}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/guinness-record"
-                      className={({ isActive }) =>
-                        isActive ? 'font-bold text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
-                      }
-                    >
-                      {t('nav.guinness')}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/about"
-                      className={({ isActive }) =>
-                        isActive ? 'font-bold text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
-                      }
-                    >
-                      {t('nav.about')}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/news"
-                      className={({ isActive }) =>
-                        isActive ? 'font-bold text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
-                      }
-                    >
-                      {t('nav.news')}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/team"
-                      className={({ isActive }) =>
-                        isActive ? 'font-bold text-brand-yellow border-b-2 border-brand-earth-dark pb-1' : 'hover:text-brand-earth transition'
-                      }
-                    >
-                      {t('nav.team')}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/support"
-                      className={({ isActive }) =>
-                        `flex items-center gap-2 bg-brand-earth-dark text-white  rounded-full py-2 px-4  space-x-2 hover:bg-yellow-500 ${isActive ? 'font-bold bg-yellow-200 !text-brand-earth-dark  text-terre-afrique ' : 'hover:text-brand-earth transition'}`
-                      }
-                    >
-                      {t('nav.support')}
-                      <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                        <img
-                          src="/assets/images/streamline-plump_give-gift-solid.svg"
-                          alt="Icône de don"
-                          className="w-4 h-4"
-                        />
-                      </div>
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
 
-
-            </div>
-          </nav>
         </div>
 
         {/* Mobile Header */}

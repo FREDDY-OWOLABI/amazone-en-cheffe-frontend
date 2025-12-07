@@ -9,6 +9,7 @@ import { ButtonPrimary } from '@/components/ui/ButtonPrimary';
 import { ButtonSecondary } from '@/components/ui/ButtonSecondary';
 import { Facebook, Youtube, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { ProgressBarDonationCollected } from '../components/layout/ProgressBarDonationCollected';
 
 const Support = () => {
   const { t } = useTranslation();
@@ -40,17 +41,28 @@ const Support = () => {
     { id: 15, name: "Jane Doe", amount: "180,000", days: "3 jours" },
   ];
 
+ 
   const needs = [
-    { icon: "/assets/images/Flame.svg", label: "Besoin 1", obsolete: "oui" },
-    { icon: "/assets/images/Flame.svg", label: "Besoin 4", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Besoin 7", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Besoin 2", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Besoin 5", obsolete: "non" },
-    { icon: "/assets/images/Flame.svg", label: "Besoin 8", obsolete: "oui" },
-    { icon: "/assets/images/Flame.svg", label: "Besoin 3", obsolete: "oui" },
-    { icon: "/assets/images/Flame.svg", label: "Besoin 6", obsolete: "oui" },
-    { icon: "/assets/images/Flame.svg", label: "Besoin 9", obsolete: "non" },
-  ];
+  { icon: "/assets/images/Flame.svg", label: "Location du Palais des Congrès (site et aménagements)", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Construction des box de cuisine & équipements spécialisés", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Location stands, tables, chaises, barrières, toilettes portables", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Electricité, eau, nettoyage du site", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Produits alimentaires & boissons", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Transport & distribution de plus de 20 000 repas", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Hôtesses d’accueil & personnel de soutien", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Divers liés à la restauration", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Branding du site (bannières, kakémonos, signalétique)", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Publicité digitale & influenceurs", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Captation vidéo, photos, streaming", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Impressions (badges, tee-shirts, dossiers)", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "DJ, sonorisation & lumières", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Prestation d’artistes & animations annexes", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Forfait médical, physique & moral (suivi de la cheffe et de l’équipe)", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Sécurité (police, pompiers, vigiles)", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Assurance & accompagnement santé additionnel", obsolete: "non" },
+  { icon: "/assets/images/Flame.svg", label: "Frais Guinness (certification, homologation)", obsolete: "non" },
+];
+
 
   return (
     <Layout footerBgColor="bg-brand-yellow-light">
@@ -64,60 +76,66 @@ const Support = () => {
           >
             {t('support.title')}
           </motion.h1>
+
+
+          <div className="flex justify-center mt-6 w-full">
+            <ProgressBarDonationCollected />
+          </div>
         </div>
+
       </section>
 
       {/* Why Section */}
-      
+
       <section className="bg-white py-20">
-  <div className="container mx-auto px-4 max-w-4xl">
-    <h1 className="text-5xl md:text-6xl font-bold font-heading text-or-degrade mb-8 text-center">
-      Pourquoi ?
-    </h1>
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h1 className="text-5xl md:text-6xl font-bold font-heading text-or-degrade mb-8 text-center">
+            Pourquoi ?
+          </h1>
 
-    <p className="guton mb-6 text-lg md:text-xl leading-relaxed text-justify text-brand-earth-dark">
-      Vous savez, derrière chaque plat que je crée, il y a bien plus que des ingrédients. Il y a les mains et le
-      savoir-faire de toutes les personnes qui m’ont appris à cuisiner ainsi que leurs expériences et toute une
-      vie passée à croire que la cuisine est le plus beau des langages. Aujourd'hui, je me prépare à vivre le défi
-      le plus intense de ma vie : un marathon culinaire de plusieurs jours et nuits pour tenter de battre un
-      record du monde.
-    </p>
+          <p className="guton mb-6 text-lg md:text-xl leading-relaxed text-justify text-brand-earth-dark">
+            Vous savez, derrière chaque plat que je crée, il y a bien plus que des ingrédients. Il y a les mains et le
+            savoir-faire de toutes les personnes qui m’ont appris à cuisiner ainsi que leurs expériences et toute une
+            vie passée à croire que la cuisine est le plus beau des langages. Aujourd'hui, je me prépare à vivre le défi
+            le plus intense de ma vie : un marathon culinaire de plusieurs jours et nuits pour tenter de battre un
+            record du monde.
+          </p>
 
-    <p className="guton mb-6 text-lg md:text-xl leading-relaxed  text-justify text-brand-earth-dark">
-      Mais je vais être honnête avec vous : j'ai peur. J'ai peur de la fatigue, du doute, de la solitude dans ces
-      longues heures avant l'aube. Pourtant, une force plus grande que la peur me pousse en avant : la
-      conviction que c'est en repoussant nos limites que l'on inspire les autres à croire en leurs propres rêves.
-      Ce marathon, c'est mon combat pour montrer que la passion peut transcender la douleur, et que l'on
-      peut puiser une force insoupçonnée au fond de soi quand on le fait pour quelque chose de plus grand.
-      C’est pourquoi je tends la main aujourd’hui, non pas en tant que l’Amazone en cheffe sûre d’elle, mais en
-      tant que femme vulnérable et déterminée. Votre soutien, sous quelque forme que ce soit, serait la plus
-      belle des épices dans cette aventure :
-    </p>
+          <p className="guton mb-6 text-lg md:text-xl leading-relaxed  text-justify text-brand-earth-dark">
+            Mais je vais être honnête avec vous : j'ai peur. J'ai peur de la fatigue, du doute, de la solitude dans ces
+            longues heures avant l'aube. Pourtant, une force plus grande que la peur me pousse en avant : la
+            conviction que c'est en repoussant nos limites que l'on inspire les autres à croire en leurs propres rêves.
+            Ce marathon, c'est mon combat pour montrer que la passion peut transcender la douleur, et que l'on
+            peut puiser une force insoupçonnée au fond de soi quand on le fait pour quelque chose de plus grand.
+            C’est pourquoi je tends la main aujourd’hui, non pas en tant que l’Amazone en cheffe sûre d’elle, mais en
+            tant que femme vulnérable et déterminée. Votre soutien, sous quelque forme que ce soit, serait la plus
+            belle des épices dans cette aventure :
+          </p>
 
-    <ul className="list-disc list-inside mb-6  text-lg md:text-xl space-y-2 text-brand-earth-dark">
-      <li>Vos mots d’encouragements sur mes différents réseaux sociaux</li>
-      <li>Vos dons tant au niveau des produits de qualité qu’au niveau de la logistique de cet événement.</li>
-      <li>Le partage de mon histoire autour de vous</li>
-      <li>Votre présence, ne serait-ce que par la pensée, me rappellera que je ne suis pas seule.</li>
-    </ul>
+          <ul className="list-disc list-inside mb-6  text-lg md:text-xl space-y-2 text-brand-earth-dark">
+            <li>Vos mots d’encouragements sur mes différents réseaux sociaux</li>
+            <li>Vos dons tant au niveau des produits de qualité qu’au niveau de la logistique de cet événement.</li>
+            <li>Le partage de mon histoire autour de vous</li>
+            <li>Votre présence, ne serait-ce que par la pensée, me rappellera que je ne suis pas seule.</li>
+          </ul>
 
-    <p className="guton mb-6 text-lg md:text-xl leading-relaxed  text-justify text-brand-earth-dark">
-      Je ne cherche pas la gloire, mais à écrire une histoire dont nous pourrons être fiers ensemble. Une
-      histoire qui dit que quand une communauté se rassemble pour porter l’un des siens, même l’impossible
-      devient réalisable.
-    </p>
+          <p className="guton mb-6 text-lg md:text-xl leading-relaxed  text-justify text-brand-earth-dark">
+            Je ne cherche pas la gloire, mais à écrire une histoire dont nous pourrons être fiers ensemble. Une
+            histoire qui dit que quand une communauté se rassemble pour porter l’un des siens, même l’impossible
+            devient réalisable.
+          </p>
 
-    <p className="guton text-lg md:text-xl leading-relaxed  font-semibold text-justify text-brand-earth-dark">
-      Merci du fond du cœur de croire en moi, et de rendre cette folle tentative si profondément humaine.
-    </p>
-  </div>
-</section>
+          <p className="guton text-lg md:text-xl leading-relaxed  font-semibold text-justify text-brand-earth-dark">
+            Merci du fond du cœur de croire en moi, et de rendre cette folle tentative si profondément humaine.
+          </p>
+        </div>
+      </section>
 
 
       {/* Donation Section */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid lg:grid-rows-2 gap-8 max-w-6xl mx-auto">
 
             {/* Formulaire de don */}
             <div>
@@ -134,7 +152,9 @@ const Support = () => {
                     Emplacement de l'agrégateur de paiement
                   </div>
 
-                  <h4 className="font-medium mb-4 font-heading text-3xl">{t('support.needs_title')}</h4>
+                  <h2 className="font-medium mb-4 font-heading text-4xl">
+                    Les besoins de la Cheffe
+                    </h2>
 
                   <div className="grid grid-cols-3 gap-3 mb-6">
 
@@ -156,7 +176,7 @@ const Support = () => {
 
 
                 <ButtonSecondary className="w-full md:w-auto font-bold">
-                  Contribuer en nature
+                  Contribuer maintenant
                 </ButtonSecondary>
               </div>
             </div>
@@ -170,7 +190,7 @@ const Support = () => {
               <div className="bg-gray-100 rounded-3xl p-6">
 
 
-                
+
                 <div className="text-center mb-6">
                   <p className="text-3xl text-left font-bold text-brand-earth-dark">
                     {donationData?.total} {t('support.total_collected')}
